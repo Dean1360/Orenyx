@@ -1,0 +1,1327 @@
+@import 'tailwindcss';
+/*
+  Motus AI Engine — design tokens
+  Derived from the client Figma (dark). Supersedes the earlier light system.
+  One accent family: violet. Everything else is navy, ink, or neutral.
+*/
+
+@theme {
+  /* ── Surface (dark) ────────────────────────────────── */
+  --color-bg: #0f1628;
+  --color-bg-2: #131c33;
+  --color-bg-3: #1a2440;
+  --color-bg-inset: #11133B;
+
+  /* ── Violet ────────────────────────────────────────── */
+  --color-violet: #6d4fe3;
+  --color-violet-deep: #5a3fc7;
+  --color-violet-bright: #8b7cff;
+  --color-violet-soft: #a99bff;
+  --color-lavender: #e7e4fb;
+
+  /* ── Text ──────────────────────────────────────────── */
+  --color-fg: #ffffff;
+  --color-fg-soft: #b8bfd4;
+  --color-fg-muted: #8a93ac;
+  --color-fg-silver: #c6cad6;
+
+  /* ── Lines ─────────────────────────────────────────── */
+  --color-line: #26304d;
+  --color-line-violet: #4a3d8f;
+
+  /* ── Status ────────────────────────────────────────── */
+  --color-ok: #34d399;
+  --color-down: #f87171;
+
+  /* Unresolved content. Must be zero at launch. */
+  --color-placeholder: #ff00a8;
+
+  /* ── Type ──────────────────────────────────────────── */
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  /*
+    Body face. This is a SYSTEM stack, not a self-hosted webfont — see the
+    "Arial" note in the README. Windows and macOS both ship Arial, so the
+    rendering is unchanged for the overwhelming majority of visitors, and
+    Liberation Sans (metric-identical) covers Linux automatically.
+  */
+  --font-arial: Arial, 'Liberation Sans', Helvetica, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+
+  /* ── Rhythm ────────────────────────────────────────── */
+  --radius-card: 14px;
+  --radius-panel: 24px;
+  --radius-btn: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-arial), var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+    font-family: var(--font-arial), var(--font-sans);
+  }
+
+  div {
+    font-family: var(--font-arial), var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-violet-bright);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: var(--color-violet);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--color-violet);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .skip-link:focus {
+    left: 0;
+  }
+
+  /* Large section headings render in brushed silver in the Figma. */
+  .heading-silver {
+    background: linear-gradient(180deg, #eef0f6 0%, #a8adbd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hero band: violet haze over navy, with the concentric ring motif. */
+  .hero-band {
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 0%,
+        rgba(109, 79, 227, 0.55) 0%,
+        rgba(109, 79, 227, 0) 70%),
+      linear-gradient(180deg, #3a3470 0%, #1a2140 55%, var(--color-bg) 100%);
+  }
+
+
+  /* ── Section background motifs ─────────────────────
+     Pure CSS, so they work with no asset and cost no bytes. Use these when a
+     section needs texture; use a real image only when the art is specific.
+  */
+
+  .bg-dots::before {
+    /* content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(139, 124, 255, 0.16) 1px, transparent 1px);
+    background-size: 22px 22px; */
+  }
+
+  .bg-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(74, 61, 143, 0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(74, 61, 143, 0.25) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 75%);
+  }
+
+  .bg-rings::before {
+    /* content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-radial-gradient(
+      circle at 50% 50%,
+      transparent 0 58px,
+      rgba(139, 124, 255, 0.12) 58px 59px
+    );
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 20%, transparent 70%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 20%, transparent 70%); */
+  }
+
+  /* Violet bloom, for sections that need lift without a pattern. */
+  .bg-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 50% 60% at 50% 0%,
+        rgba(109, 79, 227, 0.28) 0%,
+        transparent 70%);
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+  }
+
+  /* Let people stop it to read a name. */
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Pulses travelling inbound along the hero diagram traces. */
+  .feed-dot {
+    offset-rotate: 0deg;
+    animation: trace-run var(--dur, 2.8s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes trace-run {
+    from {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+
+    12% {
+      opacity: 1;
+    }
+
+    88% {
+      opacity: 1;
+    }
+
+    to {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
+
+  /* SWEEP — the bright dash is as long as the wire itself, so the whole line
+     lights progressively from the outer pad in to the die, then sweeps off.
+     One property (stroke-dashoffset), one element per trace. */
+  .trace-sweep {
+    animation: trace-sweep var(--dur, 3s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes trace-sweep {
+    from {
+      stroke-dashoffset: var(--len);
+    }
+
+    to {
+      stroke-dashoffset: calc(-1 * var(--len));
+    }
+  }
+
+  /* Terminal pads swell and brighten on the same clock as their trace. */
+  .pad-pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pad-pulse var(--pdur, 3.4s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes pad-pulse {
+
+    0%,
+    100% {
+      opacity: var(--o);
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+  }
+
+  @keyframes chip-glow {
+
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+
+    50% {
+      opacity: 0.75;
+    }
+  }
+
+  .chip-glow {
+    animation: chip-glow 3.2s ease-in-out infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ──────────────────────────────────────────────────────
+   Header — violet bar with dark nav text, per the client comp.
+*/
+.header-violet {
+  background: linear-gradient(180deg, #8175d8 0%, #6f5dd2 100%);
+}
+
+.nav-link {
+  color: #131c33;
+}
+
+.nav-link:hover {
+  color: #8B7CFF;
+}
+
+.margin-auto-left {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.zigzagBlocks h3 {
+  color: #8B7CFF;
+}
+
+.zigzagBlocks p {
+  color: #E5E2FF;
+  font-size: 20px;
+}
+
+.nav-link-active {
+  color: #0f1628;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+
+/* ──────────────────────────────────────────────────────
+   Fluid type.
+
+   Every size below ramps from a phone floor up to the original desktop
+   value, reaching the ceiling at 1440px. Desktop rendering is unchanged —
+   only narrow viewports differ, where these used to sit at their full
+   desktop px and blow out the layout.
+
+   Shape: clamp(floor, calc(intercept + slope·vw), ceiling).
+*/
+.homepage-title {
+  font-size: clamp(34px, calc(21.32px + 3.38vw), 70px) !important;
+  text-shadow: 0px 4px 4px #00000029;
+}
+
+
+
+.listfont span {
+  font-size: clamp(18px, calc(12.01px + 1.6vw), 35px) !important;
+}
+
+.h2Newfont {
+  font-size: clamp(28px, calc(18.14px + 2.63vw), 56px) !important;
+}
+
+.bg-violet-gred {
+  background: linear-gradient(180deg, #342A70, #644FD6)
+}
+
+.bg-violet-gred .h2Newfont {
+  font-size: clamp(26px, calc(17.55px + 2.25vw), 50px) !important;
+}
+
+.labelFFont {
+  font-size: clamp(14px, calc(10.48px + 0.94vw), 24px) !important;
+}
+
+.newFont-Parra {
+  font-size: clamp(16px, calc(9.31px + 1.78vw), 35px) !important;
+}
+
+.accordion-custom button .text-base.text-white {
+  font-size: clamp(15px, calc(12.54px + 0.66vw), 22px) !important;
+}
+
+.mina-number {
+  color: #fff;
+  padding-top: 15px;
+  display: block;
+}
+
+.dnones {
+  display: none !important;
+}
+
+.box-BG {
+  /* background: url(../public/bg/solutionBG.png); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  border: 2px solid #8B7CFF;
+  overflow: hidden;
+  background-color: #09042585;
+}
+
+.box-BG::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../public/bg/solutionBG.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  opacity: 0.4;
+}
+
+.relative-newZed {
+  position: relative;
+  z-index: 1;
+}
+
+.relative-newZed.border-b {
+  border-width: 2px !important;
+  border-color: #6e63ce;
+}
+
+.relative-newZed.border-b:hover .border-line-violet {
+  background: #6e63ce;
+}
+
+.relative-newZed.border-b:hover .border-line-violet img {
+  filter: brightness(0) invert(1);
+}
+
+.new-font-size {
+  font-size: clamp(20px, calc(14.72px + 1.41vw), 35px);
+  color: #8B7CFF;
+  /* The tall gutter under each capability is what gives the grid its rhythm.
+     It cannot stay at 128px on a phone or the tiles run off the fold. */
+  padding-bottom: clamp(40px, calc(9.01px + 8.26vw), 128px);
+}
+
+.myimage-width {
+  width: 200px;
+  max-width: 100%;
+}
+
+.myimage-width.business-value-icon {
+  width: 73px;
+}
+
+.font-dark {
+  color: #0F172A;
+}
+
+.font-dark {
+  color: #0F172A;
+  font-size: clamp(18px, calc(13.42px + 1.22vw), 31px) !important;
+  margin-top: 20px;
+}
+
+.testimonail-author {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.authname {
+  color: #0F172A;
+  font-size: clamp(15px, calc(13.24px + 0.47vw), 20px);
+  font-style: italic;
+  text-align: right;
+}
+
+.jobtitle {
+  color: #0F172A;
+  font-size: 11px;
+  font-style: italic;
+  text-align: right;
+}
+
+.authores-imageas {
+  width: 73px;
+}
+
+.authoresname {
+  width: calc(100% - 73px);
+}
+
+.testimonals {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.newpadding0 {
+  padding: 0px !important;
+  padding-bottom: calc(var(--spacing) * 24) !important;
+}
+
+.font-sizechange {
+  font-size: clamp(14px, calc(11.18px + 0.75vw), 22px);
+}
+
+.bg-footergred {
+  background: linear-gradient(#644FD6, #342A70);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.newbg-cta {
+  background: linear-gradient(#644FD6, #342A70);
+}
+
+.innerPageBanner {
+  min-height: clamp(300px, calc(229.6px + 18.78vw), 500px);
+  justify-content: center;
+  /* display: flex; */
+  align-items: center;
+}
+
+.bg-violet-bgfred {
+  background: linear-gradient(180deg, #644FD6, #342A70)
+}
+
+.mt-0\.5.shrink-0.text-white.Icon-box {
+  width: 42px;
+  height: 42px;
+}
+
+/* Decorative wordmark in the top-right of the About panel. There is no room
+   for it beside the heading on a phone, so it only appears from md up. */
+.abs-image {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .abs-image {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    display: block;
+    max-width: 34%;
+    height: auto;
+  }
+
+}
+
+.font-p p {
+  font-size: clamp(15px, calc(13.24px + 0.47vw), 20px);
+}
+
+.font-bg-count {
+  font-size: clamp(44px, calc(26.04px + 4.79vw), 95px);
+}
+
+.ecosystem-image {
+  width: 100%;
+  height: 154px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.font0size {
+  font-size: clamp(22px, calc(15.66px + 1.69vw), 40px);
+}
+
+.ecosystem-item {
+  background: #4E3FA9;
+  padding: 20px;
+  border-radius: 20px;
+  color: #fff;
+  /* was `traslateY` — an invalid value, so the lift never rendered */
+  transform: translateY(0px);
+  transition: transform 0.3s ease;
+}
+
+.ecosystem-item:hover {
+  transform: translateY(-5px);
+}
+
+.innerpage-title {
+  font-size: clamp(32px, calc(19.68px + 3.29vw), 67px) !important;
+}
+
+.text-banner-inner {
+  font-size: clamp(17px, calc(12.42px + 1.22vw), 30px);
+}
+
+.text-breadcrumb {
+  font-size: clamp(14px, calc(11.18px + 0.75vw), 22px);
+}
+
+.backgtound-imageboxUnique {
+  background: #090425CC;
+}
+
+.icon-imagebox {
+  width: 39px;
+  /* was `39` with no unit, which browsers drop */
+  height: 39px;
+  object-fit: contain;
+}
+
+.imagesfeatuire {
+  padding: 12px;
+  border: 1px solid #4a3d8f;
+  width: fit-content;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.font-big {
+  color: #8B7CFF;
+  font-size: clamp(20px, calc(14.72px + 1.41vw), 35px);
+}
+
+.box-article-featureBox {
+  border-width: 2px !important;
+
+}
+
+.box-article-featureBox:hover .imagesfeatuire {
+  background: #4a3d8f;
+}
+
+.box-article-featureBox:hover .imagesfeatuire img {
+  filter: brightness(0) invert(1);
+}
+
+.box-article-featureBox p {
+  font-size: clamp(15px, calc(13.24px + 0.47vw), 20px);
+}
+
+.box-article-featureBox:hover .font-big {
+  color: #fff;
+}
+
+.border-topmanage {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.text-fontchnage {
+  font-size: clamp(16px, calc(13.54px + 0.66vw), 23px);
+}
+
+.border-topmanage p {
+  font-size: clamp(14px, calc(12.59px + 0.38vw), 18px);
+}
+
+.custom-tablecolor thead th {
+  font-size: clamp(16px, calc(9.31px + 1.78vw), 35px);
+}
+
+.custom-tablecolor td {
+  font-size: clamp(14px, calc(11.89px + 0.56vw), 20px);
+}
+
+.custom-tablecolor tr {
+
+  background-color: #9486FF3B;
+}
+
+.custom-tablecolor thead tr {
+  background-color: #5C49C6;
+
+}
+
+.bgnones {
+  padding-top: 0;
+}
+
+.custom-tablecolor tbody tr th,
+.custom-tablecolor tbody tr td {
+  font-size: clamp(14px, calc(11.18px + 0.75vw), 22px);
+}
+
+.custom-tablecolor tr:nth-child(even) {
+  background-color: #9486FF26;
+}
+
+.pricechnageFont dt,
+.pricechnageFont dd {
+  font-size: clamp(14px, calc(12.59px + 0.38vw), 18px);
+  color: #E5E2FF;
+}
+
+.font-srs li span {
+  font-size: clamp(14px, calc(12.59px + 0.38vw), 18px);
+  color: #E5E2FF;
+}
+
+.font-srs li svg {
+  width: 20px;
+  height: 20px;
+}
+
+.max-w-\[1180px\] {
+  max-width: 1264px !important;
+}
+
+.pricechnageFont .text-right.font-medium.text-violet-bright {
+  color: #8B7CFF;
+}
+
+.header-violet a {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Drawer active link — a soft dark pill behind the whole row. #8B7CFF text
+   vanished against the violet gradient, and an underline read as clutter.
+   The negative margins let the pill bleed wider while the label stays
+   aligned with the other rows. (The dark desktop bar has its own override.) */
+#mobile-nav a.nav-link-active {
+  color: #ffffff;
+  text-decoration: none;
+  background: rgba(15, 23, 42, 0.32);
+  border-radius: 10px;
+  border-color: transparent;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-left: -14px;
+  margin-right: -14px;
+}
+
+.thebutrrtonas {
+  border-radius: 50px;
+  background: #5C49C6;
+}
+
+.vaiolatecolor {
+  color: #8B7CFF;
+}
+
+.pricechnageFont a {
+  font-size: clamp(14px, calc(12.59px + 0.38vw), 18px);
+}
+
+.pricens {
+  font-size: clamp(30px, calc(24.72px + 1.41vw), 45px);
+}
+
+.pricechnasgeFont .transition-all.duration-500.ease-out.translate-y-0.opacity-100 .pricechnageFont.flex.h-full.flex-col.rounded-\[14px\].border.border-line-violet.bg-bg-2\/50.p-6 {
+  border-color: #644FD6;
+  border-width: 2px !important;
+}
+
+.pricechnasgeFont .mt-7.space-y-3.border-b.border-line.pb-6.text-sm {
+  border-bottom: 2px solid #8B7CFF70;
+}
+
+.pricechnasgeFont .transition-all.duration-500.ease-out.translate-y-0.opacity-100:nth-child(2) .pricechnageFont.flex.h-full.flex-col.rounded-\[14px\].border.border-line-violet.bg-bg-2\/50.p-6 {
+  background: linear-gradient(180deg, #382E6A94, #8D71EA1F);
+}
+
+.pricechnasgeFont .transition-all.duration-500.ease-out.translate-y-0.opacity-100:nth-child(2) svg {
+  /* fill: #fff !important; */
+  color: #fff;
+}
+
+.font-35px {
+  font-size: clamp(20px, calc(14.72px + 1.41vw), 35px);
+}
+
+.text-20px {
+  font-size: clamp(15px, calc(13.24px + 0.47vw), 20px);
+}
+
+.order-2 {
+  order: -1;
+}
+
+.align-center {
+  align-items: center;
+}
+
+
+.thebutrrtonas {
+  border-radius: 50px;
+  background: #5C49C6 !important;
+}
+
+.thebutrrtonas {
+  display: flex;
+  gap: 5px;
+  padding: 10px 20px;
+  align-items: center;
+  border-radius: 12px;
+}
+
+/* ──────────────────────────────────────────────────────
+   Hero orbit diagram. See components/engine-diagram.tsx.
+
+   Every stroke there is painted twice — a wide blurred pass for the glow, a
+   thin crisp pass on top — and these classes animate the glow passes.
+*/
+.orb-label {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 27px;
+  fill: #ffffff;
+}
+
+.orb-label-s {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  fill: #ffffff;
+}
+
+.orb-sweep {
+  animation: orb-sweep 3s linear infinite;
+}
+
+@keyframes orb-sweep {
+  from {
+    stroke-dashoffset: var(--len);
+  }
+
+  to {
+    stroke-dashoffset: calc(-1 * var(--len));
+  }
+}
+
+.orb-rider {
+  offset-rotate: 0deg;
+  animation: orb-ride 3s linear infinite;
+}
+
+/* Same journey, played backwards: the connector paths run card -> hub, and the
+   approved comp has the dot travelling hub -> card. */
+.orb-rider-rev {
+  offset-rotate: 0deg;
+  animation: orb-ride-rev 3s linear infinite;
+}
+
+.hero-band.ring-motif.relative.overflow-hidden.innerPageBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: url(../public/bg/innerbannerImage.png);
+  opacity: 0.5;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.hero-band.ring-motif.relative.overflow-hidden.innerPageBanner::after {
+  content: '';
+  background: url(../public/bg/banner-line.png);
+
+ 
+
+  width: 100%;
+  height: 300px;
+  position: relative;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center bottom;
+
+  margin-top: -250px;
+}
+.carveimage {
+    background: url(../public/bg/banner-line.png);
+   width: 100%;
+  height: 300px;
+  position: relative;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: -250px;
+  margin-bottom: -89px;
+  background-position: center bottom;
+}
+.hero-band.home-pagebanner.relative.overflow-hidden::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url(../public/bg/homeBanner.png);
+  opacity: 0.3;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@keyframes orb-ride-rev {
+  from {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  to {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes orb-ride {
+  from {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  to {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+.orb-pulse {
+  animation: orb-pulse 3.4s ease-in-out infinite;
+}
+
+@keyframes orb-pulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.orb-pulse-sm {
+  animation: orb-pulse-sm 3.4s ease-in-out infinite;
+}
+
+@keyframes orb-pulse-sm {
+
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.orb-breathe {
+  animation: orb-breathe 4.2s ease-in-out infinite;
+}
+
+@keyframes orb-breathe {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* Rotates about the 1000×1000 viewBox centre. */
+.orb-spin {
+  transform-box: view-box;
+  transform-origin: 500px 500px;
+  animation: orb-spin 110s linear infinite;
+}
+
+@keyframes orb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orb-tw {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: orb-tw 2.6s ease-in-out infinite;
+}
+
+@keyframes orb-tw {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Contact page — the violet card holding the Request Access form. */
+.contact-panel {
+  background: linear-gradient(135deg, #7059dd 0%, #5d49c8 100%);
+}
+
+.thebutrrtonas-grd {
+  padding: 2px;
+  /* background: linear-gradient(139deg, #988CF3, #270CFD); */
+  border-radius: 12px;
+  transition: 0.5s;
+  box-shadow: 0px 0px 9px #00000021;
+}
+
+.header-violet {
+  border-bottom: 2px var(--color-bg) solid;
+}
+
+.thebutrrtonas:hover {
+  background: linear-gradient(139deg, #988CF3, #270CFD) !important;
+}
+
+.header-violet.bg-new-fix {
+  background: #0F172A;
+}
+
+/* The bar went dark, so its links go light. Scoped to .bg-new-fix on purpose:
+   the mobile drawer keeps the violet gradient, where the dark link colour
+   still reads. */
+.header-violet.bg-new-fix .nav-link {
+  color: #E5E2FF;
+}
+
+.header-violet.bg-new-fix .nav-link:hover {
+  color: #8B7CFF;
+}
+
+/* Active item: violet text with a gradient accent bar drawn by ::after —
+   solid on the left, fading out to the right, per the comp. A pseudo-element
+   rather than text-decoration so the fade and the offset are controllable. */
+.header-violet.bg-new-fix .nav-link-active {
+  color: #8b7cff;
+  text-decoration: none;
+  position: relative;
+}
+
+.header-violet.bg-new-fix .nav-link-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5a3fc7 0%, rgba(90, 63, 199, 0) 100%);
+}
+
+.newbg-header {
+  background: #8B7CFF;
+}
+
+/* ──────────────────────────────────────────────────────
+   Splash loader — the logo over dark navy, breathing in a violet bloom.
+   See components/site-loader.tsx for the show/hide timing.
+*/
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: #0f172a;
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+.site-loader--out {
+  opacity: 0;
+  pointer-events: none;
+}
+/* Route-transition variant sits under the sticky header rather than over it. */
+.site-loader--route {
+  position: relative;
+  inset: auto;
+  z-index: 0;
+  min-height: 60vh;
+  background: transparent;
+}
+
+/* One centred cluster: logo + bar in flow, glow pinned behind the logo. */
+.site-loader__stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.site-loader__glow {
+  position: absolute;
+  /* Centred on the logo, not the stack — the bar below would drag a
+     stack-centred glow off the mark. */
+  top: 54px; /* half the logo's rendered height: 180px x (318/528) = 108px */
+  left: 50%;
+  width: 340px;
+  height: 340px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(109, 79, 227, 0.4) 0%, transparent 65%);
+  animation: loader-glow 2.2s ease-in-out infinite;
+}
+
+.site-loader__logo {
+  position: relative;
+  width: 180px;
+  height: auto;
+  animation: loader-breathe 2.2s ease-in-out infinite;
+}
+
+.site-loader__bar {
+  position: relative;
+  width: 148px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(139, 124, 255, 0.18);
+animation: loader-breathe 2.2s ease-in-out infinite;
+}
+.hero-band.home-pagebanner.relative.overflow-hidden {
+  padding-bottom: 80px;
+}
+.site-loader__bar span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #8b7cff, transparent);
+  animation: loader-shimmer 1.1s ease-in-out infinite;
+}
+
+@keyframes loader-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+@keyframes loader-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes loader-shimmer {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader__logo,
+  .site-loader__glow,
+  .site-loader__bar span {
+    animation: none;
+  }
+}
+
+/* About facts list — rows slide right on hover. */
+.fact-row {
+  transition: padding-left 0.3s ease;
+}
+
+.fact-row:hover {
+  padding-left: 30px;
+}
+
+/* Footer column headings — a short violet accent bar under the word, per the
+   comp. Not a text underline: the bar is a fixed-width ::after so its length
+   never tracks the heading's. */
+.footer-heading {
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 4px;
+  border-radius: 999px;
+  background: #8b7cff;
+}
+
+.topbar-buttoncolor1 {
+  background: #0F172A;
+}
+
+.topbar-buttoncolor2 {
+
+  color: #0F172A !important;
+  border-color: #0F172A !important;
+
+}
+
+/* The old `.homepage-title { 60px }` override at ≤768px lived here. It sat
+   after the clamp and won on source order, pinning phones back at 60px. The
+   clamp covers the whole range on its own. */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track,
+  .chip-glow {
+    animation: none !important;
+  }
+
+  /* Sweeps and riders are motion and nothing else — remove them rather than
+     freezing one halfway down a wire. */
+  .trace-sweep,
+  .feed-dot,
+  .orb-sweep,
+  .orb-rider,
+  .orb-rider-rev {
+    display: none;
+  }
+
+  .pad-pulse {
+    animation: none !important;
+    opacity: var(--o);
+  }
+
+  /* The orbit's glow passes stay lit, they just stop breathing. */
+  .orb-pulse,
+  .orb-pulse-sm,
+  .orb-breathe,
+  .orb-spin,
+  .orb-tw {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .thebutrrtonas {
+    border-radius: 50px;
+    background: #5C49C6 !important;
+    display: flex;
+    gap: 5px;
+    padding: 6px 13px;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+
+  .shrink-0.thebutrrtonas-grd {
+    margin-left: auto;
+  }
+.carveimage {
+  background: url(../public/bg/banner-line.png);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto;
+  width: 100%;
+  height: 123px;
+  position: relative;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: -75px;
+  margin-bottom: -53px;
+  background-position: center bottom;
+}
+
+
+.hero-band.ring-motif.relative.overflow-hidden.innerPageBanner::after {
+  content: '';
+  background: url(../public/bg/banner-line.png);
+
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto;
+
+  width: 100%;
+  height: 88px;
+  position: relative;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center bottom;
+
+  margin-top: -103px;
+}
+}
