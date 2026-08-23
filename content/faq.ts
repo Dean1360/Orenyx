@@ -43,7 +43,7 @@ export const faq: FaqItem[] = [
   {
     q: 'What happens if I exceed my plan’s included usage?',
     // Source: pricing plans — overage rates per 1,000 events.
-    a: 'Usage above your plan’s included allowance is billed as overage: $2.00 per 1,000 events on Starter and $1.50 per 1,000 on Growth. Enterprise overage is negotiated. Nothing stops working when you cross the line.',
+    a: 'Usage above your plan’s included allowance is billed as overage: $3.00 per 1,000 events on Starter and $0.50 per 1,000 on Growth. Enterprise overage is negotiated. Nothing stops working when you cross the line.',
   },
   {
     q: 'Is there a free trial or sandbox?',
