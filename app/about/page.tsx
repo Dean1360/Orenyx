@@ -101,13 +101,12 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────── */}
-      {/* Heading is lorem in the Figma — kept verbatim, like Company Story,
-          until the client supplies real copy. Apply Now points at Careers. */}
+      {/* Apply Now points at Careers. */}
       <Section className="pt-0">
         <Reveal>
           <div className="rounded-panel bg-violet-gred px-6 py-14 text-center md:px-14 md:py-16">
             <h2 className="mx-auto max-w-[720px] h2Newfont font-bold leading-tight text-white">
-              Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod
+              Help us build the infrastructure behind dispatch, bots, and payments.
             </h2>
             <div className="mt-8 flex justify-center">
               <ButtonLink href="/careers" variant="light">
