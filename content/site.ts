@@ -5,10 +5,10 @@
 
 export const site = {
   name: 'Orenyx AI Engine™',
-  company: 'Orenyx Labs LLC',
+  company: 'Orenyx AI Engine LLC',
   registeredIn: 'Wyoming',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://motusaiengine.com',
-  supportEmail: 'support@motuslabs.co',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orenyxengine.com',
+  supportEmail: 'legal@orenyxengine.com',
   footerBlurb:
     'Orenyx AI Engine™ — unified decision plus orchestration layer for dispatch, bots, and payments.',
 } as const;

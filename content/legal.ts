@@ -23,7 +23,7 @@ export const terms: LegalOutline = {
   title: 'Terms of Service',
   crumb: 'Terms of Service',
   titleTag: 'Terms of Service — Orenyx AI Engine™',
-  description: 'Terms of Service for Orenyx AI Engine™, a product of Orenyx Labs LLC.',
+  description: 'Terms of Service for Orenyx AI Engine™, a product of Orenyx AI Engine LLC.',
   path: '/legal/terms',
   sections: [
     'Acceptance of terms',
@@ -42,7 +42,7 @@ export const privacy: LegalOutline = {
   title: 'Privacy Policy',
   crumb: 'Privacy Policy',
   titleTag: 'Privacy Policy — Orenyx AI Engine™',
-  description: 'How Orenyx Labs LLC collects, uses, retains, and shares data.',
+  description: 'How Orenyx AI Engine LLC collects, uses, retains, and shares data.',
   path: '/legal/privacy',
   sections: [
     'What data is collected (account data, usage/event data, log data)',

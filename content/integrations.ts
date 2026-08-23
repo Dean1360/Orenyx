@@ -30,10 +30,14 @@ export const statusLegend: { status: Status; meaning: string }[] = [
 
 export const nativeBlock = {
   heading: 'Orenyx Ecosystem Integrations',
-  lead: 'Native, first-party. Built and maintained by Orenyx Labs.',
+  lead: 'Native, first-party. Built and maintained by Orenyx AI Engine LLC.',
 };
 
-export const native: Integration[] = ecosystem.map((p) => ({ name: p.label, status: null }));
+/** Orenyx Dispatch is not launching yet, so it's excluded from this list
+    specifically while staying in the home page ecosystem diagram. */
+export const native: Integration[] = ecosystem
+  .filter((p) => p.label !== 'Orenyx Dispatch')
+  .map((p) => ({ name: p.label, status: null }));
 
 export const externalBlock = {
   heading: 'External Integrations',

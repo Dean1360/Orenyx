@@ -49,8 +49,8 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       // Resend rejects a `from` on any domain not verified in the account, so
       // this is overridable: use `onboarding@resend.dev` to test before the
-      // motusaiengine.com DNS records are in place.
-      from: process.env.REQUEST_ACCESS_FROM_EMAIL ?? 'Orenyx AI Engine™ <noreply@motusaiengine.com>',
+      // orenyxengine.com DNS records are in place.
+      from: process.env.REQUEST_ACCESS_FROM_EMAIL ?? 'Orenyx AI Engine™ <noreply@orenyxengine.com>',
       to,
       subject: `Access request — ${body.company}`,
       text: Object.entries(body)

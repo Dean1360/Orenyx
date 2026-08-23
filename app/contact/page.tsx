@@ -15,16 +15,14 @@ export const metadata = pageMeta({
 });
 
 /**
- * Three ways in, per the comp. The third tile is the highlighted one.
- *
- * Only support has a confirmed address. Sales and security are marked rather
- * than invented — a plausible-looking sales@ that bounces is worse than a
- * visible gap, and scripts-check-placeholders.mjs gates launch on these.
+ * Three ways in, per the comp. All three now route to the same confirmed
+ * address — no separate sales@/security@ inbox was ever set up, and the
+ * Builder Packet addendum (Section 9) consolidates them to legal@orenyxengine.com.
  */
 const channels = [
-  { heading: 'Sales Inquiries:', email: null, highlight: false },
+  { heading: 'Sales Inquiries:', email: site.supportEmail, highlight: false },
   { heading: 'Contact Support', email: site.supportEmail, highlight: false },
-  { heading: 'Security Disclosures', email: null, highlight: true },
+  { heading: 'Security Disclosures', email: site.supportEmail, highlight: true },
 ];
 
 export default function ContactPage() {
@@ -39,14 +37,14 @@ export default function ContactPage() {
             <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
                 <h2 className="h2Newfont font-bold leading-[1.15] text-white">
-                  Request Access
+                  Let&apos;s talk about
                   <br />
-                  to Orenyx AI Engine™
+                  what you&apos;re building.
                 </h2>
                 <p className="mt-6 max-w-[520px] text-lg font-bold leading-relaxed text-white newFont-Parra">
-                 Lorem ipsum dolor sit amet, consectetur 
-adipiscing elit, sed do eiusmod tempor 
-incididunt ut labore et dolore magna
+                  Whether you&apos;re evaluating Orenyx AI Engine for your own operations, exploring a
+                  White-Label partnership, or scoping a custom workflow, tell us what you need and
+                  we&apos;ll get back to you.
                 </p>
               </div>
 

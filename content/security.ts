@@ -30,16 +30,15 @@ export const compliance: { heading: string; items: ComplianceItem[] } = {
   items: [
     {
       name: 'SOC 2 Type II',
-      // Packet reads "In progress / Planned / Achieved" — i.e. pick one.
-      status: null,
-      body: null,
+      status: 'Actively pursuing',
+      body: 'An audit is currently underway. Formal certification has not yet been issued.',
     },
     {
       name: 'PCI-DSS',
-      status: null,
-      // Packet: state how the engine handles adjacent data even where Orenyx
-      // Payment holds direct PCI scope.
-      body: null,
+      status: 'Actively pursuing',
+      // Orenyx Payment holds direct PCI scope; the engine itself only
+      // touches adjacent, non-card data.
+      body: 'An audit is currently underway for the payment module. Formal certification has not yet been issued.',
     },
     {
       name: 'GDPR / CCPA',
@@ -66,7 +65,6 @@ export const reliability = {
 export const disclosure = {
   heading: 'Responsible Disclosure',
   lead: 'Report a vulnerability and we will acknowledge it and keep you updated through triage.',
-  /** PLACEHOLDER — packet suggests security@motusaiengine.com but does not confirm it. */
-  contact: null as string | null,
+  contact: 'legal@orenyxengine.com' as string | null,
   processConfirmed: false,
 };

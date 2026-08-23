@@ -6,7 +6,7 @@ import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
   title: 'Careers',
-  description: 'Open roles at Orenyx Labs LLC.',
+  description: 'Open roles at Orenyx AI Engine LLC.',
   path: '/careers',
 });
 

@@ -4,34 +4,21 @@ import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
-import { Milestones, type Milestone } from '@/components/about/Milestones';
-import InteractiveStats from '@/components/about/InteractiveStats';
 
 export const metadata = pageMeta({
-  titleTag: 'About — Orenyx Labs LLC',
+  titleTag: 'About — Orenyx AI Engine LLC',
   title: 'About',
   description:
-    'Orenyx Labs LLC builds AI-driven dispatch, automation, and payment infrastructure from Wyoming.',
+    'Orenyx AI Engine LLC builds AI-driven dispatch, automation, and payment infrastructure from Wyoming.',
   path: '/about',
 });
 
-/* Verbatim from the Figma. Company Story and the stat labels are lorem in the
-   comp, so they stay as placeholders until the client supplies real copy. */
 const facts = [
   'Wyoming-based',
   'Focus: AI-driven dispatch, automation, and payment infrastructure',
   // Client (2026-08-08): no founder name on the site - company name only.
-  'Orenyx Labs LLC',
+  'Orenyx AI Engine LLC',
 ];
-
-const stats = {
-  items: [
-    { name: '20+', label: 'Years of Experience' },
-    { name: '90%', label: 'Customer Satisfaction' },
-    { name: '80%', label: 'Operational Efficiency' },
-    { name: '100+', label: 'Happy Clients' }
-  ]
-};
 
 /* Verbatim from the Figma. Only five tiles here, and there are now seven
    products in content/site.ts — Orenyx Influencer Connect™, Orenyx NIL Engine and
@@ -42,38 +29,6 @@ const ecosystem = [
   { name: 'Orenyx Voice Dispatch', icon: '/bg/aboutimage2.png' },
   { name: 'Orenyx Dispatch', icon: '/bg/aboutimage3.png' },
   { name: 'Orenyx Engine', icon: '/bg/aboutimage4.png' },
-];
-/* PLACEHOLDER — years, titles and tags are from the Figma; all body copy is
-   still lorem and the dates need confirming with the client.
-   `tilt` is each card's ENTRANCE angle (the Figma's scattered before-state);
-   every card settles square on the rail once scrolled into view. */
-const milestones: Milestone[] = [
-  {
-    year: '2005',
-    title: 'Orenyx Labs LLC founded',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-    tag: 'Company',
-  },
-  {
-    year: '2007',
-    title: 'First product launch',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-    tag: 'Product',
-  },
-  {
-    year: '2008',
-    title: 'Ecosystem expands',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-    tag: 'Company',
-    tilt: -6,
-  },
-  {
-    year: '2009',
-    title: 'Engine spin-out',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-    tag: 'Platform',
-    tilt: -8,
-  },
 ];
 function FactIcon() {
   return (
@@ -107,7 +62,7 @@ export default function AboutPage() {
         <Reveal>
           <div className="relative overflow-hidden rounded-[14px] bg-violet-bgfred px-7 py-12 md:px-12">
             <h2 className="max-w-[400px]  font-bold leading-tight text-white h2Newfont ">
-              About Orenyx Labs LLC
+              About Orenyx AI Engine LLC
             </h2>
 
             {/* The old MOTUS wordmark art lived here — pulled for the Orenyx
@@ -124,36 +79,6 @@ export default function AboutPage() {
             </ul>
           </div>
         </Reveal>
-      </Section>
-
-      {/* ── Company story ────────────────────────────────── */}
-      <Section pattern="dots">
-        <Reveal>
-          <p className="text-lg text-violet-soft labelFFont">About Us</p>
-          <h2 className="heading-silver mt-2 h2Newfont font-bold ">Company Story</h2>
-        </Reveal>
-
-        <div className="mt-10 grid items-start gap-12 lg:grid-cols-2">
-          <Reveal>
-            <div className="space-y-5 font-p leading-relaxed text-fg-soft">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <Image src="/bg/company-barnd.png" width={1536} height={1024} sizes="(min-width: 1024px) 560px, 100vw" className="rounded-[14px]" alt="" />
-          </Reveal>
-        </div>
-
-        {/* ── Stats ──────────────────────────────────────── */}
-        <InteractiveStats items={stats.items} />
       </Section>
 
       <section className="echosystem">
@@ -174,18 +99,6 @@ export default function AboutPage() {
           </div>
         </Reveal>
       </section>
-      <Section pattern="dots">
-  <Reveal>
-    <h2 className="heading-silver h2Newfont font-bold">Milestones</h2>
-    <p className="mt-4 max-w-[640px] font-p leading-relaxed text-fg-soft">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-      exercitation ullamco laboris nisi ut.
-    </p>
-  </Reveal>
-
-  <Milestones items={milestones} />
-</Section>
 
       {/* ── CTA ──────────────────────────────────────────── */}
       {/* Heading is lorem in the Figma — kept verbatim, like Company Story,
