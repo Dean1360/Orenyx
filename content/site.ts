@@ -8,7 +8,7 @@ export const site = {
   company: 'Orenyx AI Engine LLC',
   registeredIn: 'Wyoming',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orenyxengine.com',
-  supportEmail: 'legal@orenyxengine.com',
+  supportEmail: 'operations@orenyxengine.com',
   footerBlurb:
     'Orenyx AI Engine™ — unified decision plus orchestration layer for dispatch, bots, and payments.',
 } as const;

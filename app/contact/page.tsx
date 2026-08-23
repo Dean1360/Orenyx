@@ -15,14 +15,14 @@ export const metadata = pageMeta({
 });
 
 /**
- * Three ways in, per the comp. All three now route to the same confirmed
- * address — no separate sales@/security@ inbox was ever set up, and the
- * Builder Packet addendum (Section 9) consolidates them to legal@orenyxengine.com.
+ * Three ways in, per the comp. Sales and Support have their own confirmed
+ * addresses; Security Disclosures stays on legal@ per the responsible
+ * disclosure policy in content/security.ts.
  */
 const channels = [
-  { heading: 'Sales Inquiries:', email: site.supportEmail, highlight: false },
+  { heading: 'Sales Inquiries:', email: 'info@orenyxengine.com', highlight: false },
   { heading: 'Contact Support', email: site.supportEmail, highlight: false },
-  { heading: 'Security Disclosures', email: site.supportEmail, highlight: true },
+  { heading: 'Security Disclosures', email: 'legal@orenyxengine.com', highlight: true },
 ];
 
 export default function ContactPage() {

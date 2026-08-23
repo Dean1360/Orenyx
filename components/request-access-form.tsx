@@ -55,7 +55,7 @@ export function RequestAccessForm() {
     } catch {
       setState('error');
       setMessage(
-        'That request did not go through. Try again, or email legal@orenyxengine.com directly.',
+        'That request did not go through. Try again, or email operations@orenyxengine.com directly.',
       );
     }
   }
