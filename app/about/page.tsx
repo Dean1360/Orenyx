@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { ButtonLink } from '@/components/ui/button';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
-import { Section } from '@/components/ui/section';
+import { Section, SectionHead } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
@@ -19,6 +19,29 @@ const facts = [
   // Client (2026-08-08): no founder name on the site - company name only.
   'Orenyx AI Engine LLC',
 ];
+
+/* Confirmed real copy — Builder Packet addendum, Section 4. Replaces the
+   removed lorem "Company Story" section. Explicitly excludes founder
+   bio/narrative and a milestones/timeline section per client decision. */
+const whatWeDo =
+  "Orenyx AI Engine is a unified decision and orchestration layer for dispatch, bot automation, and payment decisioning. Instead of stitching together separate tools for routing, automation, and payments, businesses run all of it through one connected intelligence layer — reducing the manual work, disconnected systems, and one-off integrations that slow teams down.";
+
+const howItHelpsIntro =
+  "Every business we work with faces the same core problem: automation that's fragmented across disconnected tools, manual routing that doesn't scale, and no central system tying decisions together. Orenyx AI Engine solves that by giving companies:";
+
+const howItHelpsPoints = [
+  'Intelligent dispatch routing that matches jobs, calls, or requests to the right resource automatically',
+  'Bot orchestration that runs multi-step workflows without custom code for every integration',
+  'Payment decisioning that automates billing, collections, and financial logic',
+  'API-first architecture so the Engine plugs into existing systems rather than replacing them',
+  "Context and state management that keeps every product in a company's stack working off the same shared intelligence",
+];
+
+const howItHelpsOutcome =
+  'The result: less manual operational overhead, higher throughput, and automation that\'s standardized across a business instead of rebuilt from scratch for every new tool.';
+
+const whoItsFor =
+  "Orenyx AI Engine is built for companies running dispatch, field service, bot-driven, or payment-heavy operations who want one infrastructure layer handling the decisions behind those workflows — without needing an internal engineering team to build and maintain it themselves.";
 
 /* Verbatim from the Figma. Only five tiles here, and there are now seven
    products in content/site.ts — Orenyx Influencer Connect™, Orenyx NIL Engine and
@@ -78,6 +101,51 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
+        </Reveal>
+      </Section>
+
+      {/* ── What We Do ───────────────────────────── */}
+      <Section pattern="dots">
+        <Reveal>
+          <SectionHead title="What We Do" />
+        </Reveal>
+        <Reveal>
+          <p className="mt-8 max-w-[760px] font-p leading-relaxed text-fg-soft">{whatWeDo}</p>
+        </Reveal>
+      </Section>
+
+      {/* ── How It Helps Other Companies ─────────────────── */}
+      <Section tone="inset">
+        <Reveal>
+          <SectionHead title="How It Helps Other Companies" />
+        </Reveal>
+        <Reveal>
+          <p className="mt-8 max-w-[760px] font-p leading-relaxed text-fg-soft">{howItHelpsIntro}</p>
+        </Reveal>
+        <Reveal>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+            {howItHelpsPoints.map((p) => (
+              <li
+                key={p}
+                className="rounded-[14px] border border-line-violet bg-bg-2/50 p-6 text-base leading-relaxed text-fg-soft"
+              >
+                {p}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+        <Reveal>
+          <p className="mt-8 max-w-[760px] font-p leading-relaxed text-fg-soft">{howItHelpsOutcome}</p>
+        </Reveal>
+      </Section>
+
+      {/* ── Who It's Built For ────────────────────────── */}
+      <Section>
+        <Reveal>
+          <SectionHead title="Who It's Built For" />
+        </Reveal>
+        <Reveal>
+          <p className="mt-8 max-w-[760px] font-p leading-relaxed text-fg-soft">{whoItsFor}</p>
         </Reveal>
       </Section>
 
