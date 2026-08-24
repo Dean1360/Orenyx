@@ -4,7 +4,18 @@ import { Placeholder } from '@/components/ui/placeholder';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
-import { compliance, dataSecurity, disclosure, headline, reliability } from '@/content/security';
+import {
+  apiSecurity,
+  billingTransparency,
+  compliance,
+  dataSecurity,
+  disclosure,
+  headline,
+  intro,
+  questions,
+  reliability,
+} from '@/content/security';
+import type { LabelledPoint } from '@/content/security';
 
 export const metadata = pageMeta({
   titleTag: 'Security & Trust — Orenyx AI Engine™',
@@ -13,7 +24,17 @@ export const metadata = pageMeta({
   path: '/security',
 });
 
-/* Content from the Builder Packet, section 9. No comp was supplied. */
+/* Copy from the client's Compliance Page document (2026-08-19). No comp was supplied. */
+
+/** Label — body card, the repeating unit across most sections on this page. */
+function PointCard({ point }: { point: LabelledPoint }) {
+  return (
+    <li className="rounded-[14px] border border-line-violet bg-bg-2/50 p-6">
+      <p className="text-fontchnage font-bold text-white">{point.label}</p>
+      <p className="mt-3 text-20px text-fg-soft">{point.body}</p>
+    </li>
+  );
+}
 
 export default function Page() {
   return (
@@ -23,18 +44,13 @@ export default function Page() {
       {/* ── Data security ────────────────────────────────── */}
       <Section>
         <Reveal>
-          <SectionHead title={dataSecurity.heading} />
+          <SectionHead title={dataSecurity.heading} lead={intro} />
         </Reveal>
 
         <Reveal>
           <ul className="mt-10 grid gap-4 sm:grid-cols-3">
             {dataSecurity.points.map((p) => (
-              <li
-                key={p}
-                className="rounded-[14px] border border-line-violet bg-bg-2/50 p-6 text-20px text-fg-soft"
-              >
-                {p}
-              </li>
+              <PointCard key={p.label} point={p} />
             ))}
           </ul>
         </Reveal>
@@ -61,9 +77,7 @@ export default function Page() {
                 </dt>
                 <dd className="mt-4 text-20px text-fg-soft">
                   {c.body ?? (
-                    <Placeholder>
-                      {c.name} detail — how the engine handles this data
-                    </Placeholder>
+                    <Placeholder>{c.name} detail — how the engine handles this data</Placeholder>
                   )}
                 </dd>
                 {c.links ? (
@@ -83,38 +97,70 @@ export default function Page() {
             ))}
           </dl>
         </Reveal>
+
+        <Reveal>
+          <p className="mt-8 max-w-[860px] text-20px leading-relaxed text-fg-soft">
+            {compliance.footnote}
+          </p>
+        </Reveal>
       </Section>
 
-      {/* ── Reliability ──────────────────────────────────── */}
+      {/* ── Reliability & uptime ─────────────────────────── */}
       <Section>
         <Reveal>
           <SectionHead title={reliability.heading} />
         </Reveal>
 
         <Reveal>
-          <ul className="mt-10 space-y-4">
-            {reliability.items.map((r) => (
-              <li
-                key={r.body}
-                className="rounded-[14px] border border-line-violet bg-bg-2/50 p-6"
-              >
-                <p className="text-20px text-fg-soft">
-                  {r.href ? (
-                    <Link href={r.href} className="text-violet-bright hover:underline">
-                      {r.body} →
-                    </Link>
-                  ) : (
-                    r.body
-                  )}
-                </p>
-                {!r.confirmed ? (
-                  <p className="mt-3 text-sm">
-                    <Placeholder>confirm before publishing</Placeholder>
-                  </p>
-                ) : null}
-              </li>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-3">
+            {reliability.plans.map((p) => (
+              <PointCard key={p.label} point={p} />
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal>
+          {reliability.body.map((p) => (
+            <p key={p} className="mt-8 max-w-[860px] text-20px leading-relaxed text-fg-soft">
+              {p}
+            </p>
+          ))}
+          <p className="mt-6">
+            <Link
+              href={reliability.statusHref}
+              className="text-20px text-violet-bright hover:underline"
+            >
+              View platform status →
+            </Link>
+          </p>
+        </Reveal>
+      </Section>
+
+      {/* ── API & key security ───────────────────────────── */}
+      <Section tone="inset">
+        <Reveal>
+          <SectionHead title={apiSecurity.heading} />
+        </Reveal>
+
+        <Reveal>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-3">
+            {apiSecurity.points.map((p) => (
+              <PointCard key={p.label} point={p} />
+            ))}
+          </ul>
+        </Reveal>
+      </Section>
+
+      {/* ── Billing & usage transparency ─────────────────── */}
+      <Section>
+        <Reveal>
+          <SectionHead title={billingTransparency.heading} />
+        </Reveal>
+
+        <Reveal>
+          <p className="mt-8 max-w-[860px] text-20px leading-relaxed text-fg-soft">
+            {billingTransparency.body}
+          </p>
         </Reveal>
       </Section>
 
@@ -137,15 +183,27 @@ export default function Page() {
               )}
             </p>
 
-            <p className="mt-8 text-sm uppercase tracking-wider text-fg-muted">
-              Reporting process
-            </p>
-            <p className="mt-3 text-20px text-fg-soft">
-              {disclosure.processConfirmed ? null : (
-                <Placeholder>vulnerability reporting process — scope, timelines, safe harbour</Placeholder>
-              )}
-            </p>
           </div>
+        </Reveal>
+      </Section>
+
+      {/* ── Questions ────────────────────────────────────── */}
+      <Section>
+        <Reveal>
+          <SectionHead title={questions.heading} />
+        </Reveal>
+
+        <Reveal>
+          <p className="mt-8 max-w-[860px] text-20px leading-relaxed text-fg-soft">
+            {questions.body}{' '}
+            <a
+              href={`mailto:${questions.contact}`}
+              className="text-violet-bright hover:underline"
+            >
+              {questions.contact}
+            </a>
+            .
+          </p>
         </Reveal>
       </Section>
     </>
