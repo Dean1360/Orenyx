@@ -10,6 +10,7 @@ import {
   endpoints,
   errorCodes,
   gettingStarted,
+  orenyxCredits,
   overview,
   rateLimitHeaders,
   rateLimits,
@@ -221,6 +222,11 @@ export default function Page() {
                 ))}
               </div>
               <Bullets items={webhooks.points} />
+            </Block>
+
+            {/* ── Orenyx Credits ────────────────────────── */}
+            <Block id="orenyx-credits" heading="Orenyx Credits" lead={orenyxCredits.lead}>
+              <p className="max-w-[760px] text-20px text-fg-soft">{orenyxCredits.body}</p>
             </Block>
 
             {/* ── Versioning ───────────────────────────── */}

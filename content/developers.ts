@@ -82,6 +82,16 @@ export const webhooks = {
   ],
 };
 
+export const orenyxCredits = {
+  lead:
+    'Real financial infrastructure built into the platform — not just collecting payments, but ' +
+    'managing payouts to contractors and affiliates.',
+  body:
+    'This is a key differentiator for businesses running marketplaces, referral programs, or ' +
+    'gig-style operations, and gives developers a clear reference for how earnings and payouts ' +
+    'are handled across the platform.',
+};
+
 export const versioning = {
   lead: 'URL-based versioning (/v1/, /v2/).',
   body:
