@@ -21,7 +21,7 @@ const zigzagBlocks = [
   },
   {
     title: "Bot Orchestration",
-    drescription: "Central logic layer for Orenyx Engine and other bots. Example: a single conversation flowdefinition powers a bot across voice, SMS, and web chat without rebuilding logic per channel.",
+    drescription: "Central logic layer for Orenyx Engine and other bots. Example: a single conversation flow definition powers a bot across voice, SMS, and web chat without rebuilding logic per channel.",
     image: "/bg/botpay.png",
   },
   {
