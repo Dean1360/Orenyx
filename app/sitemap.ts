@@ -11,7 +11,6 @@ const routes = [
   '/developers/changelog',
   '/case-study',
   '/careers',
-  '/integrations',
   '/security',
   '/about',
   '/contact',

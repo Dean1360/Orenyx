@@ -20,7 +20,6 @@ export const primaryNav = [
   { label: 'Pricing', href: '/pricing' },
   { label: 'Use Cases', href: '/use-cases' },
   { label: 'Developers', href: '/developers' },
-  { label: 'Integrations', href: '/integrations' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
 
@@ -37,7 +36,6 @@ export const footerNav = [
       { label: 'Features', href: '/features' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Use Cases', href: '/use-cases' },
-      { label: 'Integrations', href: '/integrations' },
       { label: 'Security', href: '/security' },
     ],
   },
