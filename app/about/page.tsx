@@ -21,7 +21,7 @@ const reassurance =
 
 const steps = [
   'You keep running your business exactly as you do today — Orenyx connects to your existing phone lines, scheduling tools, and payment systems, nothing gets ripped out or replaced on day one.',
-  'We connect the Engine to what you already use — no new hardware, no starting over, no retraining your whole team overnight.',
+  'We connect the Engine to what you already use — no one needs to visit your office, no new hardware, no starting over, no retraining your whole team overnight.',
   'You choose what it handles first — call routing, appointment booking, dispatch, or payment decisions, starting small.',
   "Your team stays in control — every decision the Engine makes can be seen and overridden. It's a second set of hands, not a replacement for your staff.",
   'You expand it at your own pace — as it earns trust, you decide what else it takes on, never forced, never automatic.',
