@@ -43,14 +43,14 @@ export default function AboutPage() {
         </Reveal>
 
         <Reveal>
-          <ul className="mt-10 space-y-8">
+          <ul className="mt-10 space-y-10">
             {steps.map((step, i) => (
               <li key={i} className="flex gap-4">
                 <span
                   aria-hidden
-                  className="mt-3 h-3 w-3 shrink-0 rounded-full bg-violet-bright md:mt-4"
+                  className="mt-2.5 h-2.5 w-2.5 shrink-0 rounded-full bg-violet-bright"
                 />
-                <p className="text-3xl h2Newfont font-bold leading-[1.2] text-white md:text-[2.75rem] md:leading-[1.12]">
+                <p className="font-35px font-bold leading-relaxed text-white">
                   {step}
                 </p>
               </li>
