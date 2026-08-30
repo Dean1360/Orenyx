@@ -12,7 +12,6 @@ import {
   disclosure,
   headline,
   intro,
-  questions,
   reliability,
 } from '@/content/security';
 import type { LabelledPoint } from '@/content/security';
@@ -184,26 +183,6 @@ export default function Page() {
             </p>
 
           </div>
-        </Reveal>
-      </Section>
-
-      {/* ── Questions ────────────────────────────────────── */}
-      <Section>
-        <Reveal>
-          <SectionHead title={questions.heading} />
-        </Reveal>
-
-        <Reveal>
-          <p className="mt-8 max-w-[860px] text-20px leading-relaxed text-fg-soft">
-            {questions.body}{' '}
-            <a
-              href={`mailto:${questions.contact}`}
-              className="text-violet-bright hover:underline"
-            >
-              {questions.contact}
-            </a>
-            .
-          </p>
         </Reveal>
       </Section>
     </>

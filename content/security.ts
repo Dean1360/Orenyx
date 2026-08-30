@@ -135,9 +135,3 @@ export const disclosure = {
   lead: 'If you believe you have found a security vulnerability affecting Orenyx AI Engine™, please report it to our team so we can investigate and respond promptly.',
   contact: 'legal@orenyxengine.com' as string | null,
 };
-
-export const questions = {
-  heading: 'Questions',
-  body: 'For security, compliance, or due-diligence questions — including requests for a Data Processing Agreement — contact',
-  contact: 'legal@orenyxengine.com',
-};
