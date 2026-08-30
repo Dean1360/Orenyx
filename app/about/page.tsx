@@ -1,6 +1,6 @@
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
-import { Section, SectionHead } from '@/components/ui/section';
+import { Section } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
@@ -39,7 +39,9 @@ export default function AboutPage() {
       {/* ── Step-by-step connection flow ─────────────────── */}
       <Section pattern="dots">
         <Reveal>
-          <SectionHead title="How Orenyx connects to your company" />
+          <h2 className="font-bold leading-[1.1] text-white text-[42px] md:text-[64px]">
+            How Orenyx connects to your company
+          </h2>
         </Reveal>
 
         <Reveal>
