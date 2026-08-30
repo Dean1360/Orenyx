@@ -1,4 +1,3 @@
-import { ButtonLink } from '@/components/ui/button';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead } from '@/components/ui/section';
@@ -21,31 +20,11 @@ const reassurance =
   "Orenyx doesn't replace your business — it plugs into the one you already run. You stay in control of what it touches, and nothing changes until you say so.";
 
 const steps = [
-  {
-    number: '01',
-    title: 'You keep running your business exactly as you do today',
-    body: 'Orenyx connects to your existing phone lines, scheduling tools, and payment systems — nothing gets ripped out or replaced on day one.',
-  },
-  {
-    number: '02',
-    title: 'We connect the Engine to what you already use',
-    body: 'No new hardware, no starting over, no retraining your whole team overnight.',
-  },
-  {
-    number: '03',
-    title: 'You choose what it handles first',
-    body: 'Call routing, appointment booking, dispatch, or payment decisions — starting small.',
-  },
-  {
-    number: '04',
-    title: 'Your team stays in control',
-    body: "Every decision the Engine makes can be seen and overridden. It's a second set of hands, not a replacement for your staff.",
-  },
-  {
-    number: '05',
-    title: 'You expand it at your own pace',
-    body: 'As it earns trust, you decide what else it takes on — never forced, never automatic.',
-  },
+  'You keep running your business exactly as you do today — Orenyx connects to your existing phone lines, scheduling tools, and payment systems, nothing gets ripped out or replaced on day one.',
+  'We connect the Engine to what you already use — no new hardware, no starting over, no retraining your whole team overnight.',
+  'You choose what it handles first — call routing, appointment booking, dispatch, or payment decisions, starting small.',
+  "Your team stays in control — every decision the Engine makes can be seen and overridden. It's a second set of hands, not a replacement for your staff.",
+  'You expand it at your own pace — as it earns trust, you decide what else it takes on, never forced, never automatic.',
 ];
 
 export default function AboutPage() {
@@ -64,38 +43,19 @@ export default function AboutPage() {
         </Reveal>
 
         <Reveal>
-          <ol className="mt-10 grid gap-5 sm:grid-cols-2">
-            {steps.map((step) => (
-              <li
-                key={step.number}
-                className="rounded-[14px] border border-line-violet bg-bg-2/50 p-6 md:p-7"
-              >
-                <span className="text-sm font-bold tracking-wider text-violet-bright">
-                  {step.number}
-                </span>
-                <h3 className="mt-2 text-xl font-bold leading-snug text-white">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-fg-soft">{step.body}</p>
+          <ul className="mt-10 space-y-8">
+            {steps.map((step, i) => (
+              <li key={i} className="flex gap-4">
+                <span
+                  aria-hidden
+                  className="mt-3 h-3 w-3 shrink-0 rounded-full bg-violet-bright md:mt-4"
+                />
+                <p className="text-3xl h2Newfont font-bold leading-[1.2] text-white md:text-[2.75rem] md:leading-[1.12]">
+                  {step}
+                </p>
               </li>
             ))}
-          </ol>
-        </Reveal>
-      </Section>
-
-      {/* ── CTA ──────────────────────────────────────────── */}
-      <Section className="pt-0">
-        <Reveal>
-          <div className="rounded-panel bg-violet-gred px-6 py-14 text-center md:px-14 md:py-16">
-            <h2 className="mx-auto max-w-[720px] h2Newfont font-bold leading-tight text-white">
-              See it running on your own accounts before you commit to more.
-            </h2>
-            <div className="mt-8 flex justify-center">
-              <ButtonLink href="/contact" variant="light">
-                Request Access
-              </ButtonLink>
-            </div>
-          </div>
+          </ul>
         </Reveal>
       </Section>
     </>
