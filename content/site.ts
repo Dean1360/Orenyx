@@ -15,7 +15,7 @@ export const site = {
 
 export const primaryNav = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
+  { label: 'How It Works', href: '/about' },
   { label: 'Features', href: '/features' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Use Cases', href: '/use-cases' },
@@ -51,7 +51,7 @@ export const footerNav = [
   {
     heading: 'Company',
     links: [
-      { label: 'About', href: '/about' },
+      { label: 'How It Works', href: '/about' },
       { label: 'Contact', href: '/contact' },
       { label: 'Careers', href: '/careers' },
       { label: 'FAQ', href: '/faq' },
