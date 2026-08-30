@@ -17,88 +17,61 @@ import { ecosystem } from '@/content/site';
  * No background rect — the SVG composites onto the hero band.
  */
 
-const W = 1200;
-const H = 856;
+const W = 1838;
+const H = 1234;
 
 const CARD = { w: 274, h: 132, r: 14 };
 /** Rounded-square die. */
-const HUB = { x: 498, y: 277, w: 186, h: 186, r: 30 };
+const HUB = { x: 826, y: 541, w: 186, h: 186, r: 30 };
 const HUB_CX = HUB.x + HUB.w / 2;
 const HUB_CY = HUB.y + HUB.h / 2;
 
-const LEFT_X = 56;
-const RIGHT_X = W - LEFT_X - CARD.w;
-const LEFT_EDGE = LEFT_X + CARD.w;
-
-/** Card tops per row; middle row centres on the hub. */
-const ROW_Y = [74, HUB_CY - CARD.h / 2, 537];
-const rowMid = (i: number) => ROW_Y[i] + CARD.h / 2;
-
-/** Where the elbowed rows meet the hub's side, inset from its corners. */
-const PAD_TOP = HUB.y + 50;
-const PAD_BOT = HUB.y + HUB.h - 50;
-
-/** Elbow turn columns, between the cards and the hub. */
-const TURN_L = 416;
-const TURN_R = W - TURN_L;
-const R_ARC = 20;
-
-const BOTTOM_Y = 703;
-
 type Slot = { x: number; y: number; wire: string; len: number };
 
-/* Approximate path lengths, for the sweep dash. */
-const ELBOW_LEN = 340;
-const MID_LEN = HUB.x - LEFT_EDGE;
-const BOTTOM_LEN = BOTTOM_Y - (HUB.y + HUB.h);
-
 /*
-  Geometry in the same order as `ecosystem`: left column top-to-bottom, right
-  column top-to-bottom, bottom centre. Wires run card -> hub.
+  12-box layout, added 2026-08-30 (client-directed): a box above the hub, a
+  box below it, and five nested positions down each side — an outer card and
+  an inner card share the top and bottom rows (each on its own elbow lane and
+  landing point on the hub so neither line hides behind the other's card),
+  plus one inner card on the row level with the hub. Coordinates below were
+  laid out with a small geometry script rather than hand-derived formulas,
+  since the outer/inner lanes need independent turn columns and landing
+  points; kept as literal values here for clarity. Order matches `ecosystem`.
+  Wires run card -> hub.
 */
 const slots: Slot[] = [
+  { x: 782, y: 74, wire: `M919,206 V541`, len: 335 },
+  { x: 40, y: 246, wire: `M314,312 H658 Q678,312 678,332 V551 Q678,571 698,571 H826`, len: 380 },
+  { x: 364, y: 342, wire: `M638,408 H704 Q724,408 724,428 V579 Q724,599 744,599 H826`, len: 340 },
+  { x: 364, y: 568, wire: `M638,634 H826`, len: 188 },
+  { x: 364, y: 794, wire: `M638,860 H704 Q724,860 724,840 V689 Q724,669 744,669 H826`, len: 340 },
+  { x: 40, y: 890, wire: `M314,956 H658 Q678,956 678,936 V717 Q678,697 698,697 H826`, len: 380 },
   {
-    x: LEFT_X,
-    y: ROW_Y[0],
-    wire: `M${LEFT_EDGE},${rowMid(0)} H${TURN_L - R_ARC} Q${TURN_L},${rowMid(0)} ${TURN_L},${rowMid(0) + R_ARC} V${PAD_TOP - R_ARC} Q${TURN_L},${PAD_TOP} ${TURN_L + R_ARC},${PAD_TOP} H${HUB.x}`,
-    len: ELBOW_LEN,
+    x: 1200,
+    y: 342,
+    wire: `M1200,408 H1134 Q1114,408 1114,428 V579 Q1114,599 1094,599 H1012`,
+    len: 340,
   },
   {
-    x: LEFT_X,
-    y: ROW_Y[1],
-    wire: `M${LEFT_EDGE},${HUB_CY} H${HUB.x}`,
-    len: MID_LEN,
+    x: 1524,
+    y: 246,
+    wire: `M1524,312 H1180 Q1160,312 1160,332 V551 Q1160,571 1140,571 H1012`,
+    len: 380,
+  },
+  { x: 1200, y: 568, wire: `M1200,634 H1012`, len: 188 },
+  {
+    x: 1200,
+    y: 794,
+    wire: `M1200,860 H1134 Q1114,860 1114,840 V689 Q1114,669 1094,669 H1012`,
+    len: 340,
   },
   {
-    x: LEFT_X,
-    y: ROW_Y[2],
-    wire: `M${LEFT_EDGE},${rowMid(2)} H${TURN_L - R_ARC} Q${TURN_L},${rowMid(2)} ${TURN_L},${rowMid(2) - R_ARC} V${PAD_BOT + R_ARC} Q${TURN_L},${PAD_BOT} ${TURN_L + R_ARC},${PAD_BOT} H${HUB.x}`,
-    len: ELBOW_LEN,
+    x: 1524,
+    y: 890,
+    wire: `M1524,956 H1180 Q1160,956 1160,936 V717 Q1160,697 1140,697 H1012`,
+    len: 380,
   },
-  {
-    x: RIGHT_X,
-    y: ROW_Y[0],
-    wire: `M${RIGHT_X},${rowMid(0)} H${TURN_R + R_ARC} Q${TURN_R},${rowMid(0)} ${TURN_R},${rowMid(0) + R_ARC} V${PAD_TOP - R_ARC} Q${TURN_R},${PAD_TOP} ${TURN_R - R_ARC},${PAD_TOP} H${HUB.x + HUB.w}`,
-    len: ELBOW_LEN,
-  },
-  {
-    x: RIGHT_X,
-    y: ROW_Y[1],
-    wire: `M${RIGHT_X},${HUB_CY} H${HUB.x + HUB.w}`,
-    len: MID_LEN,
-  },
-  {
-    x: RIGHT_X,
-    y: ROW_Y[2],
-    wire: `M${RIGHT_X},${rowMid(2)} H${TURN_R + R_ARC} Q${TURN_R},${rowMid(2)} ${TURN_R},${rowMid(2) - R_ARC} V${PAD_BOT + R_ARC} Q${TURN_R},${PAD_BOT} ${TURN_R - R_ARC},${PAD_BOT} H${HUB.x + HUB.w}`,
-    len: ELBOW_LEN,
-  },
-  {
-    x: HUB_CX - CARD.w / 2,
-    y: BOTTOM_Y,
-    wire: `M${HUB_CX},${BOTTOM_Y} V${HUB.y + HUB.h}`,
-    len: BOTTOM_LEN,
-  },
+  { x: 782, y: 1062, wire: `M919,1062 V727`, len: 335 },
 ];
 
 /*
@@ -221,18 +194,14 @@ function BoxDiagram({ className = '' }: { className?: string }) {
           stroke="url(#die-edge)"
           strokeWidth="2.6"
         />
-        <text
-          x={HUB_CX}
-          y={HUB_CY + 4}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fill="url(#ai-fill)"
-          fontSize="104"
-          fontWeight="800"
-          letterSpacing="-2"
-        >
-          AI
-        </text>
+        <image
+          href="/brand/motus-ai-engine.png"
+          x={HUB_CX - 75}
+          y={HUB_CY - 45}
+          width={150}
+          height={90}
+          preserveAspectRatio="xMidYMid meet"
+        />
       </g>
 
       {/* Cards */}
@@ -325,18 +294,14 @@ function StackDiagram({ className = '' }: { className?: string }) {
           stroke="url(#die-edge-s)"
           strokeWidth="2"
         />
-        <text
-          x={cx}
-          y={S.hubY + 2}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fill="url(#ai-fill-s)"
-          fontSize="58"
-          fontWeight="800"
-          letterSpacing="-1"
-        >
-          AI
-        </text>
+        <image
+          href="/brand/motus-ai-engine.png"
+          x={cx - 45}
+          y={S.hubY - 27}
+          width={90}
+          height={54}
+          preserveAspectRatio="xMidYMid meet"
+        />
       </g>
 
       {/* Cards */}

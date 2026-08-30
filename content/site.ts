@@ -82,35 +82,67 @@ export type Product = {
 };
 
 /**
- * The product family, in the order they sit around the AI hub on the home page
- * (left column top-to-bottom, then right column, then the box below the hub).
+ * The product family, laid out around the AI hub on the home page: one box
+ * above the hub, five nested positions down the left side (an outer-top,
+ * inner-top, inner-mid, inner-bottom and outer-bottom), a mirrored five on
+ * the right, and one box below the hub — 12 total.
  *
  * SINGLE SOURCE OF TRUTH. The hero diagram, the marquee strip below the banner,
  * the banner paragraph and the ecosystem logos all read from this one list —
  * the client asked for those to match, and they had drifted apart. Add or
  * rename a product here and every one of them follows.
  *
- * Naming history (client-directed, 2026-08-08): all products carry the Orenyx
- * brand. "Social Mention BOT" became Orenyx Engine and "Zyntriq Dispatch"
- * became Orenyx Dispatch — Zyntriq is gone entirely, including its old
- * outbound link.
+ * Updated 2026-08-30 (client-directed): the 7 legacy product-name boxes were
+ * replaced with the 12 platform capabilities from the "Everything Orenyx runs
+ * for you" homepage section, so the hero diagram and that section read as one
+ * consistent list.
  */
 export const ecosystem: Product[] = [
-  { label: 'Orenyx Payment', lines: ['Orenyx', 'Payment'], icon: 'wallet', href: '#' },
-  { label: 'Orenyx Engine', lines: ['Orenyx', 'Engine'], icon: 'chat', href: '#' },
+  { label: 'Reporting & Analytics', lines: ['Reporting &', 'Analytics'], icon: 'cloud', href: '#' },
+  { label: 'Call-to-Job Handoff', lines: ['Call-to-Job', 'Handoff'], icon: 'truck', href: '#' },
+  { label: 'Appointment Booking', lines: ['Appointment', 'Booking'], icon: 'chat', href: '#' },
   {
-    label: 'Orenyx Dispatch',
-    lines: ['Orenyx', 'Dispatch'],
+    label: 'Technician Routing & Dispatch',
+    lines: ['Technician', 'Dispatch'],
     icon: 'truck',
     href: '#',
   },
+  { label: 'Compliance Checks', lines: ['Compliance', 'Checks'], icon: 'brain', href: '#' },
   {
-    label: 'Orenyx Influencer Connect™',
-    lines: ['Orenyx Influencer', 'Connect™'],
+    label: 'Cancellation & Revenue Recovery',
+    lines: ['Cancellation', 'Recovery'],
+    icon: 'wallet',
+    href: '#',
+  },
+  { label: 'Customer Payments', lines: ['Customer', 'Payments'], icon: 'wallet', href: '#' },
+  {
+    label: 'Orenyx Credits (Payouts)',
+    lines: ['Orenyx Credits', '(Payouts)'],
+    icon: 'wallet',
+    href: '#',
+  },
+  {
+    label: 'Membership & Warranty Plans',
+    lines: ['Membership &', 'Warranty Plans'],
     icon: 'people',
     href: '#',
   },
-  { label: 'Orenyx NIL Engine', lines: ['Orenyx NIL', 'Engine'], icon: 'brain', href: '#' },
-  { label: 'Orenyx Voice Dispatch', lines: ['Orenyx Voice', 'Dispatch'], icon: 'mic', href: '#' },
-  { label: 'Orenyx API', lines: ['Orenyx', 'API'], icon: 'cloud', href: '#' },
+  {
+    label: 'Maintenance Reminders & Follow-Up',
+    lines: ['Maintenance', 'Follow-Up'],
+    icon: 'mic',
+    href: '#',
+  },
+  {
+    label: 'Upsell & Advanced Support',
+    lines: ['Upsell &', 'Advanced Support'],
+    icon: 'people',
+    href: '#',
+  },
+  {
+    label: 'Automated Business Onboarding',
+    lines: ['Automated', 'Onboarding'],
+    icon: 'cloud',
+    href: '#',
+  },
 ];

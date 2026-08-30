@@ -3,8 +3,13 @@
 import { ecosystem } from './site';
 
 /* Built from the shared product list rather than typed out, so the banner
-   always names exactly what the diagram boxes and the marquee name. */
-const productNames = ecosystem.map((p) => p.label).join(', ');
+   never drifts from the diagram boxes and the marquee. The full list is 12
+   items now (was 7) — too many to read naturally in one sentence, so the
+   banner takes the first 4 in ecosystem order rather than all of them. */
+const productNames = ecosystem
+  .slice(0, 4)
+  .map((p) => p.label)
+  .join(', ');
 
 export const hero = {
   titleBefore: 'The ',
