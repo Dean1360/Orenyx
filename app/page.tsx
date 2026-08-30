@@ -55,7 +55,7 @@ export default function HomePage() {
 
         </Shell>
         <div className="carveimage"></div>
-        <div className="mx-auto mt-12 max-w-[660px]">
+        <div className="mx-auto mt-12 max-w-[420px] md:max-w-[1180px]">
           <EngineDiagram />
         </div>
       </div>
