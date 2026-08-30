@@ -12,6 +12,7 @@ import { ecosystem } from '@/content/site';
 import { pageMeta } from '@/lib/seo';
 import {
   businessValue,
+  capabilityOverview,
   closingCta,
   ecosystemBlock,
   hero,
@@ -198,6 +199,31 @@ export default function HomePage() {
                   />
                 </div>
                 <h3 className="newFont-Parra font-bold leading-tight font-dark">{item.name}</h3>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* ── Full capability overview ─────────────────────── */}
+      <Section>
+        <Reveal>
+          <SectionHead
+            align="center"
+            eyebrow={capabilityOverview.eyebrow}
+            title={capabilityOverview.title}
+            lead={capabilityOverview.lead}
+          />
+        </Reveal>
+
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {capabilityOverview.items.map((item, i) => (
+            <Reveal key={item.name} delay={i * 40}>
+              <div className="h-full overflow-hidden border-topmanage border border-line-violet">
+                <div className="px-4 py-3 bg-violet text-white">
+                  <div className="text-fontchnage font-bold leading-tight">{item.name}</div>
+                </div>
+                <p className="px-4 py-5 text-sm leading-relaxed text-fg-soft">{item.body}</p>
               </div>
             </Reveal>
           ))}

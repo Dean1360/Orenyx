@@ -97,6 +97,64 @@ export const testimonials = {
   ],
 };
 
+export type CapabilityItem = { name: string; body: string };
+
+export const capabilityOverview = {
+  eyebrow: 'Full Platform',
+  title: 'Everything Orenyx runs for you.',
+  lead: 'Built for HVAC, plumbing, electrical, and other field-service businesses — every module that powers a live account, from the first call to the final payment.',
+  items: [
+    {
+      name: 'Technician Routing & Dispatch',
+      body: 'Automatically assigns the right technician to every job based on location, skill, and availability — no manual scheduling.',
+    },
+    {
+      name: 'Appointment Booking',
+      body: 'Customers book, reschedule, and confirm appointments online without a phone call.',
+    },
+    {
+      name: 'Call-to-Job Handoff',
+      body: 'Every inbound call routed through Voice Dispatch becomes a scheduled job automatically — no re-entry, no dropped leads.',
+    },
+    {
+      name: 'Customer Payments',
+      body: 'Accept and process customer payments directly through Stripe Connect, tied to the job that generated them.',
+    },
+    {
+      name: 'Orenyx Credits (Payouts)',
+      body: 'Automated payout tracking for contractors and affiliates, including 1099 handling — Orenyx never holds or touches anyone else’s money.',
+    },
+    {
+      name: 'Cancellation & Revenue Recovery',
+      body: 'Automatically re-books cancelled slots and recovers revenue that would otherwise be lost to no-shows.',
+    },
+    {
+      name: 'Maintenance Reminders & Follow-Up',
+      body: 'Keeps customers coming back with automated service reminders and post-job follow-up.',
+    },
+    {
+      name: 'Membership & Warranty Plans',
+      body: 'Sell and manage recurring membership and warranty plans directly through the platform.',
+    },
+    {
+      name: 'Automated Business Onboarding',
+      body: 'New accounts are onboarded and provisioned automatically — no manual setup required to go live.',
+    },
+    {
+      name: 'Upsell & Advanced Support',
+      body: 'Surfaces relevant upsell offers and escalates complex support issues automatically.',
+    },
+    {
+      name: 'Compliance Checks',
+      body: 'Flags compliance issues before a job closes, so nothing slips through.',
+    },
+    {
+      name: 'Reporting & Analytics',
+      body: 'Full visibility into jobs, payments, and performance across every account.',
+    },
+  ] as CapabilityItem[],
+};
+
 export const closingCta = {
   title: 'Ready to put one engine behind everything you build?',
   primary: { label: 'Talk to Sales', href: '/contact' },
