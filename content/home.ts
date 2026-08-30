@@ -1,21 +1,10 @@
 /** Home page copy — verbatim from the client Figma. */
 
-import { ecosystem } from './site';
-
-/* Built from the shared product list rather than typed out, so the banner
-   never drifts from the diagram boxes and the marquee. The full list is 12
-   items now (was 7) — too many to read naturally in one sentence, so the
-   banner takes the first 4 in ecosystem order rather than all of them. */
-const productNames = ecosystem
-  .slice(0, 4)
-  .map((p) => p.label)
-  .join(', ');
-
 export const hero = {
   titleBefore: 'The ',
   titleAccent: 'AI engine',
   titleAfter: ' behind intelligent dispatch, payments & automation.',
-  lead: `Power ${productNames}, and your own systems with one unified AI infrastructure.`,
+  lead: 'Built for HVAC, plumbing, electrical, and other field-service businesses — every module that powers a live account, from the first call to the final payment.',
   primary: { label: 'Request Access', href: '/contact' },
   secondary: { label: 'View Pricing', href: '/pricing' },
 };
