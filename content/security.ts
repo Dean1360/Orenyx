@@ -123,15 +123,3 @@ export const billingTransparency = {
   body: 'Usage is metered transparently across dispatch events, bot executions, payment decision calls, and API requests. Sandbox environments are provided with test API keys, and sandbox activity does not incur usage charges or count toward billed events.',
 };
 
-/**
- * The compliance document's Responsible Disclosure section is an invitation to
- * report plus an address — it defines no programme terms (scope, response
- * timelines, safe harbour), and the client confirmed on 2026-08-24 that this is
- * the section in full. The packet's old "reporting process" placeholder was
- * dropped accordingly. If a formal programme is written later, add it here.
- */
-export const disclosure = {
-  heading: 'Responsible Disclosure',
-  lead: 'If you believe you have found a security vulnerability affecting Orenyx AI Engine™, please report it to our team so we can investigate and respond promptly.',
-  contact: 'legal@orenyxengine.com' as string | null,
-};

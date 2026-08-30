@@ -9,7 +9,6 @@ import {
   billingTransparency,
   compliance,
   dataSecurity,
-  disclosure,
   headline,
   intro,
   reliability,
@@ -163,28 +162,6 @@ export default function Page() {
         </Reveal>
       </Section>
 
-      {/* ── Responsible disclosure ───────────────────────── */}
-      <Section tone="inset">
-        <Reveal>
-          <SectionHead title={disclosure.heading} lead={disclosure.lead} />
-        </Reveal>
-
-        <Reveal>
-          <div className="mt-10 rounded-[14px] border border-line-violet bg-bg-2/50 p-6 md:p-8">
-            <p className="text-sm uppercase tracking-wider text-fg-muted">Security contact</p>
-            <p className="mt-3 text-fontchnage font-bold text-white">
-              {disclosure.contact ? (
-                <a href={`mailto:${disclosure.contact}`} className="hover:underline">
-                  {disclosure.contact}
-                </a>
-              ) : (
-                <Placeholder>security contact address</Placeholder>
-              )}
-            </p>
-
-          </div>
-        </Reveal>
-      </Section>
     </>
   );
 }
