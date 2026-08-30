@@ -37,7 +37,7 @@ export default function AboutPage() {
       />
 
       {/* ── Step-by-step connection flow ─────────────────── */}
-      <Section pattern="dots">
+      <Section pattern="dots" tone="hero">
         <Reveal>
           <h2 className="font-bold leading-[1.1] text-white text-[42px] md:text-[64px]">
             How Orenyx connects to your company

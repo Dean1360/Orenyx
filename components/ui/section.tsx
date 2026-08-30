@@ -7,7 +7,7 @@ export function Shell({ children, className = '' }: { children: ReactNode; class
   );
 }
 
-type Tone = 'dark' | 'violet' | 'inset';
+type Tone = 'dark' | 'violet' | 'inset' | 'hero';
 
 /** CSS motifs. Free, no asset needed. */
 export type Pattern = 'dots' | 'grid' | 'rings' | 'glow';
@@ -25,6 +25,7 @@ const tones: Record<Tone, string> = {
   dark: 'bg-bg',
   violet: 'bg-violet',
   inset: 'bg-bg-inset',
+  hero: 'bg-hero-tone',
 };
 
 const patterns: Record<Pattern, string> = {

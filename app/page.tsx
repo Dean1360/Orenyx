@@ -83,7 +83,7 @@ export default function HomePage() {
       </div>
 
       {/* ── Solution ─────────────────────────────────────── */}
-      <Section pattern="dots">
+      <Section pattern="dots" tone="hero">
         <Reveal>
           <SectionHead eyebrow={solution.eyebrow} title={solution.title} lead={solution.lead} />
         </Reveal>
@@ -118,7 +118,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── Ecosystem ────────────────────────────────────── */}
-      <Section pattern="rings">
+      <Section pattern="rings" tone="hero">
         <Reveal>
           <SectionHead
             align="center"
@@ -206,7 +206,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── Full capability overview ─────────────────────── */}
-      <Section>
+      <Section tone="hero">
         <Reveal>
           <SectionHead
             align="center"
@@ -231,7 +231,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── Testimonials ─────────────────────────────────── */}
-      <Section pattern="glow">
+      <Section pattern="glow" tone="hero">
         <Reveal>
           <p className="labelFFont text-violet-soft">{testimonials.eyebrow}</p>
           <h2 className="heading-silver mt-2 max-w-[920px] h2Newfont font-bold leading-tight md:text-[2.5rem]">
@@ -274,7 +274,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── Closing CTA ──────────────────────────────────── */}
-      <Section className="newpadding0 " >
+      <Section className="newpadding0 " tone="hero">
         <Reveal>
           <div className="rounded-panel newbg-cta px-8 py-16 text-center md:px-16" >
             <h2 className="mx-auto  text-3xl font-bold leading-tight h2Newfont text-white md:text-[2.5rem]">
