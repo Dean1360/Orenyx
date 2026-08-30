@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const required = ['name', 'email', 'company'] as const;
+  const required = ['name', 'email', 'company', 'title', 'companyWebsite'] as const;
   const missing = required.filter((k) => !body[k] || String(body[k]).trim() === '');
 
   if (missing.length > 0) {

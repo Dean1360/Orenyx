@@ -15,6 +15,14 @@ const field =
 /** Native select arrows are unstyleable, so the control is bare and we draw one. */
 const selectField = `${field} appearance-none pr-11`;
 
+/** Checkbox group wrapper — same look as the text/select fields. */
+const checkboxGroup = 'mt-2 rounded-[8px] border border-white/15 bg-[#2E2A63] px-4 py-3.5';
+const checkboxRow = 'flex items-center gap-3 py-1.5 text-[15px] text-white/90';
+const checkboxInput =
+  'h-4 w-4 shrink-0 rounded-[4px] border border-white/30 bg-transparent accent-violet-bright';
+
+const textareaField = `${field} min-h-[110px] resize-y`;
+
 const useCases = [
   'Dispatch Operations',
   'Bot Orchestration',
@@ -43,7 +51,11 @@ export function RequestAccessForm() {
     setMessage('');
 
     try {
-      const data = Object.fromEntries(new FormData(form).entries());
+      const formData = new FormData(form);
+      const data: Record<string, unknown> = Object.fromEntries(formData.entries());
+      // Checkboxes share the "useCase" name, so Object.fromEntries only keeps
+      // the last one checked — collect every checked value into an array.
+      data.useCase = formData.getAll('useCase');
       const res = await fetch('/api/request-access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -77,23 +89,8 @@ export function RequestAccessForm() {
       </div>
 
       <div className="mt-5">
-        <label htmlFor="email" className={label}>
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          placeholder="Enter Your Email"
-          className={field}
-        />
-      </div>
-
-      <div className="mt-5">
         <label htmlFor="company" className={label}>
-          Company
+          Company Name
         </label>
         <input
           id="company"
@@ -106,19 +103,65 @@ export function RequestAccessForm() {
       </div>
 
       <div className="mt-5">
-        <label htmlFor="useCase" className={label}>
-          Use Case
+        <label htmlFor="title" className={label}>
+          Title
         </label>
-        <SelectWrap>
-          <select id="useCase" name="useCase" className={selectField} defaultValue="">
-            <option value="" disabled>
-              Select
-            </option>
-            {useCases.map((u) => (
-              <option key={u}>{u}</option>
-            ))}
-          </select>
-        </SelectWrap>
+        <input
+          id="title"
+          name="title"
+          required
+          autoComplete="organization-title"
+          placeholder="Enter Your Title"
+          className={field}
+        />
+      </div>
+
+      <div className="mt-5">
+        <label htmlFor="email" className={label}>
+          Company Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="Enter Company Email"
+          className={field}
+        />
+      </div>
+
+      <div className="mt-5">
+        <label htmlFor="companyWebsite" className={label}>
+          Company Website
+        </label>
+        <input
+          id="companyWebsite"
+          name="companyWebsite"
+          type="url"
+          required
+          autoComplete="url"
+          placeholder="https://yourcompany.com"
+          className={field}
+        />
+      </div>
+
+      <div className="mt-5">
+        <span className={label}>Use Case (select all that apply)</span>
+        <div className={checkboxGroup}>
+          {useCases.map((u, i) => (
+            <label key={u} htmlFor={`useCase-${i}`} className={checkboxRow}>
+              <input
+                id={`useCase-${i}`}
+                type="checkbox"
+                name="useCase"
+                value={u}
+                className={checkboxInput}
+              />
+              {u}
+            </label>
+          ))}
+        </div>
       </div>
 
       <div className="mt-5">
@@ -135,6 +178,18 @@ export function RequestAccessForm() {
             ))}
           </select>
         </SelectWrap>
+      </div>
+
+      <div className="mt-5">
+        <label htmlFor="message" className={label}>
+          Questions
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Anything you'd like to ask us?"
+          className={textareaField}
+        />
       </div>
 
       {/* Bot trap. Real people never see it, so anything in it is spam. */}
