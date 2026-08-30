@@ -7,7 +7,7 @@ export function SiteFooter() {
   return (
     <footer className=" bg-footergred px-4 pt-10 md:px-6">
       <div className="mx-auto max-w-[1180px] rounded-panel bg-bg-inset px-6 py-14 md:px-12">
-        <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_repeat(4,minmax(0,1fr))]">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_repeat(3,minmax(0,1fr))]">
           {/* Centred at every width, per the comp — the logo sits centred with
               the blurb centred beneath it, beside the left-aligned columns. */}
           <div className="flex flex-col items-center text-center">

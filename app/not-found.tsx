@@ -12,15 +12,15 @@ export default function NotFound() {
             That page isn&rsquo;t here.
           </h1>
           <p className="mx-auto mt-5 max-w-[520px] text-lg text-white/85">
-            The link may be out of date. Head back to the home page, or go straight to the API docs.
+            The link may be out of date. Head back to the home page, or see how Orenyx is used.
           </p>
         </Shell>
       </div>
       <Section>
         <div className="flex flex-wrap justify-center gap-3">
           <ButtonLink href="/">Go to home</ButtonLink>
-          <ButtonLink href="/developers" variant="outline">
-            Read the API docs
+          <ButtonLink href="/use-cases" variant="outline">
+            See Use Cases
           </ButtonLink>
         </div>
       </Section>

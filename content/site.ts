@@ -19,7 +19,6 @@ export const primaryNav = [
   { label: 'Features', href: '/features' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Use Cases', href: '/use-cases' },
-  { label: 'Developers', href: '/developers' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
 
@@ -40,21 +39,13 @@ export const footerNav = [
     ],
   },
   {
-    heading: 'Developers',
-    links: [
-      { label: 'API Docs', href: '/developers' },
-      { label: 'Authentication', href: '/developers/authentication' },
-      { label: 'Changelog', href: '/developers/changelog' },
-      { label: 'Status', href: '/status' },
-    ],
-  },
-  {
     heading: 'Company',
     links: [
       { label: 'How It Works', href: '/about' },
       { label: 'Contact', href: '/contact' },
       { label: 'Careers', href: '/careers' },
       { label: 'FAQ', href: '/faq' },
+      { label: 'Status', href: '/status' },
     ],
   },
   {
