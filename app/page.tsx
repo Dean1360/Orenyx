@@ -52,6 +52,17 @@ export default function HomePage() {
             </ButtonLink>
           </div>
 
+          <div className="mx-auto mt-12 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
+            <video
+              className="block h-auto w-full"
+              src="/videos/automation-demo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+            />
+          </div>
 
         </Shell>
         <div className="carveimage"></div>
