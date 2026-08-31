@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/components/ui/button';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
@@ -58,6 +59,15 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <ButtonLink href="/contact">Request Access</ButtonLink>
+            <ButtonLink href="/pricing" variant="outline">
+              View Pricing
+            </ButtonLink>
+          </div>
         </Reveal>
       </Section>
     </>

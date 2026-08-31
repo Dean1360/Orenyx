@@ -45,14 +45,11 @@ export default function HomePage() {
             {hero.lead}
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <ButtonLink href={hero.primary.href}>{hero.primary.label}</ButtonLink>
-            <ButtonLink href={hero.secondary.href} variant="outline">
-              {hero.secondary.label}
-            </ButtonLink>
-          </div>
+          <p className="mx-auto mt-8 text-lg font-semibold text-white/85 md:text-xl">
+            Watch how Orenyx handles a real job, step by step.
+          </p>
 
-          <div className="mx-auto mt-12 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
+          <div className="mx-auto mt-4 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
             <video
               className="block h-auto w-full"
               src="/videos/automation-demo.mp4"
