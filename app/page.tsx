@@ -93,6 +93,12 @@ export default function HomePage() {
         </Reveal>
 
         <Reveal>
+          <p className="mx-auto mt-6 max-w-[640px] text-center text-lg font-semibold text-white md:text-xl">
+            Now you can upscale your business at any time.
+          </p>
+        </Reveal>
+
+        <Reveal>
           <div className="mt-12 grid border-l box-BG border-t border-line-violet sm:grid-cols-2 lg:grid-cols-3">
             {solution.capabilities.map((cap) => (
               <div
