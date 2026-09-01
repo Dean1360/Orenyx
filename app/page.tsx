@@ -93,7 +93,7 @@ export default function HomePage() {
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-6 max-w-[640px] text-center text-lg font-semibold text-white md:text-xl">
+          <p className="mx-auto mt-4 max-w-[640px] text-center text-lg newFont-Parra font-bold leading-relaxed text-white">
             Now you can upscale your business at any time.
           </p>
         </Reveal>
