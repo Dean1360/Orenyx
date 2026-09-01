@@ -45,7 +45,11 @@ export default function HomePage() {
             {hero.lead}
           </p>
 
-          <p className="mx-auto mt-8 text-lg font-semibold text-white/85 md:text-xl">
+          <div className="mx-auto mt-6 flex w-max items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-7 py-3 text-lg font-bold text-white md:text-xl">
+            24/7 Coverage — Never Miss a Call or Booking
+          </div>
+
+          <p className="mx-auto mt-8 text-xl font-semibold text-white/85 md:text-2xl">
             Watch how Orenyx handles a real job, step by step.
           </p>
 
