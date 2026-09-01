@@ -9,7 +9,6 @@ import { Placeholder } from '@/components/ui/placeholder';
 import { ProblemList } from '@/components/problem-list';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead, Shell } from '@/components/ui/section';
-import { ecosystem } from '@/content/site';
 import { pageMeta } from '@/lib/seo';
 import {
   businessValue,
@@ -134,41 +133,6 @@ export default function HomePage() {
             }
             lead={ecosystemBlock.lead}
           />
-        </Reveal>
-
-        <Reveal>
-          {/* Smooth continuous logo carousel — same mechanism as the name
-              marquee under the hero: the list is rendered twice and the track
-              slides -50%, so the loop is seamless; linear timing means no
-              speed-up/slow-down. Hover pauses it (see .marquee-track).
-
-              Names come from the shared product list. The ARTWORK does not —
-              there is no per-product logo for the renamed products or for
-              Orenyx API yet, so these alternate the two existing files and the
-              real marks still need to come from the client. */}
-          <div className="relative mt-14 overflow-hidden">
-            <div className="marquee-track flex w-max items-center">
-              {[0, 1].map((half) => (
-                <div
-                  key={half}
-                  aria-hidden={half === 1 || undefined}
-                  className="flex items-center"
-                >
-                  {ecosystem.map((product, i) => (
-                    <div key={product.label} className="mr-20 flex shrink-0 flex-col items-center">
-                      <Image
-                        src={i % 2 ? '/brand/logoDispatch.png' : '/brand/motus-ai-engine.png'}
-                        alt={half === 0 ? product.label : ''}
-                        width={200}
-                        height={80}
-                        className="h-20 w-auto object-contain myimage-width"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
         </Reveal>
       </Section>
 
