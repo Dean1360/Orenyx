@@ -1,5 +1,6 @@
 import { ButtonLink } from '@/components/ui/button';
 import { CodeRain } from '@/components/code-rain';
+import { DemoVideo } from '@/components/demo-video';
 import { EcosystemMarquee } from '@/components/marquee';
 import { EngineDiagram } from '@/components/engine-diagram';
 import { Logo } from '@/components/logo';
@@ -50,15 +51,7 @@ export default function HomePage() {
           </p>
 
           <div className="mx-auto mt-4 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
-            <video
-              className="block h-auto w-full"
-              src="/videos/automation-demo.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls
-            />
+            <DemoVideo />
           </div>
 
         </Shell>
