@@ -46,7 +46,7 @@ export default function HomePage() {
           </p>
 
           <div className="mx-auto mt-6 flex w-max items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-7 py-3 text-lg font-bold text-white md:text-xl">
-            24/7 Coverage — Never Miss a Call or Booking
+            24/7 Coverage — Never Miss an Emergency Call or Booking
           </div>
 
           <p className="mx-auto mt-8 text-xl font-semibold text-white/85 md:text-2xl">
