@@ -18,7 +18,6 @@ import {
   hero,
   problems,
   solution,
-  testimonials,
 } from '@/content/home';
 
 export const metadata = pageMeta({
@@ -205,48 +204,6 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Testimonials ─────────────────────────────────── */}
-      <Section pattern="glow" tone="hero">
-        <Reveal>
-          <p className="labelFFont text-violet-soft">{testimonials.eyebrow}</p>
-          <h2 className="heading-silver mt-2 max-w-[920px] h2Newfont font-bold leading-tight md:text-[2.5rem]">
-            {testimonials.title[0]}
-            <br />
-            {testimonials.title[1]}
-          </h2>
-        </Reveal>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {testimonials.items.map((item, i) => (
-            <Reveal key={i} delay={i * 70}>
-              <div className="h-full rounded-[10px] bg-lavender p-6 text-bg">
-                <p className="text-sm leading-relaxed">
-                  {item.quote}
-                </p>
-                <div className="testimonail-author">
-                  <div className="authoresname">
-                    <h3 className="authname">
-                      {item.name}
-                    </h3>
-                    <p className="jobtitle">
-                      {item.title}
-                    </p>
-                  </div>
-                  <div className="authores-imageas">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={200}
-                      height={80}
-                      className="testimonals"
-                    /></div>
-
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
 
       {/* ── Closing CTA ──────────────────────────────────── */}
       <Section className="newpadding0 " tone="hero">
