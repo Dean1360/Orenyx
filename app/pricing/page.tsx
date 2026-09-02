@@ -4,7 +4,7 @@ import { PageHero } from '@/components/page-hero';
 import { PricingEstimator } from '@/components/pricing-estimator';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
-import { addOns, billableUnits, plans, pricingFaq } from '@/content/pricing';
+import { addOns, billableUnits, plans, pricingFaq, privateLicense } from '@/content/pricing';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
@@ -63,6 +63,9 @@ export default function PricingPage() {
             <Reveal key={plan.id}  delay={i * 70}>
               <div className="pricechnageFont flex h-full flex-col rounded-[14px] border border-line-violet bg-bg-2/50 p-6">
                 <p className="text-lg font-bold text-violet-bright">{plan.name}</p>
+                {plan.subtitle ? (
+                  <p className="mt-1 text-sm text-fg-soft">{plan.subtitle}</p>
+                ) : null}
 
                 <p className="mt-3 pricens font-bold">
                   {plan.price}
@@ -102,6 +105,17 @@ export default function PricingPage() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={plans.length * 70}>
+          <div className="mt-6 flex flex-col items-center gap-2 rounded-[14px] border border-line-violet bg-bg-2/50 p-6 text-center">
+            <p className="text-lg font-bold text-violet-bright">
+              {privateLicense.name} — {privateLicense.price}
+            </p>
+            <a href={privateLicense.contact.href} className="text-fg-soft underline">
+              {privateLicense.contact.label}
+            </a>
+          </div>
+        </Reveal>
       </Section>
 
       {/* ── Billable units + add-ons ─────────────────────── */}

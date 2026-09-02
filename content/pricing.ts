@@ -16,12 +16,13 @@ export type MeteredRow = { label: string; value: string; accent?: boolean };
 export type Plan = {
   id: string;
   name: string;
+  subtitle?: string;
   price: string;
   priceSuffix?: string;
   cta: { label: string; href: string };
   metered: MeteredRow[];
   features: string[];
-  /** Numeric model for the estimator. Null for Enterprise. */
+  /** Numeric model for the estimator. Null when there's no fixed per-event math. */
   model: { base: number; includedDispatch: number; overagePer1k: number } | null;
 };
 
@@ -29,72 +30,107 @@ export const plans: Plan[] = [
   {
     id: 'starter',
     name: 'Starter',
-    price: '$299',
+    subtitle: 'For small service companies beginning automation',
+    price: '$499',
     priceSuffix: '/mo',
     cta: { label: 'Request Access', href: '/contact' },
     metered: [
-      { label: 'Included API calls/mo', value: '50,000' },
-      { label: 'Dispatch events', value: '10,000/mo' },
-      { label: 'Bot executions', value: '5,000/mo' },
-      { label: 'Payment decision calls', value: '5,000/mo' },
-      { label: 'Overage rate', value: '$3.00 / 1,000 events', accent: true },
+      { label: 'API calls', value: '50,000 / month' },
+      { label: 'Dispatch events', value: '10,000 / month' },
+      { label: 'Bot executions', value: '5,000 / month' },
+      { label: 'Payment decision calls', value: '5,000 / month' },
+      { label: 'Overage rate', value: '$3.00 per 1,000 events', accent: true },
     ],
     features: [
-      'Routing Basic (rules-based)',
-      'Shared, single environment',
-      'Email, 48-hr response',
+      'Routing Basic (rules-based technician matching)',
+      'Shared, single-tenant environment',
+      'Email support (48-hour response)',
       'Basic logs (7-day retention)',
       'Best-effort uptime',
-      'Standard integrations only',
+      'Standard integrations only (Stripe, Plivo/Twilio, Google Places, Email/SMS)',
+      'Basic reporting dashboard',
     ],
-    model: { base: 299, includedDispatch: 10000, overagePer1k: 3.0 },
+    model: { base: 499, includedDispatch: 10000, overagePer1k: 3.0 },
   },
   {
-    id: 'growth',
-    name: 'Growth',
-    price: '$1,499',
+    id: 'professional',
+    name: 'Professional',
+    subtitle: 'For mid-size companies needing stronger automation',
+    price: '$899',
     priceSuffix: '/mo',
     cta: { label: 'Request Access', href: '/contact' },
     metered: [
-      { label: 'Included API calls/mo', value: '500,000/mo' },
-      { label: 'Dispatch events', value: '100,000/mo' },
-      { label: 'Bot executions', value: '50,000/mo' },
-      { label: 'Payment decision calls', value: '50,000/mo' },
-      { label: 'Overage rate', value: '$0.50 / 1,000 events', accent: true },
+      { label: 'API calls', value: '150,000 / month' },
+      { label: 'Dispatch events', value: '25,000 / month' },
+      { label: 'Bot executions', value: '15,000 / month' },
+      { label: 'Payment decision calls', value: '10,000 / month' },
+      { label: 'Overage rate', value: '$2.50 per 1,000 events', accent: true },
     ],
     features: [
-      'Routing Advanced (rules + AI)',
-      'Shared, staging + production',
-      'Email + chat, 24-hr response',
+      'Routing Advanced — rules + AI technician matching (skill + availability + area + license)',
+      'Shared staging + production environments',
+      'Email + chat support (24-hour response)',
       'Full logs (30-day retention)',
-      '99.9%',
-      'Standard + priority support',
+      '99.5% uptime SLA',
+      'Standard + priority integrations',
+      'Enhanced reporting suite',
+      'Faster job processing + higher concurrency',
     ],
-    model: { base: 1499, includedDispatch: 100000, overagePer1k: 0.5 },
+    model: { base: 899, includedDispatch: 25000, overagePer1k: 2.5 },
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    price: 'Custom',
+    subtitle: 'For multi-location operators and franchise groups',
+    price: '$2,500',
+    priceSuffix: '/mo',
     cta: { label: 'Request Access', href: '/contact' },
     metered: [
-      { label: 'Included API calls/mo', value: 'Custom' },
-      { label: 'Dispatch events', value: 'Custom' },
-      { label: 'Bot executions', value: 'Custom' },
-      { label: 'Payment decision calls', value: 'Custom' },
-      { label: 'Overage rate', value: 'Negotiated', accent: true },
+      { label: 'API calls', value: '500,000 / month' },
+      { label: 'Dispatch events', value: '100,000 / month' },
+      { label: 'Bot executions', value: '50,000 / month' },
+      { label: 'Payment decision calls', value: '25,000 / month' },
+      { label: 'Overage rate', value: '$2.00 per 1,000 events', accent: true },
     ],
     features: [
-      'Routing Advanced + custom models',
-      'Dedicated environment',
-      'Dedicated support, SLA-backed',
-      'Premium observability (custom retention)',
-      '99.95%+, custom contract',
+      'Full Technician Routing Engine',
+      'Full Appointment Booking Engine',
+      'Compliance Bot',
+      'Orenyx Credits Ledger',
+      'Upsell + Follow-Up Bots',
+      'Multi-tenant isolation',
+      'Dedicated staging + production environments',
+      'Email + chat + priority support (8-hour response)',
+      '90-day log retention',
+      '99.9% uptime SLA',
       'Custom integrations',
+      'Dedicated success manager',
+      'Full reporting suite (Ops, Revenue, Compliance, Dispatch, Payments)',
     ],
-    model: null,
+    model: { base: 2500, includedDispatch: 100000, overagePer1k: 2.0 },
   },
 ];
+
+export const privateLicense = {
+  name: 'Private License',
+  subtitle: 'For companies wanting their own private ORENYX deployment',
+  price: 'Contact for Pricing',
+  features: [
+    'Private, isolated deployment',
+    'Full Field Ops Engine (11 modules)',
+    'Technician Routing Engine',
+    'Appointment Booking Engine',
+    'Payment Engine',
+    'Compliance Bot',
+    'Orenyx Credits Ledger',
+    'Upsell & Follow-Up Bots',
+    'API Builder Packet',
+    'Multi-tenant isolation',
+    '12-month support',
+    'Annual renewal: $150k\u2013$300k',
+  ],
+  contact: { label: 'info@orenyxengine.com', href: 'mailto:info@orenyxengine.com' },
+};
 
 export const billableUnits = [
   'Dispatch events',
