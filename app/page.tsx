@@ -14,7 +14,6 @@ import {
   businessValue,
   capabilityOverview,
   closingCta,
-  ecosystemBlock,
   hero,
   problems,
   solution,
@@ -97,25 +96,6 @@ export default function HomePage() {
           </p>
         </Reveal>
 
-      </Section>
-
-      {/* ── Ecosystem ────────────────────────────────────── */}
-      <Section pattern="rings" tone="hero">
-        <Reveal>
-          <SectionHead
-            align="center"
-            silver
-            eyebrow={ecosystemBlock.eyebrow}
-            title={
-              <>
-                {ecosystemBlock.title[0]}
-                <br />
-                {ecosystemBlock.title[1]}
-              </>
-            }
-            lead={ecosystemBlock.lead}
-          />
-        </Reveal>
       </Section>
 
       {/* ── Business value ───────────────────────────────── */}
