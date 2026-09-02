@@ -16,9 +16,9 @@ export const site = {
 export const primaryNav = [
   { label: 'Home', href: '/' },
   { label: 'How It Works', href: '/about' },
+  { label: 'Your Dashboard', href: '/dashboard' },
   { label: 'Features', href: '/features' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Your Dashboard', href: '/dashboard' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
 
