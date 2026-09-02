@@ -3,7 +3,7 @@
 export const dashboardHero = {
   title: 'Every Tenant Gets a Full ORENYX Dashboard',
   lead:
-    'When a company signs up, ORENYX automatically creates a tenant environment and gives them access to a secure dashboard where they can control:',
+    'When your company signs up, ORENYX automatically creates a tenant environment and gives you access to a secure dashboard where you can control:',
 };
 
 export type DashboardCategory = { name: string; items: string[] };
