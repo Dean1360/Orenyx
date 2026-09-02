@@ -111,7 +111,18 @@ export default function PricingPage() {
             <p className="text-lg font-bold text-violet-bright">
               {privateLicense.name} — {privateLicense.price}
             </p>
-            <a href={privateLicense.contact.href} className="text-fg-soft underline">
+            <p className="text-sm text-fg-soft">{privateLicense.subtitle}</p>
+
+            <ul className="mt-4 grid gap-3 text-left text-sm font-srs sm:grid-cols-2 lg:grid-cols-3">
+              {privateLicense.features.map((f) => (
+                <li key={f} className="flex gap-3 text-fg-soft">
+                  <ArrowBullet />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href={privateLicense.contact.href} className="mt-5 text-fg-soft underline">
               {privateLicense.contact.label}
             </a>
           </div>
