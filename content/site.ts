@@ -18,7 +18,7 @@ export const primaryNav = [
   { label: 'How It Works', href: '/about' },
   { label: 'Features', href: '/features' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Use Cases', href: '/use-cases' },
+  { label: 'Your Dashboard', href: '/dashboard' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
 
@@ -34,7 +34,7 @@ export const footerNav = [
     links: [
       { label: 'Features', href: '/features' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Use Cases', href: '/use-cases' },
+      { label: 'Your Dashboard', href: '/dashboard' },
       { label: 'Security', href: '/security' },
     ],
   },
