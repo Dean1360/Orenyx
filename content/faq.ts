@@ -48,7 +48,7 @@ export const faq: FaqItem[] = [
   {
     q: 'Is there a free trial or sandbox?',
     // Sandbox is confirmed in the packet; a free trial is not mentioned anywhere.
-    a: 'Every account includes a sandbox environment with test API keys. Sandbox events do not incur usage charges and are clearly flagged in logs.',
+    a: 'After you sign up, every account includes a sandbox environment with test API keys. You can test dispatch, bots, and payment flows there for as long as you need, at no cost \u2014 sandbox activity never incurs usage charges and is clearly flagged in your logs, separate from real production data.',
   },
   {
     q: 'How long does integration typically take?',
