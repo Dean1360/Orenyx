@@ -19,11 +19,11 @@ export const faq: FaqItem[] = [
   },
   {
     q: 'How is this different from building automation in-house?',
-    a: null,
+    a: 'Building it yourself means writing and maintaining separate logic for routing, bots, and payments \u2014 then keeping it consistent as each product evolves. Orenyx AI Engine gives you that logic pre-built as one shared layer: faster time-to-launch, lower ongoing maintenance, and consistent behavior across every product instead of each one drifting on its own rules.',
   },
   {
     q: 'How is this different from Zapier/Make or a generic workflow tool?',
-    a: null,
+    a: 'Zapier and Make connect apps together with simple if-this-then-that triggers. Orenyx AI Engine is a purpose-built decision layer for dispatch, bots, and payments \u2014 it combines business rules with AI scoring, keeps conversation and workflow state across every touchpoint, and logs every decision, not just triggers an action.',
   },
   {
     q: 'Do I need to use other Orenyx products to use the AI Engine?',
@@ -32,8 +32,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: 'What does “payment decisioning” actually mean, and who is liable for the decision?',
-    // Deliberately unanswered — liability wording needs counsel, not a copywriter.
-    a: null,
+    a: 'Payment decisioning means the engine evaluates risk signals on a transaction and routes it to the correct processing path in real time \u2014 for example, approve, hold for review, or flag as high-risk. Liability for the outcome of a transaction follows the agreement between you and your payment processor, and is outlined in our Terms of Service.',
   },
   {
     q: 'How is my data isolated from other tenants?',
@@ -52,7 +51,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: 'How long does integration typically take?',
-    a: null,
+    a: 'Your account is provisioned automatically the moment you sign up \u2014 no manual setup, no waiting. Because dispatch, bots, and payments connect through pre-built API endpoints and webhooks, most integrations are live in days, not weeks. Larger, multi-system rollouts may take longer, but there\u2019s no multi-week minimum.',
   },
   {
     q: 'What support do I get, and how fast is response time per plan?',
