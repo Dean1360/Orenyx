@@ -97,33 +97,6 @@ export default function HomePage() {
           </p>
         </Reveal>
 
-        <Reveal>
-          <div className="mt-12 grid border-l box-BG border-t border-line-violet sm:grid-cols-2 lg:grid-cols-3">
-            {solution.capabilities.map((cap) => (
-              <div
-                key={cap.name}
-                className="border-b relative-newZed border-r border-line-violet p-8 transition-colors hover:bg-bg-2"
-              >
-                <div className="mb-6  grid h-11 w-11 place-items-center overflow-hidden rounded-[8px] border border-line-violet">
-                  <Image
-                    src={cap.icon}
-                    alt=""
-                    width={44}
-                    height={44}
-                    className="h-6 w-6 object-contain"
-                  />
-                </div>
-                <h3 className="new-font-size">{cap.name}</h3>
-              </div>
-            ))}
-
-            <div className="flex items-center relative-newZed justify-center border-b border-r border-line-violet p-8">
-              <ButtonLink href="/features" variant="outline" arrow={false}>
-                View All ↗
-              </ButtonLink>
-            </div>
-          </div>
-        </Reveal>
       </Section>
 
       {/* ── Ecosystem ────────────────────────────────────── */}
