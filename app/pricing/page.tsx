@@ -41,7 +41,7 @@ export default function PricingPage() {
     <>
       <PageHero
         crumb="Pricing"
-        lead="Pay a base platform fee, plus usage across the events that matter to your business."
+        lead="Each plan includes usage limits. Additional usage beyond those limits is billed at the listed overage rate."
         title={
           <>
             Simple usage-based <span className="text-violet-soft">pricing</span>
