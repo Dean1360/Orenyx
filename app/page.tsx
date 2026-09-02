@@ -1,7 +1,6 @@
 import { ButtonLink } from '@/components/ui/button';
 import { CodeRain } from '@/components/code-rain';
 import { DemoVideo } from '@/components/demo-video';
-import { EcosystemMarquee } from '@/components/marquee';
 import { EngineDiagram } from '@/components/engine-diagram';
 import { Logo } from '@/components/logo';
 import Image from 'next/image';
@@ -61,8 +60,6 @@ export default function HomePage() {
           <EngineDiagram />
         </div>
       </div>
-
-      <EcosystemMarquee />
 
       {/* ── Problem split ────────────────────────────────── */}
       <div className="grid lg:grid-cols-2">
