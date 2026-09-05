@@ -18,6 +18,7 @@ export const primaryNav = [
   { label: 'How It Works', href: '/about' },
   { label: 'Your Dashboard', href: '/dashboard' },
   { label: 'Features', href: '/features' },
+  { label: 'Voice Dispatch', href: '/voice-dispatch' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
@@ -33,6 +34,7 @@ export const footerNav = [
     heading: 'Product',
     links: [
       { label: 'Features', href: '/features' },
+      { label: 'Voice Dispatch', href: '/voice-dispatch' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Your Dashboard', href: '/dashboard' },
       { label: 'Security', href: '/security' },

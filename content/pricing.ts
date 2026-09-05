@@ -132,6 +132,38 @@ export const privateLicense = {
   contact: { label: 'info@orenyxengine.com', href: 'mailto:info@orenyxengine.com' },
 };
 
+export type VoicePlan = {
+  id: string;
+  name: string;
+  calls: string;
+  price: string;
+  mostPopular?: boolean;
+};
+
+/**
+ * Orenyx Voice Dispatch — dispatch-only tier, priced by call volume rather
+ * than the API/bot usage metrics used for the Full Automation Engine plans
+ * above. Each tier steps up in call volume and gets a better effective rate
+ * per call than the one before it.
+ */
+export const voiceDispatchPlans: VoicePlan[] = [
+  { id: 'voice-starter', name: 'Starter', calls: 'Up to 500 calls/mo', price: '$99\u2013149/mo' },
+  {
+    id: 'voice-growth',
+    name: 'Growth',
+    calls: 'Up to 2,500 calls/mo',
+    price: '$299/mo',
+    mostPopular: true,
+  },
+  { id: 'voice-scale', name: 'Scale', calls: 'Up to 10,000 calls/mo', price: '$799/mo' },
+  {
+    id: 'voice-enterprise',
+    name: 'Enterprise',
+    calls: 'Unlimited calls',
+    price: '$1,999\u20134,000/mo',
+  },
+];
+
 export const billableUnits = [
   'Dispatch events',
   'Bot executions',
