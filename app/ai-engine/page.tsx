@@ -60,10 +60,6 @@ export default function AiEnginePage() {
             {hero.titleAfter}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-[600px] text-base leading-relaxed text-white/85">
-            {hero.lead}
-          </p>
-
           <div className="mx-auto mt-6 flex max-w-[92%] items-center justify-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-5 py-3 text-center text-sm font-bold text-white sm:w-max sm:max-w-none sm:px-7 sm:text-lg md:text-xl">
             24/7 Coverage — Never Miss an Emergency Call or Booking
           </div>
