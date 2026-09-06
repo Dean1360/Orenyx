@@ -9,26 +9,6 @@ export const hero = {
   secondary: { label: 'View Pricing', href: '/pricing' },
 };
 
-/*
-  ⚠ The Figma labels this block "Solution" but every line in it is a problem
-  statement. Either the eyebrow should read "Problem" or the list is wrong.
-  Kept verbatim; flagged for the client.
-*/
-export const problems = {
-  eyebrow: 'Solution',
-  title: ['One engine.', 'Every decision.'],
-  items: [
-    'Fragmented automation across disconnected tools',
-    'Manual routing that doesn’t scale',
-    'Slow, one-off integrations for every new system',
-    'No central intelligence layer connecting decisions across products',
-  ],
-};
-
-/*
-  ⚠ This heading is identical to the block above it in the Figma — the same
-  sentence runs twice in consecutive sections. Flagged for the client.
-*/
 export const solution = {
   eyebrow: 'Solution',
   title: 'One engine. Every decision.',
@@ -49,20 +29,6 @@ export const ecosystemBlock = {
   lead: 'The same engine powering the Orenyx ecosystem is available as a standalone platform.',
 };
 
-export const businessValue = {
-  eyebrow: 'Solution',
-  title: 'Business Value',
-  items: [
-
-    { name: 'Reduce manual operations', icon: '/bg/downarrow.png' },
-    { name: 'Increase throughput', icon: '/bg/uparrows.png' },
-    { name: 'Standardize logic across products', icon: '/bg/sheld.png' },
-    { name: 'Monetize automation as a first-class capability', icon: '/bg/netwrok.png' },
-  ],
-  // Figma reads "Reduce manual operationsIncrease throughputStandardize logic across productsMonetize automation as a first-class capability" — missing spaces corrected.
-
-};
-
 export const testimonials = {
   eyebrow: 'Testimonials',
   title: ['Trusted by teams building on', 'Orenyx infrastructure.'],
@@ -81,13 +47,6 @@ export const testimonials = {
       title: 'Head of Operations, Orenyx Engine',
        image: '/bg/authImage.jpg',
     },
-    {
-      quote:
-        'With Orenyx AI Engine™, we can automate complex workflows across multiple systems without writing custom code for each integration. It’s a game-changer for our operations.',
-      name: 'John Smith',
-      title: 'Head of Operations, Orenyx Engine',
-       image: '/bg/authImage.jpg',
-    },
   ],
 };
 
@@ -96,7 +55,6 @@ export type CapabilityItem = { name: string; body: string };
 export const capabilityOverview = {
   eyebrow: 'Full Platform',
   title: 'Everything Orenyx runs for you.',
-  lead: 'Built for HVAC, plumbing, electrical, and other field-service businesses — every module that powers a live account, from the first call to the final payment.',
   items: [
     {
       name: 'Technician Routing & Dispatch',
