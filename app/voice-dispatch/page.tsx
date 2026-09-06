@@ -53,6 +53,24 @@ export default function VoiceDispatchPage() {
     <>
       <PageHero crumb="Voice Dispatch" title={voiceHero.title} lead={voiceHero.lead} />
 
+      {/* ── Demo video ───────────────────────────────────── */}
+      <Section tone="dark">
+        <Reveal>
+          <p className="mx-auto max-w-[600px] text-center text-xl font-semibold text-white/85 md:text-2xl">
+            Watch how Orenyx handles a dispatch call, step by step.
+          </p>
+
+          <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
+            <div className="flex flex-col items-center justify-center gap-3 border border-dashed border-line-violet bg-bg-2/40 px-6 py-20 text-center">
+              <span className="font-mono text-xs uppercase tracking-wide text-violet-soft">
+                {voiceDemoVideo.label}
+              </span>
+              <p className="max-w-[520px] text-sm leading-relaxed text-fg-soft">{voiceDemoVideo.body}</p>
+            </div>
+          </div>
+        </Reveal>
+      </Section>
+
       {/* ── Call flow ────────────────────────────────────── */}
       <Section tone="dark">
         <SectionHead eyebrow={callFlow.eyebrow} title={callFlow.title} align="center" silver />
@@ -94,19 +112,6 @@ export default function VoiceDispatchPage() {
           <div className="mx-auto max-w-[820px] rounded-[14px] border border-line-violet bg-bg-2/50 p-8 text-center">
             <p className="text-lg font-bold text-violet-bright">{complianceNote.title}</p>
             <p className="mt-3 text-sm leading-relaxed text-fg-soft">{complianceNote.body}</p>
-          </div>
-        </Reveal>
-      </Section>
-
-      {/* ── Demo video placeholder ───────────────────────── */}
-      <Section tone="dark">
-        <SectionHead eyebrow="See it in action" title="Watch the dispatch flow." align="center" silver />
-        <Reveal>
-          <div className="mx-auto mt-8 flex max-w-[900px] flex-col items-center justify-center gap-3 rounded-[var(--radius-panel)] border border-dashed border-line-violet bg-bg-2/40 px-6 py-20 text-center">
-            <span className="font-mono text-xs uppercase tracking-wide text-violet-soft">
-              {voiceDemoVideo.label}
-            </span>
-            <p className="max-w-[520px] text-sm leading-relaxed text-fg-soft">{voiceDemoVideo.body}</p>
           </div>
         </Reveal>
       </Section>
