@@ -1,4 +1,5 @@
 import { ButtonLink } from '@/components/ui/button';
+import { EngineDiagram } from '@/components/engine-diagram';
 import { Reveal } from '@/components/reveal';
 import { Shell } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
@@ -32,7 +33,7 @@ const paths = [
 
 export default function HomePage() {
   return (
-    <div className="hero-band relative overflow-hidden py-16 md:py-24">
+    <div className="hero-band home-pagebanner relative overflow-hidden py-16 md:py-24">
       <Shell className="relative z-10 text-center">
         <p className="labelFFont text-sm font-extrabold uppercase tracking-wide text-white">
           Two ways to run Orenyx
@@ -74,6 +75,11 @@ export default function HomePage() {
           ))}
         </div>
       </Shell>
+
+      <div className="carveimage"></div>
+      <div className="mx-auto mt-12 max-w-[420px] md:max-w-[1180px]">
+        <EngineDiagram />
+      </div>
     </div>
   );
 }

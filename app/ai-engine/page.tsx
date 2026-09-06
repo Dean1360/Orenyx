@@ -1,6 +1,5 @@
 import { ButtonLink } from '@/components/ui/button';
 import { DemoVideo } from '@/components/demo-video';
-import { EngineDiagram } from '@/components/engine-diagram';
 import { Logo } from '@/components/logo';
 import Image from 'next/image';
 import { Placeholder } from '@/components/ui/placeholder';
@@ -64,10 +63,6 @@ export default function AiEnginePage() {
           </div>
 
         </Shell>
-        <div className="carveimage"></div>
-        <div className="mx-auto mt-12 max-w-[420px] md:max-w-[1180px]">
-          <EngineDiagram />
-        </div>
       </div>
 
       {/* ── Solution ─────────────────────────────────────── */}

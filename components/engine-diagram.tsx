@@ -208,22 +208,37 @@ function BoxDiagram({ className = '' }: { className?: string }) {
       {cards.map((c) => {
         const cx = c.x + CARD.w / 2;
         const mid = c.y + CARD.h / 2;
+        const isVoice = c.product.product === 'voice';
+        const cardStroke = isVoice ? '#34D399' : '#8B7CFF';
+        const textY = isVoice ? mid - 4 : mid - 12;
         return (
           <g key={c.product.label}>
+            {isVoice ? (
+              <text
+                x={cx}
+                y={c.y - 12}
+                textAnchor="middle"
+                fill="#34D399"
+                fontSize="20"
+                fontWeight="700"
+              >
+                Voice Dispatch
+              </text>
+            ) : null}
             <rect
               x={c.x}
               y={c.y}
               width={CARD.w}
               height={CARD.h}
               rx={CARD.r}
-              fill="#121A30"
-              stroke="#8B7CFF"
+              fill={isVoice ? '#0F2A22' : '#121A30'}
+              stroke={cardStroke}
               strokeWidth="1.6"
               strokeOpacity="0.75"
             />
             <text
               x={cx}
-              y={mid - 12}
+              y={textY}
               textAnchor="middle"
               className="orb-label"
             >
@@ -241,7 +256,7 @@ function BoxDiagram({ className = '' }: { className?: string }) {
 
 /* ── Narrow: the stack ─────────────────────────────── */
 
-const S = { w: 380, hubY: 84, hubSize: 116, firstY: 216, pitch: 82, cardX: 24, cardW: 332, cardH: 64 };
+const S = { w: 380, hubY: 84, hubSize: 116, firstY: 228, pitch: 96, cardX: 24, cardW: 332, cardH: 64 };
 const S_H = S.firstY + (ecosystem.length - 1) * S.pitch + S.cardH + 20;
 
 /**
@@ -307,16 +322,29 @@ function StackDiagram({ className = '' }: { className?: string }) {
       {/* Cards */}
       {ecosystem.map((product, i) => {
         const y = rowY(i);
+        const isVoice = product.product === 'voice';
         return (
           <g key={product.label}>
+            {isVoice ? (
+              <text
+                x={cx}
+                y={y - 8}
+                textAnchor="middle"
+                fill="#34D399"
+                fontSize="13"
+                fontWeight="700"
+              >
+                Voice Dispatch
+              </text>
+            ) : null}
             <rect
               x={S.cardX}
               y={y}
               width={S.cardW}
               height={S.cardH}
               rx="12"
-              fill="#121A30"
-              stroke="#8B7CFF"
+              fill={isVoice ? '#0F2A22' : '#121A30'}
+              stroke={isVoice ? '#34D399' : '#8B7CFF'}
               strokeWidth="1.4"
               strokeOpacity="0.75"
             />

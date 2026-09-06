@@ -69,6 +69,8 @@ export type Product = {
   lines: [string, string];
   icon: IconName;
   href: string;
+  /** Which product this capability belongs to — drives the hero diagram's color/tag split. */
+  product?: 'voice' | 'engine';
 };
 
 /**
@@ -89,22 +91,47 @@ export type Product = {
  */
 export const ecosystem: Product[] = [
   { label: 'Reporting & Analytics', lines: ['Reporting &', 'Analytics'], icon: 'cloud', href: '#' },
-  { label: 'Call-to-Job Handoff', lines: ['Call-to-Job', 'Handoff'], icon: 'truck', href: '#' },
-  { label: 'Appointment Booking', lines: ['Appointment', 'Booking'], icon: 'chat', href: '#' },
+  {
+    label: 'Call-to-Job Handoff',
+    lines: ['Call-to-Job', 'Handoff'],
+    icon: 'truck',
+    href: '#',
+    product: 'voice',
+  },
+  {
+    label: 'Appointment Booking',
+    lines: ['Appointment', 'Booking'],
+    icon: 'chat',
+    href: '#',
+    product: 'voice',
+  },
   {
     label: 'Technician Routing & Dispatch',
     lines: ['Technician', 'Dispatch'],
     icon: 'truck',
     href: '#',
+    product: 'voice',
   },
-  { label: 'Compliance Checks', lines: ['Compliance', 'Checks'], icon: 'brain', href: '#' },
+  {
+    label: 'Compliance Checks',
+    lines: ['Compliance', 'Checks'],
+    icon: 'brain',
+    href: '#',
+    product: 'voice',
+  },
   {
     label: 'Cancellation & Revenue Recovery',
     lines: ['Cancellation', 'Recovery'],
     icon: 'wallet',
     href: '#',
   },
-  { label: 'Customer Payments', lines: ['Customer', 'Payments'], icon: 'wallet', href: '#' },
+  {
+    label: 'Customer Payments',
+    lines: ['Customer', 'Payments'],
+    icon: 'wallet',
+    href: '#',
+    product: 'voice',
+  },
   {
     label: 'Orenyx Credits (Payouts)',
     lines: ['Orenyx Credits', '(Payouts)'],
@@ -122,6 +149,7 @@ export const ecosystem: Product[] = [
     lines: ['Maintenance', 'Follow-Up'],
     icon: 'mic',
     href: '#',
+    product: 'voice',
   },
   {
     label: 'Upsell & Advanced Support',
