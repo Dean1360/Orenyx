@@ -13,6 +13,33 @@ import {
 } from '@/content/voice-dispatch';
 import { pageMeta } from '@/lib/seo';
 
+const voiceDashboardCategories = [
+  {
+    name: 'Calls',
+    items: [
+      'Full call logs with transcripts',
+      'Listen back to recorded calls',
+      'See how each call was routed',
+    ],
+  },
+  {
+    name: 'Routing & IVR',
+    items: [
+      'Manage call routing rules and fallback paths',
+      'Configure IVR menus and multi-line / multi-location routing',
+      'Set business hours and after-hours handling',
+    ],
+  },
+  {
+    name: 'Analytics',
+    items: [
+      'Call volume and answer-rate reporting',
+      'Call-to-job conversion (when paired with Orenyx AI Engine)',
+      'Export reports and manage notification settings',
+    ],
+  },
+];
+
 export const metadata = pageMeta({
   titleTag: 'Voice Dispatch — Orenyx AI Engine™',
   title: 'Voice Dispatch',
@@ -120,6 +147,32 @@ export default function VoiceDispatchPage() {
           <ButtonLink href="/contact" variant="light">
             Request Access
           </ButtonLink>
+        </div>
+      </Section>
+
+      {/* ── Your Voice Dispatch dashboard ────────────────── */}
+      <Section>
+        <SectionHead
+          align="center"
+          title="Your Voice Dispatch Dashboard"
+          lead="Every account gets a dashboard for the calls the Engine answers and routes on your behalf."
+        />
+
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {voiceDashboardCategories.map((cat, i) => (
+            <Reveal key={cat.name} delay={i * 60}>
+              <div className="flex h-full flex-col rounded-[14px] border border-line-violet bg-bg-2/50 p-6">
+                <p className="text-lg font-bold text-violet-bright">{cat.name}</p>
+                <ul className="mt-5 space-y-3 text-sm font-srs">
+                  {cat.items.map((item) => (
+                    <li key={item} className="text-fg-soft">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </Section>
     </>

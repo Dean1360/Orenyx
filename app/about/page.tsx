@@ -5,8 +5,8 @@ import { Section } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
-  titleTag: 'How It Works — Orenyx AI Engine™',
-  title: 'How It Works',
+  titleTag: 'How They Work — Orenyx AI Engine™',
+  title: 'How They Work',
   description:
     'How Orenyx AI Engine connects to your existing business, in your control, at your pace.',
   path: '/about',
@@ -32,8 +32,8 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        crumb="How It Works"
-        title="How It Works"
+        crumb="How They Work"
+        title="How They Work"
         lead={reassurance}
       />
 

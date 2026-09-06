@@ -17,6 +17,7 @@ import {
   problems,
   solution,
 } from '@/content/home';
+import { dashboardCategories, dashboardHero } from '@/content/dashboard';
 
 export const metadata = pageMeta({
   titleTag: 'Orenyx AI Engine™ — Unified AI for Dispatch, Payments & Bots',
@@ -25,6 +26,27 @@ export const metadata = pageMeta({
     'The AI decision layer behind Orenyx Voice Dispatch, Orenyx Dispatch, and Orenyx Payment — now available as a standalone platform.',
   path: '/ai-engine',
 });
+
+function ArrowBullet() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className="mt-1 shrink-0 text-violet-bright"
+    >
+      <path
+        d="M2 8h10M8.5 4.5L12 8l-3.5 3.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function AiEnginePage() {
   return (
@@ -148,6 +170,31 @@ export default function AiEnginePage() {
                   <div className="text-fontchnage font-bold leading-tight">{item.name}</div>
                 </div>
                 <p className="px-4 py-5 text-sm leading-relaxed text-fg-soft">{item.body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* ── Your AI Engine dashboard ──────────────────────── */}
+      <Section>
+        <Reveal>
+          <SectionHead align="center" title={dashboardHero.title} lead={dashboardHero.lead} />
+        </Reveal>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {dashboardCategories.map((cat, i) => (
+            <Reveal key={cat.name} delay={i * 50}>
+              <div className="flex h-full flex-col rounded-[14px] border border-line-violet bg-bg-2/50 p-6">
+                <p className="text-lg font-bold text-violet-bright">{cat.name}</p>
+                <ul className="mt-5 space-y-3 text-sm font-srs">
+                  {cat.items.map((item) => (
+                    <li key={item} className="flex gap-3 text-fg-soft">
+                      <ArrowBullet />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           ))}

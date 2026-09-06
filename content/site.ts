@@ -15,12 +15,11 @@ export const site = {
 
 export const primaryNav = [
   { label: 'Home', href: '/' },
-  { label: 'How It Works', href: '/about' },
-  { label: 'Your Dashboard', href: '/dashboard' },
-  { label: 'Features', href: '/features' },
+  { label: 'How They Work', href: '/about' },
   { label: 'Voice Dispatch', href: '/voice-dispatch' },
   { label: 'Orenyx AI Engine', href: '/ai-engine' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Features', href: '/features' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
 
@@ -36,15 +35,15 @@ export const footerNav = [
     links: [
       { label: 'Features', href: '/features' },
       { label: 'Voice Dispatch', href: '/voice-dispatch' },
+      { label: 'Orenyx AI Engine', href: '/ai-engine' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Your Dashboard', href: '/dashboard' },
       { label: 'Security', href: '/security' },
     ],
   },
   {
     heading: 'Company',
     links: [
-      { label: 'How It Works', href: '/about' },
+      { label: 'How They Work', href: '/about' },
       { label: 'Contact', href: '/contact' },
       { label: 'Careers', href: '/careers' },
       { label: 'FAQ', href: '/faq' },
