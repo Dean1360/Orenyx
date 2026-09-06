@@ -89,7 +89,7 @@ export function SiteHeader() {
           </nav>
 
           <Link
-            href="/contact"
+            href="/pricing"
             className=" shrink-0 thebutrrtonas-grd"
           >
             <div className="thebutrrtonas">
