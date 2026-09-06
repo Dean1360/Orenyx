@@ -63,7 +63,6 @@ export default function AboutPage() {
 
         <Reveal>
           <div className="mt-10 flex flex-wrap gap-3">
-            <ButtonLink href="/contact">Request Access</ButtonLink>
             <ButtonLink href="/pricing" variant="outline">
               View Pricing
             </ButtonLink>
