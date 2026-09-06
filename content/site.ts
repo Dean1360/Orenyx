@@ -19,6 +19,7 @@ export const primaryNav = [
   { label: 'Your Dashboard', href: '/dashboard' },
   { label: 'Features', href: '/features' },
   { label: 'Voice Dispatch', href: '/voice-dispatch' },
+  { label: 'Orenyx AI Engine', href: '/ai-engine' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
