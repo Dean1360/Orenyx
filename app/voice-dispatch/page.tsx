@@ -1,4 +1,5 @@
 import { ButtonLink } from '@/components/ui/button';
+import { DemoVideo } from '@/components/demo-video';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead } from '@/components/ui/section';
@@ -6,7 +7,6 @@ import { voiceDispatchPlans } from '@/content/pricing';
 import {
   callFlow,
   complianceNote,
-  voiceDemoVideo,
   voiceFeatures,
   voiceHero,
   voicePricingNote,
@@ -65,12 +65,7 @@ export default function VoiceDispatchPage() {
           </p>
 
           <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
-            <div className="flex flex-col items-center justify-center gap-3 border border-dashed border-line-violet bg-bg-2/40 px-6 py-20 text-center">
-              <span className="font-mono text-xs uppercase tracking-wide text-violet-soft">
-                {voiceDemoVideo.label}
-              </span>
-              <p className="max-w-[520px] text-sm leading-relaxed text-fg-soft">{voiceDemoVideo.body}</p>
-            </div>
+            <DemoVideo src="/videos/voice-dispatch-demo.mp4" />
           </div>
         </Reveal>
       </Section>

@@ -9,7 +9,7 @@ import { useRef, useState } from 'react';
  * - Shows a simple replay control only once the video has fully finished,
  *   during that pause — not while it's playing.
  */
-export function DemoVideo() {
+export function DemoVideo({ src = '/videos/automation-demo.mp4' }: { src?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ended, setEnded] = useState(false);
 
@@ -37,7 +37,7 @@ export function DemoVideo() {
       <video
         ref={videoRef}
         className="block h-auto w-full"
-        src="/videos/automation-demo.mp4"
+        src={src}
         autoPlay
         muted
         playsInline
