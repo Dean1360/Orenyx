@@ -138,6 +138,7 @@ export type VoicePlan = {
   calls: string;
   price: string;
   mostPopular?: boolean;
+  features: string[];
 };
 
 /**
@@ -147,20 +148,55 @@ export type VoicePlan = {
  * per call than the one before it.
  */
 export const voiceDispatchPlans: VoicePlan[] = [
-  { id: 'voice-starter', name: 'Starter', calls: 'Up to 500 calls/mo', price: '$99\u2013149/mo' },
+  {
+    id: 'voice-starter',
+    name: 'Starter',
+    calls: 'Up to 500 calls/mo',
+    price: '$99\u2013149/mo',
+    features: [
+      'AI call answering, 24/7',
+      'Basic call routing',
+      'IVR call menu',
+      'Call logging & transcripts',
+      'Email support',
+    ],
+  },
   {
     id: 'voice-growth',
     name: 'Growth',
     calls: 'Up to 2,500 calls/mo',
     price: '$299/mo',
     mostPopular: true,
+    features: [
+      'Everything in Starter',
+      'Advanced routing with fallback rules',
+      'Call analytics dashboard',
+      'Email + chat support',
+    ],
   },
-  { id: 'voice-scale', name: 'Scale', calls: 'Up to 10,000 calls/mo', price: '$799/mo' },
+  {
+    id: 'voice-scale',
+    name: 'Scale',
+    calls: 'Up to 10,000 calls/mo',
+    price: '$799/mo',
+    features: [
+      'Everything in Growth',
+      'Multi-line / multi-location routing',
+      'Custom IVR flows',
+      'Priority support',
+    ],
+  },
   {
     id: 'voice-enterprise',
     name: 'Enterprise',
     calls: 'Unlimited calls',
     price: '$1,999\u20134,000/mo',
+    features: [
+      'Everything in Scale',
+      'Custom integrations',
+      'Dedicated success manager',
+      'Custom SLA & uptime commitment',
+    ],
   },
 ];
 

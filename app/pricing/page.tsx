@@ -1,14 +1,11 @@
 import { ButtonLink } from '@/components/ui/button';
-import { FaqAccordion } from '@/components/faq-accordion';
 import { PageHero } from '@/components/page-hero';
 import { PricingEstimator } from '@/components/pricing-estimator';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
 import {
   addOns,
-  billableUnits,
   plans,
-  pricingFaq,
   privateLicense,
   voiceDispatchPlans,
 } from '@/content/pricing';
@@ -48,7 +45,7 @@ export default function PricingPage() {
     <>
       <PageHero
         crumb="Pricing"
-        lead="Compare Orenyx AI Engine and Orenyx Voice Dispatch side by side. Each plan includes usage limits — additional usage beyond those limits is billed at the listed overage rate."
+        lead="Compare Orenyx Voice Dispatch and Orenyx AI Engine side by side. Each plan includes usage limits — additional usage beyond those limits is billed at the listed overage rate."
         title={
           <>
             Simple usage-based <span className="text-violet-soft">pricing</span>
@@ -56,6 +53,55 @@ export default function PricingPage() {
           </>
         }
       />
+
+      {/* ── Voice Dispatch plans ──────────────────────────── */}
+      <Section id="voice-dispatch" tone="violet">
+        <Reveal>
+          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-white/70">
+            Orenyx Voice Dispatch
+          </p>
+          <h2 className="mt-2 text-center h2Newfont font-bold text-white md:text-[2.75rem]">
+            Dispatch-only pricing.
+          </h2>
+          <p className="mx-auto mt-4 max-w-[640px] text-center text-lg newFont-Parra leading-relaxed text-white/85">
+            Priced by call volume instead of API/bot usage — pick the tier that matches how many
+            calls come in each month.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 pricechnasgeFont">
+          {voiceDispatchPlans.map((plan, i) => (
+            <Reveal key={plan.id} delay={i * 70} className="h-full">
+              <div className="pricechnageFont flex h-full flex-col rounded-[14px] border-2 border-white/30 bg-bg/50 p-8">
+                {plan.mostPopular ? (
+                  <span className="mb-2 w-fit rounded-full bg-violet-bright px-3 py-1 text-xs font-bold text-bg">
+                    Most popular
+                  </span>
+                ) : null}
+                <p className="text-xl font-bold text-white">{plan.name}</p>
+                <p className="mt-1 text-sm text-white/70">{plan.calls}</p>
+
+                <p className="mt-3 whitespace-nowrap text-3xl font-bold text-white sm:text-[2rem]">
+                  {plan.price}
+                </p>
+
+                <ButtonLink href="/contact" className="mt-6 w-full">
+                  Request Access
+                </ButtonLink>
+
+                <ul className="mt-6 space-y-3 text-sm font-srs">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex gap-3 font-medium text-white/90">
+                      <ArrowBullet />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
 
       {/* ── AI Engine plans ──────────────────────────────── */}
       <Section id="ai-engine">
@@ -132,118 +178,32 @@ export default function PricingPage() {
               ))}
             </ul>
 
-            <a href={privateLicense.contact.href} className="mt-5 text-fg-soft underline">
+            <a href={privateLicense.contact.href} className="mt-5 text-violet-bright underline">
               {privateLicense.contact.label}
             </a>
           </div>
         </Reveal>
       </Section>
 
-      {/* ── Voice Dispatch plans ──────────────────────────── */}
-      <Section id="voice-dispatch" tone="violet">
+      {/* ── Add-Ons ──────────────────────────── */}
+      <Section>
         <Reveal>
-          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-white/70">
-            Orenyx Voice Dispatch
-          </p>
-          <h2 className="mt-2 text-center h2Newfont font-bold text-white md:text-[2.75rem]">
-            Dispatch-only pricing.
-          </h2>
-          <p className="mx-auto mt-4 max-w-[640px] text-center text-lg newFont-Parra leading-relaxed text-white/85">
-            Priced by call volume instead of API/bot usage — pick the tier that matches how many
-            calls come in each month.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-4">
-          {voiceDispatchPlans.map((plan, i) => (
-            <Reveal key={plan.id} delay={i * 70}>
+          <p className="text-lg text-violet-soft labelFFont">Add-Ons</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {addOns.map((addon, i) => (
               <div
-                className={`flex h-full flex-col rounded-[14px] border p-6 ${
-                  plan.mostPopular ? 'border-violet-bright bg-bg' : 'border-white/15 bg-white/5'
-                }`}
+                key={`${addon.name}-${i}`}
+                className="rounded-[10px] border border-line-violet bg-bg-2/50 p-6"
               >
-                {plan.mostPopular ? (
-                  <span className="mb-2 w-fit rounded-full bg-violet-bright px-3 py-1 text-xs font-bold text-bg">
-                    Most popular
-                  </span>
-                ) : null}
-                <p className="text-lg font-bold text-violet-soft">{plan.name}</p>
-                <p className="mt-1 text-sm text-white/70">{plan.calls}</p>
-                <p className="mt-4 text-2xl font-bold text-white">{plan.price}</p>
+                <h3 className="font-35px font-bold">{addon.name}</h3>
+                <p className="mt-2 text-20px text-fg-soft">{addon.body}</p>
               </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <ButtonLink href="/contact" variant="light">
-            Request Access
-          </ButtonLink>
-        </div>
-      </Section>
-
-      {/* ── Billable units + add-ons ─────────────────────── */}
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-2">
-          <Reveal>
-            <p className="text-lg text-violet-soft labelFFont">Billable units</p>
-            <h2 className="heading-silver mt-3 h2Newfont font-bold leading-tight md:text-[2.75rem]">
-              What the engine meters.
-            </h2>
-            <ul className="mt-8 space-y-5">
-              {billableUnits.map((unit) => (
-                <li key={unit} className="flex items-center gap-4 text-xl">
-                  <svg width="50" height="50" viewBox="0 0 28 16" fill="none" aria-hidden="true">
-                    <path
-                      d="M1 8h24M20 3l5 5-5 5"
-                      stroke="#8B7CFF"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <span className="font-35px font-bold">{unit}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <p className="text-lg text-violet-soft labelFFont">Add-Ons</p>
-            <div className="mt-6 space-y-4">
-              {addOns.map((addon, i) => (
-                <div
-                  key={`${addon.name}-${i}`}
-                  className="rounded-[10px] border border-line-violet bg-bg-2/50 p-6"
-                >
-                  <h3 className="font-35px font-bold">{addon.name}</h3>
-                  <p className="mt-2 text-20px text-fg-soft">{addon.body}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </Section>
-
-      {/* ── FAQ ──────────────────────────────────────────── */}
-      <Section>
-        <Reveal>
-          <div className="rounded-panel bg-violet-gred p-8 md:p-12">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-              <div>
-                <p className="text-lg text-white/75 labelFFont">Pricing</p>
-                <h2 className="mt-3 h2Newfont font-bold leading-tight text-white md:text-[2.5rem]">
-                  Frequently
-                  <br />
-                  Asked Questions
-                </h2>
-              </div>
-              <FaqAccordion items={pricingFaq} />
-            </div>
+            ))}
           </div>
         </Reveal>
       </Section>
 
+      {/* ── FAQ ──────────────────────────────────────────── */}
       {/* ── Estimator ────────────────────────────────────── */}
       <Section className="dnones">
         <Reveal>
