@@ -84,7 +84,7 @@ export function RequestAccessForm({
     <form id="request-access" className="w-full">
       <div>
         <label htmlFor="name" className={label}>
-          Full Name
+          Full Name <span className="text-[#f87171]">*</span>
         </label>
         <input
           id="name"
@@ -98,7 +98,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="company" className={label}>
-          Company Name
+          Company Name <span className="text-[#f87171]">*</span>
         </label>
         <input
           id="company"
@@ -112,7 +112,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="title" className={label}>
-          Title
+          Title <span className="text-[#f87171]">*</span>
         </label>
         <input
           id="title"
@@ -126,7 +126,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="email" className={label}>
-          Company Email
+          Company Email <span className="text-[#f87171]">*</span>
         </label>
         <input
           id="email"
@@ -141,7 +141,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="companyWebsite" className={label}>
-          Company Website
+          Company Website <span className="text-[#f87171]">*</span>
         </label>
         <input
           id="companyWebsite"
@@ -155,7 +155,7 @@ export function RequestAccessForm({
       </div>
 
       <div className="mt-5">
-        <span className={label}>Use Case (select all that apply)</span>
+        <span className={label}>Use Case (select all that apply) — optional</span>
         <div className={checkboxGroup}>
           {useCases.map((u, i) => (
             <label key={u} htmlFor={`useCase-${i}`} className={checkboxRow}>
@@ -174,7 +174,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="volume" className={label}>
-          Estimated Monthly Volume
+          Estimated Monthly Volume — optional
         </label>
         <SelectWrap>
           <select id="volume" name="volume" className={selectField} defaultValue="">
@@ -190,7 +190,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="message" className={label}>
-          Questions
+          Questions — optional
         </label>
         <textarea
           id="message"

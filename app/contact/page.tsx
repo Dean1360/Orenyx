@@ -34,20 +34,11 @@ export default function ContactPage() {
       <Section>
         <Reveal>
           <div className="contact-panel rounded-panel px-6 py-10 sm:px-10 md:px-12 md:py-14 lg:px-16">
-            <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
-              <div>
-                <h2 className="h2Newfont font-bold leading-[1.15] text-white">
-                  Let&apos;s talk about
-                  <br />
-                  what you&apos;re building.
-                </h2>
-                <p className="mt-6 max-w-[520px] text-lg font-bold leading-relaxed text-white newFont-Parra">
-                  Whether you&apos;re evaluating Orenyx AI Engine for your own operations, exploring a
-                  White-Label partnership, or scoping a custom workflow, tell us what you need and
-                  we&apos;ll get back to you.
-                </p>
-              </div>
+            <h2 className="h2Newfont text-center font-bold leading-[1.15] text-white">
+              CONTACT US
+            </h2>
 
+            <div className="mx-auto mt-10 max-w-[640px]">
               <RequestAccessForm />
             </div>
           </div>
