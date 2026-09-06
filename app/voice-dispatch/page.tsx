@@ -56,7 +56,11 @@ export default function VoiceDispatchPage() {
       {/* ── Demo video ───────────────────────────────────── */}
       <Section tone="dark">
         <Reveal>
-          <p className="mx-auto max-w-[600px] text-center text-xl font-semibold text-white/85 md:text-2xl">
+          <div className="mx-auto flex max-w-[92%] items-center justify-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-5 py-3 text-center text-sm font-bold text-white sm:w-max sm:max-w-none sm:px-7 sm:text-lg md:text-xl">
+            24/7 Coverage — Never Miss an Emergency Call or Booking
+          </div>
+
+          <p className="mx-auto mt-8 max-w-[600px] text-center text-xl font-semibold text-white/85 md:text-2xl">
             Watch how Orenyx handles a dispatch call, step by step.
           </p>
 
