@@ -4,7 +4,14 @@ import { PageHero } from '@/components/page-hero';
 import { PricingEstimator } from '@/components/pricing-estimator';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
-import { addOns, billableUnits, plans, pricingFaq, privateLicense } from '@/content/pricing';
+import {
+  addOns,
+  billableUnits,
+  plans,
+  pricingFaq,
+  privateLicense,
+  voiceDispatchPlans,
+} from '@/content/pricing';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
@@ -41,7 +48,7 @@ export default function PricingPage() {
     <>
       <PageHero
         crumb="Pricing"
-        lead="Each plan includes usage limits. Additional usage beyond those limits is billed at the listed overage rate."
+        lead="Compare Orenyx AI Engine and Orenyx Voice Dispatch side by side. Each plan includes usage limits — additional usage beyond those limits is billed at the listed overage rate."
         title={
           <>
             Simple usage-based <span className="text-violet-soft">pricing</span>
@@ -50,10 +57,13 @@ export default function PricingPage() {
         }
       />
 
-      {/* ── Plans ────────────────────────────────────────── */}
-      <Section >
+      {/* ── AI Engine plans ──────────────────────────────── */}
+      <Section id="ai-engine">
         <Reveal>
-          <h2 className="heading-silver text-center h2Newfont font-bold md:text-[2.75rem]">
+          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-violet-soft">
+            Orenyx AI Engine
+          </p>
+          <h2 className="heading-silver mt-2 text-center h2Newfont font-bold md:text-[2.75rem]">
             Plan Comparison
           </h2>
         </Reveal>
@@ -127,6 +137,49 @@ export default function PricingPage() {
             </a>
           </div>
         </Reveal>
+      </Section>
+
+      {/* ── Voice Dispatch plans ──────────────────────────── */}
+      <Section id="voice-dispatch" tone="violet">
+        <Reveal>
+          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-white/70">
+            Orenyx Voice Dispatch
+          </p>
+          <h2 className="mt-2 text-center h2Newfont font-bold text-white md:text-[2.75rem]">
+            Dispatch-only pricing.
+          </h2>
+          <p className="mx-auto mt-4 max-w-[640px] text-center text-lg newFont-Parra leading-relaxed text-white/85">
+            Priced by call volume instead of API/bot usage — pick the tier that matches how many
+            calls come in each month.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-4">
+          {voiceDispatchPlans.map((plan, i) => (
+            <Reveal key={plan.id} delay={i * 70}>
+              <div
+                className={`flex h-full flex-col rounded-[14px] border p-6 ${
+                  plan.mostPopular ? 'border-violet-bright bg-bg' : 'border-white/15 bg-white/5'
+                }`}
+              >
+                {plan.mostPopular ? (
+                  <span className="mb-2 w-fit rounded-full bg-violet-bright px-3 py-1 text-xs font-bold text-bg">
+                    Most popular
+                  </span>
+                ) : null}
+                <p className="text-lg font-bold text-violet-soft">{plan.name}</p>
+                <p className="mt-1 text-sm text-white/70">{plan.calls}</p>
+                <p className="mt-4 text-2xl font-bold text-white">{plan.price}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <ButtonLink href="/contact" variant="light">
+            Request Access
+          </ButtonLink>
+        </div>
       </Section>
 
       {/* ── Billable units + add-ons ─────────────────────── */}
