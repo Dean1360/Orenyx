@@ -206,11 +206,8 @@ export default function AiEnginePage() {
               {closingCta.title}
             </h2>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <ButtonLink href={closingCta.primary.href} variant="dark">
-                {closingCta.primary.label}
-              </ButtonLink>
-              <ButtonLink href={closingCta.secondary.href} variant="light">
-                {closingCta.secondary.label}
+              <ButtonLink href={closingCta.cta.href} variant="dark">
+                {closingCta.cta.label}
               </ButtonLink>
             </div>
           </div>

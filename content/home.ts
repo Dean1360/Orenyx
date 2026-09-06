@@ -5,7 +5,7 @@ export const hero = {
   titleAccent: 'AI engine',
   titleAfter: ' behind intelligent dispatch, payments & automation.',
   lead: 'Built for HVAC, plumbing, electrical, and other field-service businesses — every module that powers a live account, from the first call to the final payment.',
-  primary: { label: 'Request Access', href: '/contact' },
+  primary: { label: 'Sign Up', href: '/pricing' },
   secondary: { label: 'View Pricing', href: '/pricing' },
 };
 
@@ -151,6 +151,5 @@ export const capabilityOverview = {
 
 export const closingCta = {
   title: 'Ready to put one engine behind everything you build?',
-  primary: { label: 'Talk to Sales', href: '/contact' },
-  secondary: { label: 'Request Access', href: '/contact' },
+  cta: { label: 'Sign Up', href: '/pricing' },
 };

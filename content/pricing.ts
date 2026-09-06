@@ -33,7 +33,7 @@ export const plans: Plan[] = [
     subtitle: 'For small service companies beginning automation',
     price: '$499',
     priceSuffix: '/mo',
-    cta: { label: 'Request Access', href: '/contact' },
+    cta: { label: 'Check Out', href: '/checkout?plan=starter' },
     metered: [
       { label: 'API calls', value: '50,000 / month' },
       { label: 'Dispatch events', value: '10,000 / month' },
@@ -58,7 +58,7 @@ export const plans: Plan[] = [
     subtitle: 'For mid-size companies needing stronger automation',
     price: '$899',
     priceSuffix: '/mo',
-    cta: { label: 'Request Access', href: '/contact' },
+    cta: { label: 'Check Out', href: '/checkout?plan=professional' },
     metered: [
       { label: 'API calls', value: '150,000 / month' },
       { label: 'Dispatch events', value: '25,000 / month' },
@@ -84,7 +84,7 @@ export const plans: Plan[] = [
     subtitle: 'For multi-location operators and franchise groups',
     price: '$2,500',
     priceSuffix: '/mo',
-    cta: { label: 'Request Access', href: '/contact' },
+    cta: { label: 'Check Out', href: '/checkout?plan=enterprise' },
     metered: [
       { label: 'API calls', value: '500,000 / month' },
       { label: 'Dispatch events', value: '100,000 / month' },

@@ -148,8 +148,8 @@ export default function VoiceDispatchPage() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <ButtonLink href="/contact" variant="light">
-            Request Access
+          <ButtonLink href="/checkout" variant="light">
+            Check Out
           </ButtonLink>
         </div>
       </Section>

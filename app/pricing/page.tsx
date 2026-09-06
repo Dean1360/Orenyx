@@ -85,8 +85,8 @@ export default function PricingPage() {
                   {plan.price}
                 </p>
 
-                <ButtonLink href="/contact" className="mt-6 w-full">
-                  Request Access
+                <ButtonLink href={`/checkout?plan=${plan.id}`} className="mt-6 w-full">
+                  Check Out
                 </ButtonLink>
 
                 <ul className="mt-6 space-y-3 text-sm font-srs">

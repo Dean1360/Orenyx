@@ -37,7 +37,15 @@ const volumes = ['Under 25,000', '25,000 – 250,000', '250,000 – 1 million', 
  * Posts to the internal route handler. If the client chooses an external form
  * service instead, swap the fetch target and delete app/api/request-access.
  */
-export function RequestAccessForm() {
+export function RequestAccessForm({
+  submitLabel = 'Request Access',
+  source,
+  selectedPlan,
+}: {
+  submitLabel?: string;
+  source?: string;
+  selectedPlan?: string;
+}) {
   const router = useRouter();
   const [state, setState] = useState<State>('idle');
   const [message, setMessage] = useState('');
@@ -202,6 +210,9 @@ export function RequestAccessForm() {
         className="absolute left-[-9999px]"
       />
 
+      {source ? <input type="hidden" name="source" value={source} /> : null}
+      {selectedPlan ? <input type="hidden" name="selectedPlan" value={selectedPlan} /> : null}
+
       <Button
         type="button"
         variant="light"
@@ -210,7 +221,7 @@ export function RequestAccessForm() {
         disabled={state === 'sending'}
         className="mt-7 w-full py-4"
       >
-        {state === 'sending' ? 'Sending' : 'Request Access'}
+        {state === 'sending' ? 'Sending' : submitLabel}
       </Button>
 
       {message ? (

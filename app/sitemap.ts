@@ -10,6 +10,7 @@ const routes = [
   '/security',
   '/about',
   '/contact',
+  '/checkout',
   '/faq',
   '/status',
   '/legal/terms',
