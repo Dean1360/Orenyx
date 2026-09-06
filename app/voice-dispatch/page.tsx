@@ -112,7 +112,7 @@ export default function VoiceDispatchPage() {
       </Section>
 
       {/* ── Pricing ──────────────────────────────────────── */}
-      <Section tone="violet">
+      <Section tone="dark">
         <SectionHead
           eyebrow={voicePricingNote.eyebrow}
           title={voicePricingNote.title}
@@ -126,17 +126,17 @@ export default function VoiceDispatchPage() {
               <div
                 className={`flex h-full flex-col rounded-[14px] border p-6 ${
                   plan.mostPopular
-                    ? 'border-violet-bright bg-white/10'
-                    : 'border-white/15 bg-white/5'
+                    ? 'border-violet-bright bg-bg-2'
+                    : 'border-line-violet bg-bg-2/50'
                 }`}
               >
                 {plan.mostPopular ? (
-                  <span className="mb-2 w-fit rounded-full bg-violet-bright px-3 py-1 text-xs font-bold text-white">
+                  <span className="mb-2 w-fit rounded-full bg-violet-bright px-3 py-1 text-xs font-bold text-bg">
                     Most popular
                   </span>
                 ) : null}
-                <p className="text-lg font-bold text-white">{plan.name}</p>
-                <p className="mt-1 text-sm text-white/70">{plan.calls}</p>
+                <p className="text-lg font-bold text-violet-bright">{plan.name}</p>
+                <p className="mt-1 text-sm text-fg-soft">{plan.calls}</p>
                 <p className="mt-4 text-2xl font-bold text-white">{plan.price}</p>
               </div>
             </Reveal>
