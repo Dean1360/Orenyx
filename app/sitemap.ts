@@ -7,7 +7,6 @@ const routes = [
   '/pricing',
   '/use-cases',
   '/case-study',
-  '/careers',
   '/security',
   '/about',
   '/contact',
