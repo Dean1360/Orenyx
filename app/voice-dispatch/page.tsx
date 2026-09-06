@@ -3,12 +3,12 @@ import { DemoVideo } from '@/components/demo-video';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead } from '@/components/ui/section';
+import { closingCta } from '@/content/home';
 import {
   callFlow,
   complianceNote,
   voiceFeatures,
   voiceHero,
-  voicePricingNote,
 } from '@/content/voice-dispatch';
 import { pageMeta } from '@/lib/seo';
 
@@ -114,20 +114,20 @@ export default function VoiceDispatchPage() {
         </Reveal>
       </Section>
 
-      {/* ── Pricing ──────────────────────────────────────── */}
-      <Section tone="dark">
-        <SectionHead
-          eyebrow={voicePricingNote.eyebrow}
-          title={voicePricingNote.title}
-          lead={voicePricingNote.lead}
-          align="center"
-        />
-
-        <div className="mt-10 flex justify-center">
-          <ButtonLink href="/pricing#voice-dispatch" variant="light">
-            Pricing
-          </ButtonLink>
-        </div>
+      {/* ── Closing CTA ──────────────────────────────────── */}
+      <Section className="newpadding0 " tone="hero">
+        <Reveal>
+          <div className="rounded-panel newbg-cta px-8 py-16 text-center md:px-16">
+            <h2 className="mx-auto  text-3xl font-bold leading-tight h2Newfont text-white md:text-[2.5rem]">
+              {closingCta.title}
+            </h2>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <ButtonLink href="/pricing#voice-dispatch" variant="dark">
+                Pricing
+              </ButtonLink>
+            </div>
+          </div>
+        </Reveal>
       </Section>
 
       {/* ── Your Voice Dispatch dashboard ────────────────── */}
