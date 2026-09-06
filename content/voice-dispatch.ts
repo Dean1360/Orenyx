@@ -61,5 +61,5 @@ export const voiceDemoVideo = {
 export const voicePricingNote = {
   eyebrow: 'Pricing',
   title: 'Priced by call volume, not usage tiers.',
-  lead: 'Orenyx Voice Dispatch is priced separately from the Full Automation Engine plans above — by how many calls you handle each month, not by API or bot usage.',
+  lead: 'Orenyx Voice Dispatch is priced separately from the Full Automation Engine — by how many calls you handle each month, not by API or bot usage.',
 };

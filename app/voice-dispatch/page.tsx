@@ -3,7 +3,6 @@ import { DemoVideo } from '@/components/demo-video';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead } from '@/components/ui/section';
-import { voiceDispatchPlans } from '@/content/pricing';
 import {
   callFlow,
   complianceNote,
@@ -124,32 +123,9 @@ export default function VoiceDispatchPage() {
           align="center"
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-4">
-          {voiceDispatchPlans.map((plan, i) => (
-            <Reveal key={plan.id} delay={i * 70}>
-              <div
-                className={`flex h-full flex-col rounded-[14px] border p-6 ${
-                  plan.mostPopular
-                    ? 'border-violet-bright bg-bg-2'
-                    : 'border-line-violet bg-bg-2/50'
-                }`}
-              >
-                {plan.mostPopular ? (
-                  <span className="mb-2 w-fit rounded-full bg-violet-bright px-3 py-1 text-xs font-bold text-bg">
-                    Most popular
-                  </span>
-                ) : null}
-                <p className="text-lg font-bold text-violet-bright">{plan.name}</p>
-                <p className="mt-1 text-sm text-fg-soft">{plan.calls}</p>
-                <p className="mt-4 text-2xl font-bold text-white">{plan.price}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
         <div className="mt-10 flex justify-center">
-          <ButtonLink href="/checkout" variant="light">
-            Check Out
+          <ButtonLink href="/pricing#voice-dispatch" variant="light">
+            Pricing
           </ButtonLink>
         </div>
       </Section>

@@ -1,10 +1,9 @@
-import Link from 'next/link';
 import { PageHero } from '@/components/page-hero';
 import { RequestAccessForm } from '@/components/request-access-form';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
 import { plans, voiceDispatchPlans } from '@/content/pricing';
-import { checkoutFallbackNote, checkoutIntro } from '@/content/checkout';
+import { checkoutIntro } from '@/content/checkout';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
@@ -60,15 +59,8 @@ export default async function CheckoutPage({
                   Online payment is being finalized. Submit your details and we&apos;ll set up your
                   account and billing directly — no delay in getting started.
                 </p>
-                <p className="mt-6 max-w-[520px] text-sm leading-relaxed text-white/70">
-                  {checkoutFallbackNote}
-                  <Link href="/contact" className="text-violet-bright underline">
-                    Talk to us instead
-                  </Link>
-                  .
-                </p>
-              </div>
 
+              </div>
               <RequestAccessForm submitLabel="Submit" source="checkout" selectedPlan={planId} />
             </div>
           </div>
