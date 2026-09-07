@@ -26,6 +26,16 @@ export type Plan = {
   features: string[];
   /** Numeric model for the estimator. Null when there's no fixed per-event math. */
   model: { base: number; includedDispatch: number; overagePer1k: number } | null;
+  /**
+   * Name of the Vercel env var holding this plan's live Stripe recurring
+   * Price ID (e.g. STRIPE_PRICE_AI_STARTER). Checkout only offers real card
+   * payment when that env var is set on the server — until then the form
+   * falls back to the existing manual request flow. Omit for Contact Sales
+   * plans, since Stripe needs one fixed number, not a range.
+   */
+  stripePriceEnvVar?: string;
+  /** Env var holding the one-time onboarding-fee Stripe Price ID, if billed via Stripe too. */
+  stripeOnboardingPriceEnvVar?: string;
 };
 
 export const plans: Plan[] = [
@@ -37,6 +47,8 @@ export const plans: Plan[] = [
     priceSuffix: '/mo',
     onboarding: '$2,500 one-time implementation',
     cta: { label: 'Check Out', href: '/checkout?plan=starter' },
+    stripePriceEnvVar: 'STRIPE_PRICE_AI_STARTER',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_AI_STARTER_ONBOARDING',
     metered: [
       { label: 'AI call minutes', value: '600 / month' },
       { label: 'Bot executions', value: '5,000 / month' },
@@ -62,6 +74,8 @@ export const plans: Plan[] = [
     priceSuffix: '/mo',
     onboarding: '$4,000 one-time implementation',
     cta: { label: 'Check Out', href: '/checkout?plan=professional' },
+    stripePriceEnvVar: 'STRIPE_PRICE_AI_PROFESSIONAL',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_AI_PROFESSIONAL_ONBOARDING',
     metered: [
       { label: 'AI call minutes', value: '1,500 / month' },
       { label: 'Bot executions', value: '15,000 / month' },
@@ -140,6 +154,10 @@ export type VoicePlan = {
   onboarding: string;
   mostPopular?: boolean;
   features: string[];
+  /** Same convention as Plan.stripePriceEnvVar — see that comment. */
+  stripePriceEnvVar?: string;
+  /** Same convention as Plan.stripeOnboardingPriceEnvVar — see that comment. */
+  stripeOnboardingPriceEnvVar?: string;
 };
 
 /**
@@ -157,6 +175,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
     overage: '$0.75 per additional minute',
     price: '$99\u2013149/mo',
     onboarding: '$750 one-time setup',
+    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_STARTER',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_STARTER_ONBOARDING',
     features: [
       'AI call answering, 24/7',
       'Basic call routing',
@@ -173,6 +193,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
     price: '$299/mo',
     onboarding: '$1,000 one-time setup',
     mostPopular: true,
+    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_GROWTH',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_GROWTH_ONBOARDING',
     features: [
       'Everything in Starter',
       'Advanced routing with fallback rules',
@@ -187,6 +209,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
     overage: '$0.55 per additional minute',
     price: '$799/mo',
     onboarding: '$1,500 one-time setup',
+    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_SCALE',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_SCALE_ONBOARDING',
     features: [
       'Everything in Growth',
       'Multi-line / multi-location routing',
@@ -201,6 +225,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
     overage: 'Custom rate',
     price: '$1,999\u20134,000/mo',
     onboarding: 'Custom',
+    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_ENTERPRISE',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_ENTERPRISE_ONBOARDING',
     features: [
       'Everything in Scale',
       'Custom integrations',

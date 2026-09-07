@@ -71,6 +71,35 @@ export function RequestAccessForm({
       });
 
       if (!res.ok) throw new Error(await res.text());
+
+      // For checkout submissions on a plan that has real Stripe payment
+      // configured, hand off to Stripe's hosted payment page next. Any
+      // other case (no plan, plan not yet wired to Stripe, or Stripe not
+      // configured on the server) falls back to the existing manual flow.
+      if (source === 'checkout' && selectedPlan) {
+        try {
+          const checkoutRes = await fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              planId: selectedPlan,
+              name: data.name,
+              email: data.email,
+              company: data.company,
+            }),
+          });
+          if (checkoutRes.ok) {
+            const { url } = await checkoutRes.json();
+            if (url) {
+              window.location.href = url;
+              return;
+            }
+          }
+        } catch {
+          // Fall through to the manual flow below.
+        }
+      }
+
       router.push('/thank-you');
     } catch {
       setState('error');
