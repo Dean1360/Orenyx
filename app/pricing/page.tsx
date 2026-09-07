@@ -64,8 +64,8 @@ export default function PricingPage() {
             Dispatch-only pricing.
           </h2>
           <p className="mx-auto mt-4 max-w-[640px] text-center text-lg newFont-Parra leading-relaxed text-white/85">
-            Priced by call volume instead of API/bot usage — pick the tier that matches how many
-            calls come in each month.
+            Priced by AI call minutes instead of API/bot usage — pick the tier that matches how
+            much talk time you need each month.
           </p>
         </Reveal>
 
@@ -79,11 +79,13 @@ export default function PricingPage() {
                   </span>
                 ) : null}
                 <p className="text-xl font-bold text-white">{plan.name}</p>
-                <p className="mt-1 text-sm text-white/70">{plan.calls}</p>
+                <p className="mt-1 text-sm text-white/70">{plan.minutes}</p>
+                <p className="mt-1 text-xs text-white/60">{plan.overage}</p>
 
                 <p className="mt-3 whitespace-nowrap text-3xl font-bold text-white sm:text-[2rem]">
                   {plan.price}
                 </p>
+                <p className="mt-1 text-xs text-white/60">{plan.onboarding}</p>
 
                 <ButtonLink href={`/checkout?plan=${plan.id}`} className="mt-6 w-full">
                   Check Out
@@ -129,6 +131,7 @@ export default function PricingPage() {
                     <span className="text-lg font-medium vaiolatecolor">{plan.priceSuffix}</span>
                   ) : null}
                 </p>
+                <p className="mt-1 text-xs text-fg-soft">{plan.onboarding}</p>
 
                 <ButtonLink href={plan.cta.href} className="mt-6 w-full">
                   {plan.cta.label}

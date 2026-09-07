@@ -19,6 +19,8 @@ export type Plan = {
   subtitle?: string;
   price: string;
   priceSuffix?: string;
+  /** One-time setup/implementation fee, billed separately from the monthly plan. */
+  onboarding: string;
   cta: { label: string; href: string };
   metered: MeteredRow[];
   features: string[];
@@ -33,13 +35,13 @@ export const plans: Plan[] = [
     subtitle: 'For small service companies beginning automation',
     price: '$499',
     priceSuffix: '/mo',
+    onboarding: '$2,500 one-time implementation',
     cta: { label: 'Check Out', href: '/checkout?plan=starter' },
     metered: [
-      { label: 'API calls', value: '50,000 / month' },
-      { label: 'Dispatch events', value: '10,000 / month' },
+      { label: 'AI call minutes', value: '600 / month' },
       { label: 'Bot executions', value: '5,000 / month' },
       { label: 'Payment decision calls', value: '5,000 / month' },
-      { label: 'Overage rate', value: '$3.00 per 1,000 events', accent: true },
+      { label: 'Overage rate', value: '$0.50 per additional minute', accent: true },
     ],
     features: [
       'Routing Basic (rules-based technician matching)',
@@ -58,13 +60,13 @@ export const plans: Plan[] = [
     subtitle: 'For mid-size companies needing stronger automation',
     price: '$899',
     priceSuffix: '/mo',
+    onboarding: '$4,000 one-time implementation',
     cta: { label: 'Check Out', href: '/checkout?plan=professional' },
     metered: [
-      { label: 'API calls', value: '150,000 / month' },
-      { label: 'Dispatch events', value: '25,000 / month' },
+      { label: 'AI call minutes', value: '1,500 / month' },
       { label: 'Bot executions', value: '15,000 / month' },
       { label: 'Payment decision calls', value: '10,000 / month' },
-      { label: 'Overage rate', value: '$2.50 per 1,000 events', accent: true },
+      { label: 'Overage rate', value: '$0.35 per additional minute', accent: true },
     ],
     features: [
       'Routing Advanced — rules + AI technician matching (skill + availability + area + license)',
@@ -82,15 +84,11 @@ export const plans: Plan[] = [
     id: 'enterprise',
     name: 'Enterprise',
     subtitle: 'For multi-location operators and franchise groups',
-    price: '$2,500',
-    priceSuffix: '/mo',
-    cta: { label: 'Check Out', href: '/checkout?plan=enterprise' },
+    price: 'Custom',
+    onboarding: 'Custom — scoped after discovery',
+    cta: { label: 'Contact Sales', href: '/contact' },
     metered: [
-      { label: 'API calls', value: '500,000 / month' },
-      { label: 'Dispatch events', value: '100,000 / month' },
-      { label: 'Bot executions', value: '50,000 / month' },
-      { label: 'Payment decision calls', value: '25,000 / month' },
-      { label: 'Overage rate', value: '$2.00 per 1,000 events', accent: true },
+      { label: 'AI call minutes, dispatch & usage', value: 'Custom — scoped per contract', accent: true },
     ],
     features: [
       'Full Technician Routing Engine',
@@ -107,7 +105,7 @@ export const plans: Plan[] = [
       'Dedicated success manager',
       'Full reporting suite (Ops, Revenue, Compliance, Dispatch, Payments)',
     ],
-    model: { base: 2500, includedDispatch: 100000, overagePer1k: 2.0 },
+    model: null,
   },
 ];
 
@@ -135,24 +133,30 @@ export const privateLicense = {
 export type VoicePlan = {
   id: string;
   name: string;
-  calls: string;
+  minutes: string;
+  overage: string;
   price: string;
+  /** One-time setup fee, billed separately from the monthly plan. */
+  onboarding: string;
   mostPopular?: boolean;
   features: string[];
 };
 
 /**
- * Orenyx Voice Dispatch — dispatch-only tier, priced by call volume rather
- * than the API/bot usage metrics used for the Full Automation Engine plans
- * above. Each tier steps up in call volume and gets a better effective rate
- * per call than the one before it.
+ * Orenyx Voice Dispatch — dispatch-only tier, priced by AI call minutes
+ * (the metric customers actually experience and carriers actually bill),
+ * rather than the API/bot usage metrics used for the Full Automation Engine
+ * plans above. Each tier steps up in included minutes and gets a better
+ * effective per-minute overage rate than the one before it.
  */
 export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-starter',
     name: 'Starter',
-    calls: 'Up to 500 calls/mo',
+    minutes: '150 AI call minutes / month',
+    overage: '$0.75 per additional minute',
     price: '$99\u2013149/mo',
+    onboarding: '$750 one-time setup',
     features: [
       'AI call answering, 24/7',
       'Basic call routing',
@@ -164,8 +168,10 @@ export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-growth',
     name: 'Growth',
-    calls: 'Up to 2,500 calls/mo',
+    minutes: '300 AI call minutes / month',
+    overage: '$0.65 per additional minute',
     price: '$299/mo',
+    onboarding: '$1,000 one-time setup',
     mostPopular: true,
     features: [
       'Everything in Starter',
@@ -177,8 +183,10 @@ export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-scale',
     name: 'Scale',
-    calls: 'Up to 10,000 calls/mo',
+    minutes: '900 AI call minutes / month',
+    overage: '$0.55 per additional minute',
     price: '$799/mo',
+    onboarding: '$1,500 one-time setup',
     features: [
       'Everything in Growth',
       'Multi-line / multi-location routing',
@@ -189,8 +197,10 @@ export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-enterprise',
     name: 'Enterprise',
-    calls: 'Unlimited calls',
+    minutes: 'Custom AI call minutes',
+    overage: 'Custom rate',
     price: '$1,999\u20134,000/mo',
+    onboarding: 'Custom',
     features: [
       'Everything in Scale',
       'Custom integrations',
