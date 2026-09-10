@@ -33,13 +33,13 @@ const paths = [
 
 export default function HomePage() {
   return (
-    <div className="hero-band home-pagebanner relative overflow-hidden py-16 md:py-24">
+    <div className="hero-band home-pagebanner relative overflow-hidden pt-10 pb-16 md:pt-14 md:pb-24">
       <Shell className="relative z-10 text-center">
         <p className="labelFFont text-sm font-extrabold uppercase tracking-wide text-white">
-          Two ways to run Orenyx
+          What makes Orenyx different
         </p>
-        <h1 className="mx-auto mt-2 max-w-[820px] text-4xl font-bold leading-[1.12] text-white md:text-[3.25rem]">
-          Pick the level of automation you need
+        <h1 className="mx-auto mt-5 max-w-[900px] text-4xl font-bold leading-[1.12] text-white md:text-[3.25rem]">
+          The only field-service platform that answers your phone 24/7 — even if you’re on a job, on another call, or on a break.
         </h1>
 
         <p className="mx-auto mt-6 max-w-[820px] text-lg font-bold leading-relaxed text-white md:text-2xl">
@@ -47,8 +47,8 @@ export default function HomePage() {
           that powers a live account, from the first call to the final payment.
         </p>
 
-        <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-7 py-3 text-center text-sm font-bold text-white md:text-lg">
-          Both Run on Orenyx Engine
+        <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-8 py-4 text-center text-lg font-extrabold text-white md:text-2xl">
+          Both Include Voice Dispatch
         </div>
 
         <div className="mx-auto mt-14 grid max-w-[1140px] gap-8 text-left md:grid-cols-2">
