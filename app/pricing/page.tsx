@@ -9,6 +9,7 @@ import {
   privateLicense,
   voiceDispatchPlans,
 } from '@/content/pricing';
+import { costComparisonNote } from '@/content/voice-dispatch';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
@@ -103,6 +104,10 @@ export default function PricingPage() {
             </Reveal>
           ))}
         </div>
+
+        <p className="mx-auto mt-8 max-w-[640px] text-center text-base font-bold text-white">
+          {costComparisonNote}
+        </p>
       </Section>
 
       {/* ── AI Engine plans ──────────────────────────────── */}

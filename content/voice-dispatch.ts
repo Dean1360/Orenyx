@@ -5,6 +5,14 @@ export const voiceHero = {
   lead: 'The dispatch-only tier of Orenyx AI Engine — calls answered, jobs booked, techs routed, payments collected, and follow-ups handled. For companies that want dispatch handled, not everything automated.',
 };
 
+export const compatibilityNote = {
+  title: 'Works with what you already run',
+  body: 'Keep your existing scheduling, CRM, or field-service software \u2014 Jobber, ServiceTitan, Housecall Pro, or anything else. Orenyx Voice Dispatch answers the call and hands the job off automatically. No rip-and-replace, no retraining your team on new software.',
+};
+
+export const differentiationNote =
+  'Most field-service software still needs a person to pick up the phone. Orenyx is the one that doesn\u2019t.';
+
 export const callFlow = {
   eyebrow: 'How it works',
   title: 'From ringing phone to dispatched technician, in one call.',
@@ -63,3 +71,6 @@ export const voicePricingNote = {
   title: 'Priced by call volume, not usage tiers.',
   lead: 'Orenyx Voice Dispatch is priced separately from the Full Automation Engine — by how many calls you handle each month, not by API or bot usage.',
 };
+
+export const costComparisonNote =
+  'A fraction of the cost of round-the-clock phone coverage \u2014 and it never misses a call.';

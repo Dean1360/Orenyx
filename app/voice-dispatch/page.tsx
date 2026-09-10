@@ -6,7 +6,9 @@ import { Section, SectionHead } from '@/components/ui/section';
 import { closingCta } from '@/content/home';
 import {
   callFlow,
+  compatibilityNote,
   complianceNote,
+  differentiationNote,
   voiceFeatures,
   voiceHero,
 } from '@/content/voice-dispatch';
@@ -59,12 +61,26 @@ export default function VoiceDispatchPage() {
             24/7 Coverage — Never Miss an Emergency Call or Booking
           </div>
 
-          <p className="mx-auto mt-8 max-w-[600px] text-center text-xl font-semibold text-white/85 md:text-2xl">
+          <p className="mx-auto mt-8 max-w-[640px] text-center text-xl font-semibold text-white/85 md:text-2xl">
+            {differentiationNote}
+          </p>
+
+          <p className="mx-auto mt-3 max-w-[600px] text-center text-base text-white/70">
             Watch how Orenyx handles a dispatch call, step by step.
           </p>
 
           <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
             <DemoVideo src="/videos/voice-dispatch-demo.mp4" />
+          </div>
+        </Reveal>
+      </Section>
+
+      {/* ── Compatibility ── */}
+      <Section tone="violet">
+        <Reveal>
+          <div className="mx-auto max-w-[820px] rounded-[14px] border border-white/15 bg-white/5 p-8 text-center">
+            <p className="text-lg font-bold text-white">{compatibilityNote.title}</p>
+            <p className="mt-3 text-sm leading-relaxed text-white/80">{compatibilityNote.body}</p>
           </div>
         </Reveal>
       </Section>
