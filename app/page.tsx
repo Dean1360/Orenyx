@@ -39,7 +39,7 @@ export default function HomePage() {
           What makes Orenyx different
         </p>
         <h1 className="mx-auto mt-5 max-w-[900px] text-4xl font-bold leading-[1.12] text-white md:text-[3.25rem]">
-          The only field-service platform that answers your phone 24/7 — even if you’re on a job, on another call, or on a break.
+          The call comes in. The job gets booked, routed, and paid — automatically.
         </h1>
 
         <p className="mx-auto mt-6 max-w-[820px] text-lg font-bold leading-relaxed text-white md:text-2xl">
