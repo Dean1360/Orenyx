@@ -1,7 +1,7 @@
 /** Checkout page copy — static page ahead of Stripe integration. */
 
 export const checkoutIntro =
-  "You're almost set. Online payment is being finalized — for now, confirm your plan below and email us to get your account and billing set up directly. No delay in getting started.";
+  "We're setting up online checkout for this plan. Submit your details below and we'll get your account and billing set up directly — no delay in getting started.";
 
 export const checkoutEmail = { label: 'info@orenyxengine.com', href: 'mailto:info@orenyxengine.com' };
 

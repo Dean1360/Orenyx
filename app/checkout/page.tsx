@@ -56,8 +56,8 @@ export default async function CheckoutPage({
                   account set up.
                 </h2>
                 <p className="mt-6 max-w-[520px] text-lg font-bold leading-relaxed text-white newFont-Parra">
-                  Online payment is being finalized. Submit your details and we&apos;ll set up your
-                  account and billing directly — no delay in getting started.
+                  We&apos;re setting up online checkout for this plan. Submit your details and
+                  we&apos;ll set up your account and billing directly — no delay in getting started.
                 </p>
 
               </div>
