@@ -35,16 +35,13 @@ export default function HomePage() {
   return (
     <div className="hero-band home-pagebanner relative overflow-hidden pt-10 pb-16 md:pt-14 md:pb-24">
       <Shell className="relative z-10 text-center">
-        <p className="labelFFont text-sm font-extrabold uppercase tracking-wide text-white">
-          What makes Orenyx different
-        </p>
         <h1 className="mx-auto mt-5 max-w-[900px] text-4xl font-bold leading-[1.12] text-white md:text-[3.25rem]">
-          The call comes in. The job gets booked, routed, and paid — automatically.
+          Never Miss Another Service Call.
         </h1>
 
         <p className="mx-auto mt-6 max-w-[820px] text-lg font-bold leading-relaxed text-white md:text-2xl">
-          Built for HVAC, plumbing, electrical, and other field-service businesses — every module
-          that powers a live account, from the first call to the final payment.
+          Orenyx helps home-service companies answer more calls, book more jobs, and keep dispatch
+          moving — 24/7.
         </p>
 
         <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-8 py-4 text-center text-lg font-extrabold text-white md:text-2xl">
