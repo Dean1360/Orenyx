@@ -139,9 +139,8 @@ export const privateLicense = {
     'API Builder Packet',
     'Multi-tenant isolation',
     '12-month support',
-    'Annual renewal: $150k\u2013$300k',
   ],
-  contact: { label: 'info@orenyxengine.com', href: 'mailto:info@orenyxengine.com' },
+  contact: { label: 'Contact Sales', href: '/private-license' },
 };
 
 export type VoicePlan = {
