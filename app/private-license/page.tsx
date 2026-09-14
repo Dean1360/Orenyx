@@ -55,7 +55,7 @@ export default function PrivateLicensePage() {
       {/* ── Inquiry form ─────────────────────────────────────── */}
       <Section tone="violet">
         <Reveal>
-          <div className="contact-panel rounded-panel border border-white/20 px-6 py-10 sm:px-10 md:px-12 md:py-14 lg:px-16">
+          <div className="contact-panel rounded-panel px-6 py-10 sm:px-10 md:px-12 md:py-14 lg:px-16">
             <h2 className="h2Newfont text-center font-bold leading-[1.15] text-white">
               REQUEST PRIVATE LICENSE INFO
             </h2>
@@ -64,7 +64,7 @@ export default function PrivateLicensePage() {
               call.
             </p>
 
-            <div className="mx-auto mt-10 max-w-[640px]">
+            <div className="mx-auto mt-10 max-w-[640px] rounded-panel border-2 border-white/50 p-6 sm:p-8">
               <PrivateLicenseInquiryForm />
             </div>
           </div>
