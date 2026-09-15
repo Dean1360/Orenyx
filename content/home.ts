@@ -89,10 +89,6 @@ export const capabilityOverview = {
       body: 'Sell and manage recurring membership and warranty plans directly through the platform.',
     },
     {
-      name: 'Automated Business Onboarding',
-      body: 'New accounts are onboarded and provisioned automatically — no manual setup required to go live.',
-    },
-    {
       name: 'Upsell & Advanced Support',
       body: 'Surfaces relevant upsell offers and escalates complex support issues automatically.',
     },
