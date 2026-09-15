@@ -16,7 +16,7 @@ export default function ThankYouPage() {
       <PageHero
         crumb="Request received"
         title="Thanks for reaching out."
-        lead="We aim to respond promptly. Someone from Orenyx AI Engine LLC will follow up by email."
+        lead="We aim to respond promptly. Someone from Orenyx Labs, LLC will follow up by email."
       />
       <Section>
         <div className="flex flex-wrap gap-3">

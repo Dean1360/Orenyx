@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { PageHero } from '@/components/page-hero';
 import { Placeholder } from '@/components/ui/placeholder';
@@ -67,6 +68,21 @@ export function LegalPage({ outline }: { outline: LegalOutline }) {
                         {linkEmails(p)}
                       </p>
                     ))}
+
+                    {clause.links ? (
+                      <ul className="mt-6 flex flex-wrap gap-3">
+                        {clause.links.map((l) => (
+                          <li key={l.href}>
+                            <Link
+                              href={l.href}
+                              className="inline-block rounded-[8px] border border-line-violet bg-bg-inset px-4 py-2 text-16px text-violet-bright hover:underline"
+                            >
+                              {l.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </Reveal>
                 </li>
               ))}

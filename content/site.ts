@@ -5,7 +5,7 @@
 
 export const site = {
   name: 'Orenyx AI Engine™',
-  company: 'Orenyx AI Engine LLC',
+  company: 'Orenyx Labs, LLC',
   registeredIn: 'Wyoming',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://orenyxengine.com',
   supportEmail: 'operations@orenyxengine.com',
