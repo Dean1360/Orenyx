@@ -62,7 +62,7 @@ export const capabilityOverview = {
     },
     {
       name: 'Appointment Booking',
-      body: 'Customers book, reschedule, and confirm appointments online without a phone call.',
+      body: 'Customers book and confirm appointments online without a phone call.',
     },
     {
       name: 'Call-to-Job Handoff',
@@ -78,7 +78,7 @@ export const capabilityOverview = {
     },
     {
       name: 'Cancellation & Revenue Recovery',
-      body: 'Automatically re-books cancelled slots and recovers revenue that would otherwise be lost to no-shows.',
+      body: 'Applies your refund policy automatically and flags the slot for your team to re-book.',
     },
     {
       name: 'Maintenance Reminders & Follow-Up',
