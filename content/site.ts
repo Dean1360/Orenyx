@@ -158,8 +158,8 @@ export const ecosystem: Product[] = [
     href: '#',
   },
   {
-    label: 'Automated Business Onboarding',
-    lines: ['Automated', 'Onboarding'],
+    label: 'Public Developer API',
+    lines: ['Public Developer', 'API'],
     icon: 'cloud',
     href: '#',
   },
