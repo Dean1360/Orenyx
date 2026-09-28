@@ -6,6 +6,7 @@ import { Section } from '@/components/ui/section';
 import {
   addOns,
   plans,
+  operationalCompliance,
   privateLicense,
   voiceDispatchPlans,
 } from '@/content/pricing';
@@ -188,6 +189,28 @@ export default function PricingPage() {
 
             <a href={privateLicense.contact.href} className="mt-5 text-violet-bright underline">
               {privateLicense.contact.label}
+            </a>
+          </div>
+        </Reveal>
+
+        <Reveal delay={plans.length * 70 + 70}>
+          <div className="mt-6 flex flex-col items-center gap-2 rounded-[14px] border border-line-violet bg-bg-2/50 p-6 text-center">
+            <p className="text-lg font-bold text-violet-bright">
+              {operationalCompliance.name} — {operationalCompliance.price}
+            </p>
+            <p className="text-sm text-fg-soft">{operationalCompliance.subtitle}</p>
+
+            <ul className="mt-4 grid gap-3 text-left text-sm font-srs sm:grid-cols-2 lg:grid-cols-3">
+              {operationalCompliance.features.map((f) => (
+                <li key={f} className="flex gap-3 text-fg-soft">
+                  <ArrowBullet />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href={operationalCompliance.contact.href} className="mt-5 text-violet-bright underline">
+              {operationalCompliance.contact.label}
             </a>
           </div>
         </Reveal>

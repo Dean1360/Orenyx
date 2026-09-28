@@ -143,6 +143,24 @@ export const privateLicense = {
   contact: { label: 'Contact Sales', href: '/private-license' },
 };
 
+export const operationalCompliance = {
+  name: 'Standalone Operational Compliance',
+  subtitle: 'Basic protections',
+  price: 'Contact for Pricing',
+  features: [
+    'Data isolation',
+    'Tenant protection',
+    'API‑key security',
+    'Bot sandboxing',
+    'Audit logs',
+    'Zero cross‑tenant access',
+    'No SOC 2',
+    'No ISO',
+    'No HIPAA',
+  ],
+  contact: { label: 'Contact Sales', href: '/private-license' },
+};
+
 export type VoicePlan = {
   id: string;
   name: string;
