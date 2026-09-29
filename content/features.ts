@@ -55,7 +55,25 @@ export const technicalHighlights = [
   Rows are verbatim; the two columns of values are outstanding.
 */
 export const comparisonRows = [
-  'Time-to-launch',
-  'Maintenance burden',
-  'Cross-product consistency',
+  {
+    label: 'Time-to-launch',
+    buildIt:
+      'Months of development before the first call is answered — hiring developers and wiring phone, scheduling, and payment systems together yourself.',
+    orenyx:
+      'Connects to the phone lines, scheduling, and payment tools you already use. Start with one piece, like call handling, and add more when you are ready.',
+  },
+  {
+    label: 'Maintenance burden',
+    buildIt:
+      'Your team owns every bug fix, update, security patch, and outage — for as long as the system runs.',
+    orenyx:
+      'Orenyx maintains, updates, and monitors the platform, the bots, and the integrations for you.',
+  },
+  {
+    label: 'Cross-product consistency',
+    buildIt:
+      'Separate tools for calls, dispatch, and payments that do not share data, so jobs and follow-ups fall through the cracks.',
+    orenyx:
+      'One engine runs calls, booking, technician routing, payments, compliance checks, and follow-up, with every step logged in one place.',
+  },
 ];

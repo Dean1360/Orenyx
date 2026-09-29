@@ -110,16 +110,12 @@ export function FeaturesSections() {
               </thead>
               <tbody>
                 {comparisonRows.map((row, i) => (
-                  <tr key={row} className={i % 2 ? 'bg-bg-2' : 'bg-bg-3/60'}>
+                  <tr key={row.label} className={i % 2 ? 'bg-bg-2' : 'bg-bg-3/60'}>
                     <th scope="row" className="px-6 py-5 text-sm font-bold text-white">
-                      {row}
+                      {row.label}
                     </th>
-                    <td className="px-6 py-5 text-sm">
-                     1
-                    </td>
-                    <td className="px-6 py-5 text-sm">
-                   2
-                    </td>
+                    <td className="px-6 py-5 text-sm leading-relaxed">{row.buildIt}</td>
+                    <td className="px-6 py-5 text-sm leading-relaxed">{row.orenyx}</td>
                   </tr>
                 ))}
               </tbody>
