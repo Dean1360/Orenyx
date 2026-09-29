@@ -8,13 +8,9 @@
  * legal problem, so anything neither the document nor the packet confirms
  * stays unconfirmed here rather than being rounded up to a claim.
  *
- * NOTE ON CERTIFICATION LANGUAGE: the compliance document says only that
- * formal certification status is "available to Enterprise customers on
- * request". The explicit "audit underway / not yet issued" wording below is
- * kept from commit 139643c (2026-08-23), which post-dates the document and
- * finalised this language deliberately. It is the more conservative of the
- * two, so it wins. The document's Enterprise due-diligence sentence is added
- * underneath rather than replacing it.
+ * CERTIFICATIONS (2026-09-29, owner decision): Orenyx does not hold and is
+ * not pursuing SOC 2, ISO, HIPAA or PCI-DSS certification. Never claim or
+ * imply an audit is underway. Only state that certifications are not included.
  *
  * The document uses the retired support@motuslabs.co address throughout;
  * contacts below route to the live legal@orenyxengine.com channel instead.
@@ -54,20 +50,8 @@ export type ComplianceItem = {
 };
 
 export const compliance: { heading: string; items: ComplianceItem[]; footnote: string } = {
-  heading: 'Compliance & Certifications',
+  heading: 'Compliance & Data Protection',
   items: [
-    {
-      name: 'SOC 2 Type II',
-      status: 'Actively pursuing',
-      body: 'An audit is currently underway. Formal certification has not yet been issued.',
-    },
-    {
-      name: 'PCI-DSS',
-      status: 'Actively pursuing',
-      // Orenyx Payment holds direct PCI scope; the engine itself only
-      // touches adjacent, non-card data.
-      body: 'An audit is currently underway for the payment module. Formal certification has not yet been issued.',
-    },
     {
       name: 'GDPR / CCPA',
       status: 'Data handling practices documented',
@@ -79,7 +63,7 @@ export const compliance: { heading: string; items: ComplianceItem[]; footnote: s
     },
   ],
   footnote:
-    'We align our data handling practices with recognized frameworks including SOC 2 and PCI-DSS principles for platforms that process payment-related decisioning, and document GDPR/CCPA-aligned data handling practices consistent with our Privacy Policy. Formal certification status is available to Enterprise customers on request as part of the onboarding and due-diligence process.',
+    'Orenyx does not hold SOC 2, ISO, or HIPAA certification. Our protections are data isolation, tenant separation, API-key security, bot sandboxing, and audit logs.',
 };
 
 export const reliability: {
