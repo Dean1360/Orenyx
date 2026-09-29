@@ -3,6 +3,7 @@ import { EngineDiagram } from '@/components/engine-diagram';
 import { Reveal } from '@/components/reveal';
 import { Shell } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
+import { operationalCompliance, privateLicense } from '@/content/pricing';
 
 export const metadata = pageMeta({
   titleTag: 'Orenyx — Two Ways to Run Your Business',
@@ -11,6 +12,8 @@ export const metadata = pageMeta({
     'Pick the level of automation you need: Orenyx Voice Dispatch for dispatch-only, or Orenyx AI Engine for full automation.',
   path: '/',
 });
+
+const extraOffers = [privateLicense, operationalCompliance];
 
 const paths = [
   {
@@ -65,6 +68,34 @@ export default function HomePage() {
                   </ButtonLink>
                   <ButtonLink href={path.pricingHref} variant="primary" arrow={false}>
                     Pricing
+                  </ButtonLink>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-8 grid max-w-[1140px] gap-8 text-left md:grid-cols-2">
+          {extraOffers.map((offer, i) => (
+            <Reveal key={offer.name} delay={(paths.length + i) * 70}>
+              <div className="flex h-full flex-col rounded-[20px] border border-line-violet bg-bg-2/70 p-8 backdrop-blur-[1px] md:p-10">
+                <h2 className="text-xl font-bold text-white md:text-2xl">
+                  {offer.name} — {offer.price}
+                </h2>
+                <p className="mt-2 text-base font-bold text-violet-soft">{offer.subtitle}</p>
+                <ul className="mt-6 grid flex-1 content-start gap-3 text-base text-white/90 sm:grid-cols-2">
+                  {offer.features.map((f) => (
+                    <li key={f} className="flex gap-3">
+                      <span aria-hidden="true" className="mt-[2px] text-violet-bright">
+                        {f.startsWith('No ') ? '–' : '✓'}
+                      </span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <ButtonLink href={offer.contact.href} variant="primary">
+                    {offer.contact.label}
                   </ButtonLink>
                 </div>
               </div>

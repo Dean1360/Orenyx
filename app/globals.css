@@ -1337,3 +1337,14 @@ animation: loader-breathe 2.2s ease-in-out infinite;
   margin-top: -103px;
 }
 }
+/* Desktop primary nav: 8 tabs need a smaller size so the Get Started button
+   fits inside the bar. The general `.header-violet a { font-size: 18px }`
+   rule still applies to the mobile drawer. */
+.header-violet nav[aria-label='Primary'] a.nav-link {
+  font-size: 14px;
+}
+@media (min-width: 1536px) {
+  .header-violet nav[aria-label='Primary'] a.nav-link {
+    font-size: 16px;
+  }
+}

@@ -158,7 +158,7 @@ export const operationalCompliance = {
     'No ISO',
     'No HIPAA',
   ],
-  contact: { label: 'Contact Sales', href: '/private-license' },
+  contact: { label: 'Contact Sales', href: '/compliance' },
 };
 
 export type VoicePlan = {

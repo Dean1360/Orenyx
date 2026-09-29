@@ -4,6 +4,8 @@ import { site } from '@/content/site';
 const routes = [
   '/',
   '/features',
+  '/private-license',
+  '/compliance',
   '/pricing',
   '/use-cases',
   '/case-study',

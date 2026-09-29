@@ -70,7 +70,7 @@ export function SiteHeader() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-4 lg:flex xl:gap-6"
+            className="hidden items-center gap-3.5 xl:flex 2xl:gap-5"
           >
             {primaryNav.map((item) => {
               const active = isActive(item.href);
@@ -105,7 +105,7 @@ export function SiteHeader() {
             aria-controls="mobile-nav"
             // White on the dark bar — the old ink-on-violet colours vanished
             // when the bar background moved to #0F172A.
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-[6px] border border-white/40 text-white transition-colors hover:bg-white/10 lg:hidden"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-[6px] border border-white/40 text-white transition-colors hover:bg-white/10 xl:hidden"
           >
             <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -123,7 +123,7 @@ export function SiteHeader() {
       {open ? (
         <div
           id="mobile-nav"
-          className="header-violet max-h-[calc(100dvh-116px)] overflow-y-auto border-t border-bg/20 md:max-h-[calc(100dvh-144px)] lg:hidden"
+          className="header-violet max-h-[calc(100dvh-116px)] overflow-y-auto border-t border-bg/20 md:max-h-[calc(100dvh-144px)] xl:hidden"
         >
           <nav aria-label="Mobile" className="mx-auto max-w-[1180px] px-4 py-3 sm:px-5">
             <ul className="flex flex-col">

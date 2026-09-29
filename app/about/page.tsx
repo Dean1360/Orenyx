@@ -1,4 +1,5 @@
 import { ButtonLink } from '@/components/ui/button';
+import { FeaturesSections } from '@/components/features-sections';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
@@ -69,6 +70,11 @@ export default function AboutPage() {
           </div>
         </Reveal>
       </Section>
+
+      {/* ── Features (moved here from the Features tab) ─────── */}
+      <div id="features">
+        <FeaturesSections />
+      </div>
     </>
   );
 }

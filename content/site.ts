@@ -18,8 +18,9 @@ export const primaryNav = [
   { label: 'How They Work', href: '/about' },
   { label: 'Voice Dispatch', href: '/voice-dispatch' },
   { label: 'Orenyx AI Engine', href: '/ai-engine' },
+  { label: 'Private License', href: '/private-license' },
+  { label: 'Compliance', href: '/compliance' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Features', href: '/features' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
 
@@ -33,9 +34,11 @@ export const footerNav = [
   {
     heading: 'Product',
     links: [
-      { label: 'Features', href: '/features' },
+      { label: 'Features', href: '/about#features' },
       { label: 'Voice Dispatch', href: '/voice-dispatch' },
       { label: 'Orenyx AI Engine', href: '/ai-engine' },
+      { label: 'Private License', href: '/private-license' },
+      { label: 'Compliance', href: '/compliance' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Security', href: '/security' },
     ],
