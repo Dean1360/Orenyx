@@ -1,4 +1,4 @@
-import { ButtonLink } from '@/components/ui/button';
+import { ComplianceInquiryForm } from '@/components/compliance-inquiry-form';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead } from '@/components/ui/section';
@@ -50,18 +50,26 @@ export default function CompliancePage() {
           </ul>
 
           <p className="mt-8 max-w-[720px] text-[15px] leading-relaxed text-fg-soft">
-            Pricing depends on whether you run Orenyx AI Engine, how many users you have, how long
-            audit logs are kept, and your support level. Contact us and the Orenyx team will follow up
-            with pricing.
+            Pricing depends on whether you already run Orenyx, how many users you have, how long
+            audit logs are kept, and your support level. Answer a few questions below and the
+            Orenyx team will follow up with pricing.
           </p>
+        </Reveal>
+      </Section>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="/contact" variant="primary">
-              Contact Sales
-            </ButtonLink>
-            <ButtonLink href="/pricing" variant="outline" arrow={false}>
-              View Pricing
-            </ButtonLink>
+      {/* ── Inquiry form ─────────────────────────────────────── */}
+      <Section tone="violet">
+        <Reveal>
+          <div id="request" className="contact-panel scroll-mt-40 rounded-panel px-6 py-10 sm:px-10 md:px-12 md:py-14 lg:px-16">
+            <h2 className="h2Newfont text-center font-bold leading-[1.15] text-white">
+              REQUEST COMPLIANCE INFO
+            </h2>
+            <p className="mx-auto mt-3 max-w-[560px] text-center text-[15px] text-white/70">
+              Your answers help the Orenyx team prepare your pricing before the first call.
+            </p>
+            <div className="mx-auto mt-10 max-w-[640px] rounded-panel border-2 border-white/50 p-6 sm:p-8">
+              <ComplianceInquiryForm />
+            </div>
           </div>
         </Reveal>
       </Section>
