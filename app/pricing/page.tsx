@@ -1,6 +1,8 @@
 import { ButtonLink } from '@/components/ui/button';
 import { PageHero } from '@/components/page-hero';
 import { PricingEstimator } from '@/components/pricing-estimator';
+import { VoiceDispatchPlans } from '@/components/voice-dispatch-plans';
+import { AiEnginePlans } from '@/components/ai-engine-plans';
 import { Reveal } from '@/components/reveal';
 import { Section } from '@/components/ui/section';
 import {
@@ -8,9 +10,7 @@ import {
   plans,
   operationalCompliance,
   privateLicense,
-  voiceDispatchPlans,
 } from '@/content/pricing';
-import { costComparisonNote } from '@/content/voice-dispatch';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
@@ -71,44 +71,7 @@ export default function PricingPage() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 pricechnasgeFont">
-          {voiceDispatchPlans.map((plan, i) => (
-            <Reveal key={plan.id} delay={i * 70} className="h-full">
-              <div className="pricechnageFont flex h-full flex-col rounded-[14px] border-2 border-white/30 bg-bg/50 p-8">
-                {plan.mostPopular ? (
-                  <span className="mb-2 w-fit rounded-full bg-violet-bright px-3 py-1 text-xs font-bold text-bg">
-                    Most popular
-                  </span>
-                ) : null}
-                <p className="text-xl font-bold text-white">{plan.name}</p>
-                <p className="mt-1 text-sm text-white/70">{plan.minutes}</p>
-                <p className="mt-1 text-xs text-white/60">{plan.overage}</p>
-
-                <p className="mt-3 whitespace-nowrap text-3xl font-bold text-white sm:text-[2rem]">
-                  {plan.price}
-                </p>
-                <p className="mt-1 text-xs text-white/60">{plan.onboarding}</p>
-
-                <ButtonLink href={`/checkout?plan=${plan.id}`} className="mt-6 w-full">
-                  Check Out
-                </ButtonLink>
-
-                <ul className="mt-6 space-y-3 text-sm font-srs">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex gap-3 font-medium text-white/90">
-                      <ArrowBullet />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <p className="mx-auto mt-8 max-w-[640px] text-center text-base font-bold text-white">
-          {costComparisonNote}
-        </p>
+        <VoiceDispatchPlans />
       </Section>
 
       {/* ── AI Engine plans ──────────────────────────────── */}
@@ -122,54 +85,7 @@ export default function PricingPage() {
           </h2>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3 pricechnasgeFont">
-          {plans.map((plan, i) => (
-            <Reveal key={plan.id}  delay={i * 70}>
-              <div className="pricechnageFont flex h-full flex-col rounded-[14px] border border-line-violet bg-bg-2/50 p-6">
-                <p className="text-lg font-bold text-violet-bright">{plan.name}</p>
-                {plan.subtitle ? (
-                  <p className="mt-1 text-sm text-fg-soft">{plan.subtitle}</p>
-                ) : null}
-
-                <p className="mt-3 pricens font-bold">
-                  {plan.price}
-                  {plan.priceSuffix ? (
-                    <span className="text-lg font-medium vaiolatecolor">{plan.priceSuffix}</span>
-                  ) : null}
-                </p>
-                <p className="mt-1 text-xs text-fg-soft">{plan.onboarding}</p>
-
-                <ButtonLink href={plan.cta.href} className="mt-6 w-full">
-                  {plan.cta.label}
-                </ButtonLink>
-
-                <dl className="mt-7 space-y-3 border-b border-line pb-6 text-sm">
-                  {plan.metered.map((row) => (
-                    <div key={row.label} className="flex items-baseline justify-between gap-4">
-                      <dt className="text-fg-soft">{row.label}</dt>
-                      <dd
-                        className={`text-right font-medium ${
-                          row.accent ? 'text-violet-bright' : 'text-white'
-                        }`}
-                      >
-                        {row.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <ul className="mt-6 space-y-3 text-sm font-srs">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex gap-3 text-fg-soft">
-                      <ArrowBullet />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <AiEnginePlans />
 
         <Reveal delay={plans.length * 70}>
           <div className="mt-6 flex flex-col items-center gap-2 rounded-[14px] border border-line-violet bg-bg-2/50 p-6 text-center">

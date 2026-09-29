@@ -2,6 +2,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { DemoVideo } from '@/components/demo-video';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
+import { VoiceDispatchPlans } from '@/components/voice-dispatch-plans';
 import { Section, SectionHead } from '@/components/ui/section';
 import { closingCta } from '@/content/home';
 import {
@@ -120,6 +121,20 @@ export default function VoiceDispatchPage() {
         </div>
       </Section>
 
+      {/* ── Voice Dispatch pricing ───────────────────────── */}
+      <Section id="pricing" tone="violet" className="scroll-mt-40">
+        <Reveal>
+          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-white/70">
+            Compare Orenyx Voice Dispatch
+          </p>
+          <h2 className="mt-2 text-center h2Newfont font-bold text-white md:text-[2.75rem]">
+            Simple usage-based <span className="text-violet-soft">pricing</span>
+            <br className="hidden md:block" /> that scales with you.
+          </h2>
+        </Reveal>
+        <VoiceDispatchPlans />
+      </Section>
+
       {/* ── Compliance ───────────────────────────────────── */}
       <Section tone="dark">
         <Reveal>
@@ -138,7 +153,7 @@ export default function VoiceDispatchPage() {
               {closingCta.title}
             </h2>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <ButtonLink href="/pricing#voice-dispatch" variant="dark">
+              <ButtonLink href="/voice-dispatch#pricing" variant="dark">
                 Pricing
               </ButtonLink>
             </div>

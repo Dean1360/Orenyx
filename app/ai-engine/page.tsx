@@ -4,6 +4,7 @@ import { Logo } from '@/components/logo';
 import Image from 'next/image';
 import { Placeholder } from '@/components/ui/placeholder';
 import { Reveal } from '@/components/reveal';
+import { AiEnginePlans } from '@/components/ai-engine-plans';
 import { Section, SectionHead, Shell } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
 import { capabilityOverview, closingCta, hero, solution } from '@/content/home';
@@ -128,6 +129,26 @@ export default function AiEnginePage() {
         </div>
       </Section>
 
+
+      {/* ── AI Engine pricing ─────────────────────────────── */}
+      <Section id="pricing" className="scroll-mt-40">
+        <Reveal>
+          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-violet-soft">
+            Orenyx AI Engine
+          </p>
+          <h2 className="heading-silver mt-2 text-center h2Newfont font-bold md:text-[2.75rem]">
+            Plan Comparison
+          </h2>
+        </Reveal>
+        <AiEnginePlans />
+        <Reveal>
+          <p className="mx-auto mt-8 max-w-[720px] text-center text-[15px] text-fg-soft">
+            Need your own private deployment or compliance protections? See{' '}
+            <a href="/private-license" className="text-violet-bright underline">Private License</a> and{' '}
+            <a href="/compliance" className="text-violet-bright underline">Compliance</a>.
+          </p>
+        </Reveal>
+      </Section>
 
       {/* ── Closing CTA ──────────────────────────────────── */}
       <Section className="newpadding0 " tone="hero">
