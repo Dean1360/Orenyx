@@ -105,6 +105,20 @@ export default function VoiceDispatchPage() {
         </div>
       </Section>
 
+      {/* ── Voice Dispatch pricing ───────────────────────── */}
+      <Section id="pricing" tone="violet" className="scroll-mt-40">
+        <Reveal>
+          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-white/70">
+            Compare Orenyx Voice Dispatch
+          </p>
+          <h2 className="mt-2 text-center h2Newfont font-bold text-white md:text-[2.75rem]">
+            Simple usage-based <span className="text-violet-soft">pricing</span>
+            <br className="hidden md:block" /> that scales with you.
+          </h2>
+        </Reveal>
+        <VoiceDispatchPlans />
+      </Section>
+
       {/* ── Features ─────────────────────────────────────── */}
       <Section tone="violet">
         <SectionHead eyebrow="What's included" title="Everything the dispatch tier covers." />
@@ -119,20 +133,6 @@ export default function VoiceDispatchPage() {
             </Reveal>
           ))}
         </div>
-      </Section>
-
-      {/* ── Voice Dispatch pricing ───────────────────────── */}
-      <Section id="pricing" tone="violet" className="scroll-mt-40">
-        <Reveal>
-          <p className="labelFFont text-center text-sm font-bold uppercase tracking-wide text-white/70">
-            Compare Orenyx Voice Dispatch
-          </p>
-          <h2 className="mt-2 text-center h2Newfont font-bold text-white md:text-[2.75rem]">
-            Simple usage-based <span className="text-violet-soft">pricing</span>
-            <br className="hidden md:block" /> that scales with you.
-          </h2>
-        </Reveal>
-        <VoiceDispatchPlans />
       </Section>
 
       {/* ── Compliance ───────────────────────────────────── */}
