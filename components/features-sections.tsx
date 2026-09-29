@@ -92,7 +92,25 @@ export function FeaturesSections() {
         <Reveal>
           {/* Three columns of prose will not compress below ~560px without
               becoming unreadable, so the table scrolls sideways instead. */}
-          <div className="mt-10 overflow-x-auto rounded-[14px] border border-line-violet">
+          {/* Phones: one card per row, no sideways scrolling. */}
+          <div className="mt-10 space-y-4 md:hidden">
+            {comparisonRows.map((row) => (
+              <div key={row.label} className="overflow-hidden rounded-[14px] border border-line-violet">
+                <div className="bg-violet px-5 py-3 text-base font-bold text-white">{row.label}</div>
+                <div className="bg-bg-3/60 px-5 py-4">
+                  <div className="text-xs font-bold uppercase tracking-wide text-violet-soft">Build it yourself</div>
+                  <p className="mt-1 text-sm leading-relaxed text-fg-soft">{row.buildIt}</p>
+                </div>
+                <div className="bg-bg-2 px-5 py-4">
+                  <div className="text-xs font-bold uppercase tracking-wide text-violet-bright">Orenyx AI Engine™</div>
+                  <p className="mt-1 text-sm leading-relaxed text-white">{row.orenyx}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tablets and up: the full table. */}
+          <div className="mt-10 hidden overflow-x-auto rounded-[14px] border border-line-violet md:block">
             <table className="w-full min-w-[560px] text-left custom-tablecolor">
               <caption className="sr-only">
                 Building the decision layer yourself compared with Orenyx AI Engine™.
