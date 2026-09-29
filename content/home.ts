@@ -105,5 +105,5 @@ export const capabilityOverview = {
 
 export const closingCta = {
   title: 'Ready to put one engine behind everything you build?',
-  cta: { label: 'Pricing', href: '/pricing#ai-engine' },
+  cta: { label: 'Pricing', href: '/ai-engine#pricing' },
 };

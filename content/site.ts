@@ -20,7 +20,6 @@ export const primaryNav = [
   { label: 'Orenyx AI Engine', href: '/ai-engine' },
   { label: 'Private License', href: '/private-license' },
   { label: 'Compliance', href: '/compliance' },
-  { label: 'Pricing', href: '/pricing' },
   { label: 'Security & Trust', href: '/security' },
 ] as const;
 

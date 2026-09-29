@@ -22,7 +22,7 @@ const paths = [
     body: 'Calls answered, jobs booked, techs routed, payments collected. For companies that want dispatch handled, not everything automated.',
     exploreLabel: 'Explore Voice Dispatch',
     exploreHref: '/voice-dispatch',
-    pricingHref: '/pricing#voice-dispatch',
+    pricingHref: '/voice-dispatch#pricing',
   },
   {
     tag: 'Full Automation',
@@ -30,7 +30,7 @@ const paths = [
     body: 'Intelligent dispatch, payments, and automation in one place — calls, jobs, technician routing, invoicing, and follow-up, fully handled.',
     exploreLabel: 'Explore AI Engine',
     exploreHref: '/ai-engine',
-    pricingHref: '/pricing#ai-engine',
+    pricingHref: '/ai-engine#pricing',
   },
 ];
 
