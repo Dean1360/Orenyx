@@ -53,6 +53,11 @@ export const compliance: { heading: string; items: ComplianceItem[]; footnote: s
   heading: 'Compliance & Data Protection',
   items: [
     {
+      name: 'Card payments',
+      status: 'Processed by Stripe',
+      body: 'Payments are handled by Stripe, a PCI-DSS Level 1 certified payment processor. Orenyx does not store full card numbers.',
+    },
+    {
       name: 'GDPR / CCPA',
       status: 'Data handling practices documented',
       body: 'How personal data is collected, processed, retained, and deleted.',
