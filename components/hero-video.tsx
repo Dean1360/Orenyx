@@ -26,18 +26,39 @@ export function HeroVideo({
     const video = videoRef.current;
     if (!video) return;
 
-    const events = ['pointerdown', 'keydown', 'touchstart'] as const;
+    // Only these events count as a real user gesture on phones and desktop.
+    // (A touch that starts a scroll does NOT, so touchstart is not used.)
+    const events = ['click', 'touchend', 'pointerup', 'keydown'] as const;
 
     function enableSoundOnFirstInteraction() {
-      cleanup();
       const v = videoRef.current;
-      if (!v || userChoseRef.current || !v.muted) return;
-      v.muted = false;
-      setMuted(false);
-      if (!v.ended) {
-        v.currentTime = 0;
-        v.play().catch(() => {});
+      if (!v || userChoseRef.current || !v.muted) {
+        cleanup();
+        return;
       }
+      if (v.ended) {
+        // Already finished: just turn sound on for a replay, don't restart.
+        v.muted = false;
+        setMuted(false);
+        cleanup();
+        return;
+      }
+      const restart = true;
+      v.muted = false;
+      v.currentTime = 0;
+      v.play()
+        .then(() => {
+          if (v.paused) throw new Error('paused');
+          setMuted(false);
+          cleanup();
+        })
+        .catch(() => {
+          // Browser still refused sound (e.g. the touch was a scroll):
+          // keep playing muted and wait for the next real tap.
+          v.muted = true;
+          setMuted(true);
+          if (restart) v.play().catch(() => {});
+        });
     }
 
     function cleanup() {
@@ -110,8 +131,8 @@ export function HeroVideo({
             e.stopPropagation();
             toggleSound();
           }}
-          onPointerDown={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
+          onPointerUp={(e) => e.stopPropagation()}
+          onTouchEnd={(e) => e.stopPropagation()}
           aria-pressed={muted}
           className={btn}
         >
