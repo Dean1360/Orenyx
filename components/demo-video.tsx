@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useLanguage } from '@/lib/i18n/language';
 
 /**
  * Same visual video block as before, but:
@@ -10,6 +11,8 @@ import { useRef, useState } from 'react';
  *   during that pause — not while it's playing.
  */
 export function DemoVideo({ src = '/videos/automation-demo.mp4' }: { src?: string }) {
+  const { lang } = useLanguage();
+  const videoSrc = lang === 'es' ? src.replace(/\.mp4$/, '-es.mp4') : src;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ended, setEnded] = useState(false);
 
@@ -35,9 +38,10 @@ export function DemoVideo({ src = '/videos/automation-demo.mp4' }: { src?: strin
   return (
     <div className="relative">
       <video
+        key={videoSrc}
         ref={videoRef}
         className="block h-auto w-full"
-        src={src}
+        src={videoSrc}
         autoPlay
         muted
         playsInline
