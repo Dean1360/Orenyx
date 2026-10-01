@@ -59,7 +59,7 @@ export default function AiEnginePage() {
             Watch how Orenyx handles a real job, step by step.
           </p>
 
-          <div className="mx-auto mt-4 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
+          <div className="mx-auto mt-4 max-w-[640px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
             <DemoVideo />
           </div>
 

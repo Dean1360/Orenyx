@@ -70,7 +70,7 @@ export default function VoiceDispatchPage() {
             Watch how Orenyx handles a dispatch call, step by step.
           </p>
 
-          <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
+          <div className="mx-auto mt-8 max-w-[640px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
             <DemoVideo src="/videos/voice-dispatch-demo.mp4" />
           </div>
         </Reveal>
