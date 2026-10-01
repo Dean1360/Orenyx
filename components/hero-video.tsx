@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '@/lib/i18n/language';
 
 /**
  * Homepage hero ad. Tries to start WITH sound. Browsers often block
@@ -17,6 +18,9 @@ export function HeroVideo({
   src?: string;
   poster?: string;
 }) {
+  const { lang } = useLanguage();
+  const videoSrc = lang === 'es' ? '/videos/orenyx-home-ad-es.mp4' : src;
+  const videoPoster = lang === 'es' ? '/videos/orenyx-home-ad-es-poster.jpg' : poster;
   const videoRef = useRef<HTMLVideoElement>(null);
   const userChoseRef = useRef(false);
   const [muted, setMuted] = useState(false);
@@ -70,8 +74,9 @@ export function HeroVideo({
       <video
         ref={videoRef}
         className="block aspect-video h-auto w-full"
-        src={src}
-        poster={poster}
+        key={videoSrc}
+        src={videoSrc}
+        poster={videoPoster}
         playsInline
         preload="auto"
         onEnded={() => setEnded(true)}

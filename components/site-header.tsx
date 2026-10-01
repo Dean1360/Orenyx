@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { primaryNav, utilityNav } from '@/content/site';
 import { Logo } from '@/components/logo';
+import { LanguageToggle } from '@/components/language-toggle';
 
 /**
  * Site header — two tiers, per the client comp.
@@ -42,7 +43,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50">
       {/* ── Utility bar ─────────────────────────────────── */}
       <div className="newbg-header">
-        <div className={`${BAR} h-10 justify-end gap-2 sm:gap-3`}>
+        <div className={`${BAR} h-12 justify-end gap-2 sm:gap-3`}>
+          <LanguageToggle className="w-[76px]" />
           {utilityNav.map((item, i) => (
             <Link
               key={item.href}
@@ -123,7 +125,7 @@ export function SiteHeader() {
       {open ? (
         <div
           id="mobile-nav"
-          className="header-violet max-h-[calc(100dvh-116px)] overflow-y-auto border-t border-bg/20 md:max-h-[calc(100dvh-144px)] xl:hidden"
+          className="header-violet max-h-[calc(100dvh-124px)] overflow-y-auto border-t border-bg/20 md:max-h-[calc(100dvh-152px)] xl:hidden"
         >
           <nav aria-label="Mobile" className="mx-auto max-w-[1180px] px-4 py-3 sm:px-5">
             <ul className="flex flex-col">

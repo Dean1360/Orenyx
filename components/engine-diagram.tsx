@@ -133,6 +133,7 @@ function BoxDiagram({ className = '' }: { className?: string }) {
       className={`h-auto w-full ${className}`}
       role="img"
       aria-label={ARIA}
+      data-i18n-ctx="diagram"
     >
       <Paint suffix="" />
 
@@ -275,6 +276,7 @@ function StackDiagram({ className = '' }: { className?: string }) {
       className={`h-auto w-full ${className}`}
       role="img"
       aria-label={ARIA}
+      data-i18n-ctx="diagram"
     >
       <Paint suffix="-s" />
 
