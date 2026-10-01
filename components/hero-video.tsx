@@ -23,70 +23,9 @@ export function HeroVideo({
   const [ended, setEnded] = useState(false);
   const [phoneGate, setPhoneGate] = useState(false);
 
+  // All devices: never autoplay. Show a big Play button; one click/tap starts with sound.
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Phones: never autoplay. Show a big Play button; tapping it starts with sound.
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      setPhoneGate(true);
-      return;
-    }
-
-    // Only these events count as a real user gesture on phones and desktop.
-    // (A touch that starts a scroll does NOT, so touchstart is not used.)
-    const events = ['click', 'touchend', 'pointerup', 'keydown'] as const;
-
-    function enableSoundOnFirstInteraction() {
-      const v = videoRef.current;
-      if (!v || userChoseRef.current || !v.muted) {
-        cleanup();
-        return;
-      }
-      if (v.ended) {
-        // Already finished: just turn sound on for a replay, don't restart.
-        v.muted = false;
-        setMuted(false);
-        cleanup();
-        return;
-      }
-      const restart = true;
-      v.muted = false;
-      v.currentTime = 0;
-      v.play()
-        .then(() => {
-          if (v.paused) throw new Error('paused');
-          setMuted(false);
-          cleanup();
-        })
-        .catch(() => {
-          // Browser still refused sound (e.g. the touch was a scroll):
-          // keep playing muted and wait for the next real tap.
-          v.muted = true;
-          setMuted(true);
-          if (restart) v.play().catch(() => {});
-        });
-    }
-
-    function cleanup() {
-      events.forEach((e) => document.removeEventListener(e, enableSoundOnFirstInteraction));
-    }
-
-    video.muted = false;
-    video
-      .play()
-      .then(() => setMuted(false))
-      .catch(() => {
-        // Sound autoplay blocked by the browser: start muted instead.
-        video.muted = true;
-        setMuted(true);
-        video.play().catch(() => {});
-        events.forEach((e) =>
-          document.addEventListener(e, enableSoundOnFirstInteraction, { passive: true }),
-        );
-      });
-
-    return cleanup;
+    setPhoneGate(true);
   }, []);
 
   function toggleSound() {
