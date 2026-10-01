@@ -1,6 +1,5 @@
 import { ButtonLink } from '@/components/ui/button';
 import { EngineDiagram } from '@/components/engine-diagram';
-import { HeroVideo } from '@/components/hero-video';
 import { Reveal } from '@/components/reveal';
 import { Shell } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
@@ -39,11 +38,14 @@ export default function HomePage() {
   return (
     <div className="hero-band home-pagebanner relative overflow-hidden pt-10 pb-16 md:pt-14 md:pb-24">
       <Shell className="relative z-10 text-center">
-        <h1 className="sr-only">Orenyx — automated call answering, booking, and dispatch for home-service companies</h1>
+        <h1 className="mx-auto mt-5 max-w-[900px] text-4xl font-bold leading-[1.12] text-white md:text-[3.25rem]">
+          Never Miss Another Service Call.
+        </h1>
 
-        <div className="mt-5">
-          <HeroVideo />
-        </div>
+        <p className="mx-auto mt-6 max-w-[820px] text-lg font-bold leading-relaxed text-white md:text-2xl">
+          Orenyx helps home-service companies answer more calls, book more jobs, and keep dispatch
+          moving — 24/7.
+        </p>
 
         <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-8 py-4 text-center text-lg font-extrabold text-white md:text-2xl">
           Both Include Voice Dispatch
