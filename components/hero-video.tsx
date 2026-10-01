@@ -1,11 +1,14 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
- * Homepage hero ad. Autoplays muted (browsers block autoplay with sound),
- * plays once and holds on the final "Get Started Today" frame.
- * Visitors can turn sound on, and replay once it finishes.
+ * Homepage hero ad. Tries to start WITH sound. Browsers often block
+ * autoplay with sound until the visitor interacts with the page, so if
+ * that happens it starts muted and turns sound on (from the beginning)
+ * at the visitor's first tap, click, or key press anywhere on the page.
+ * Plays once and holds on the final "Get Started Today" frame.
+ * Visitors can mute/unmute at any time and replay once it finishes.
  */
 export function HeroVideo({
   src = '/videos/orenyx-home-ad.mp4',
@@ -15,12 +18,53 @@ export function HeroVideo({
   poster?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
+  const userChoseRef = useRef(false);
+  const [muted, setMuted] = useState(false);
   const [ended, setEnded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const events = ['pointerdown', 'keydown', 'touchstart'] as const;
+
+    function enableSoundOnFirstInteraction() {
+      cleanup();
+      const v = videoRef.current;
+      if (!v || userChoseRef.current || !v.muted) return;
+      v.muted = false;
+      setMuted(false);
+      if (!v.ended) {
+        v.currentTime = 0;
+        v.play().catch(() => {});
+      }
+    }
+
+    function cleanup() {
+      events.forEach((e) => document.removeEventListener(e, enableSoundOnFirstInteraction));
+    }
+
+    video.muted = false;
+    video
+      .play()
+      .then(() => setMuted(false))
+      .catch(() => {
+        // Sound autoplay blocked by the browser: start muted instead.
+        video.muted = true;
+        setMuted(true);
+        video.play().catch(() => {});
+        events.forEach((e) =>
+          document.addEventListener(e, enableSoundOnFirstInteraction, { passive: true }),
+        );
+      });
+
+    return cleanup;
+  }, []);
 
   function toggleSound() {
     const video = videoRef.current;
     if (!video) return;
+    userChoseRef.current = true;
     const next = !muted;
     video.muted = next;
     setMuted(next);
@@ -39,6 +83,9 @@ export function HeroVideo({
     setEnded(false);
   }
 
+  const btn =
+    'rounded-full bg-black/60 px-3 py-1.5 text-xs font-bold text-white backdrop-blur hover:bg-black/80 md:px-4 md:py-2 md:text-sm';
+
   return (
     <div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[20px] border border-line-violet bg-black shadow-2xl">
       <video
@@ -46,8 +93,6 @@ export function HeroVideo({
         className="block aspect-video h-auto w-full"
         src={src}
         poster={poster}
-        autoPlay
-        muted
         playsInline
         preload="auto"
         onEnded={() => setEnded(true)}
@@ -55,19 +100,20 @@ export function HeroVideo({
       />
       <div className="absolute right-2 top-2 flex gap-2 md:top-auto md:bottom-4 md:right-4">
         {ended && (
-          <button
-            type="button"
-            onClick={replay}
-            className="rounded-full bg-black/60 px-3 py-1.5 text-xs font-bold md:px-4 md:py-2 md:text-sm text-white backdrop-blur hover:bg-black/80"
-          >
+          <button type="button" onClick={replay} className={btn}>
             Replay
           </button>
         )}
         <button
           type="button"
-          onClick={toggleSound}
-          aria-pressed={!muted}
-          className="rounded-full bg-black/60 px-3 py-1.5 text-xs font-bold md:px-4 md:py-2 md:text-sm text-white backdrop-blur hover:bg-black/80"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleSound();
+          }}
+          onPointerDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          aria-pressed={muted}
+          className={btn}
         >
           <span className="inline-flex items-center gap-2">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-4 w-4">
@@ -78,7 +124,7 @@ export function HeroVideo({
                 <path d="M16 8a5 5 0 010 8M18.5 5.5a8.5 8.5 0 010 13" stroke="currentColor" strokeWidth="2" fill="none" />
               )}
             </svg>
-            {muted ? 'Tap for sound' : 'Sound on'}
+            {muted ? 'Tap for sound' : 'Mute'}
           </span>
         </button>
       </div>
