@@ -21,10 +21,17 @@ export function HeroVideo({
   const userChoseRef = useRef(false);
   const [muted, setMuted] = useState(false);
   const [ended, setEnded] = useState(false);
+  const [phoneGate, setPhoneGate] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Phones: never autoplay. Show a big Play button; tapping it starts with sound.
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      setPhoneGate(true);
+      return;
+    }
 
     // Only these events count as a real user gesture on phones and desktop.
     // (A touch that starts a scroll does NOT, so touchstart is not used.)
@@ -96,6 +103,18 @@ export function HeroVideo({
     }
   }
 
+  function playWithSound() {
+    const video = videoRef.current;
+    if (!video) return;
+    userChoseRef.current = true;
+    video.muted = false;
+    setMuted(false);
+    video.currentTime = 0;
+    video.play().catch(() => {});
+    setEnded(false);
+    setPhoneGate(false);
+  }
+
   function replay() {
     const video = videoRef.current;
     if (!video) return;
@@ -119,7 +138,24 @@ export function HeroVideo({
         onEnded={() => setEnded(true)}
         aria-label="Orenyx 15-second overview: answers calls, books appointments 24/7, dispatches technicians, takes payments, and handles follow-ups in one engine."
       />
-      <div className="absolute right-2 top-2 flex gap-2 md:top-auto md:bottom-4 md:right-4">
+      {phoneGate && (
+        <button
+          type="button"
+          onClick={playWithSound}
+          aria-label="Play video with sound"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/45"
+        >
+          <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/95 text-violet-900 shadow-2xl">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="ml-1 h-9 w-9">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+          <span className="rounded-full bg-black/60 px-4 py-1.5 text-sm font-bold text-white">
+            Tap to watch with sound
+          </span>
+        </button>
+      )}
+      <div className={`${phoneGate ? 'hidden ' : ''}absolute right-2 top-2 flex gap-2 md:top-auto md:bottom-4 md:right-4`}>
         {ended && (
           <button type="button" onClick={replay} className={btn}>
             Replay
