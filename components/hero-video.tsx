@@ -79,7 +79,7 @@ export function HeroVideo({
         poster={videoPoster}
         playsInline
         preload="auto"
-        onEnded={() => setEnded(true)}
+        onEnded={() => { videoRef.current?.load(); setEnded(false); setPhoneGate(true); }}
         aria-label="Orenyx 15-second overview: answers calls, books appointments 24/7, dispatches technicians, takes payments, and handles follow-ups in one engine."
       />
       {phoneGate && (
