@@ -44,7 +44,7 @@ export function SiteHeader() {
       {/* ── Utility bar ─────────────────────────────────── */}
       <div className="newbg-header">
         <div className={`${BAR} h-12 justify-end gap-2 sm:gap-3`}>
-          <LanguageToggle className="w-[76px]" />
+          <LanguageToggle />
           {utilityNav.map((item, i) => (
             <Link
               key={item.href}
