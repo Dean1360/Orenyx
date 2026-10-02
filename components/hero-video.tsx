@@ -70,7 +70,7 @@ export function HeroVideo({
     'rounded-full bg-black/60 px-3 py-1.5 text-xs font-bold text-white backdrop-blur hover:bg-black/80 md:px-4 md:py-2 md:text-sm';
 
   return (
-    <div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[20px] border border-line-violet bg-black shadow-2xl">
+    <div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[20px] border-[6px] border-violet-bright bg-black shadow-2xl">
       <video
         ref={videoRef}
         className="block aspect-video h-auto w-full"
