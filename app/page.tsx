@@ -3,6 +3,7 @@ import { EngineDiagram } from '@/components/engine-diagram';
 import { HeroVideo } from '@/components/hero-video';
 import { Reveal } from '@/components/reveal';
 import { Shell } from '@/components/ui/section';
+import { OtherCompanies } from '@/components/other-companies';
 import { pageMeta } from '@/lib/seo';
 import { operationalCompliance, privateLicense } from '@/content/pricing';
 
@@ -37,6 +38,7 @@ const paths = [
 
 export default function HomePage() {
   return (
+    <>
     <div className="hero-band home-pagebanner relative overflow-hidden pt-10 pb-16 md:pt-14 md:pb-24">
       <Shell className="relative z-10 text-center">
         <h1 className="sr-only">Orenyx — automated call answering, booking, and dispatch for home-service companies</h1>
@@ -107,5 +109,7 @@ export default function HomePage() {
         <EngineDiagram />
       </div>
     </div>
+    <OtherCompanies />
+    </>
   );
 }

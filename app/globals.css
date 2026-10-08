@@ -1351,3 +1351,21 @@ animation: loader-breathe 2.2s ease-in-out infinite;
 
 /* Spanish visitors: hide the page until the Spanish text is applied (max 2.5s). */
 html.i18n-es-pending body { visibility: hidden; }
+
+/* ── Other Orenyx Companies (cross-promotion) ─────────── */
+.xp{background:#f7f1e8;color:#2d241e;font-family:inherit}
+.xp__bar{background:#2d241e;border-bottom:1px solid #4a3d33;height:104px;display:flex;align-items:center;justify-content:center}
+.xp__bar img{height:80px;width:auto;display:block}
+.xp h2,.xp h3{font-family:inherit}
+.xp__in{padding:56px 20px 72px;text-align:center}
+.xp h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;letter-spacing:-.02em;color:#2d241e;margin:0}
+.xp__sub{color:#6b5b4e;margin:10px 0 0;font-size:1.05rem}
+.xp__grid{max-width:900px;margin:40px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.xp__card{background:#fffaf3;border:1px solid #e3d6c3;border-radius:16px;padding:32px 28px;text-align:left;display:flex;flex-direction:column;box-shadow:0 4px 18px #2d241e0f}
+.xp__ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px}
+.xp__ic--w{background:#dcefe3;color:#2f6b47}.xp__ic--s{background:#fbe7c8;color:#8a4f0c}
+.xp h3{font-size:1.3rem;font-weight:800;color:#2d241e;margin:0}
+.xp__card p{color:#6b5b4e;margin:10px 0 24px;line-height:1.55;flex:1}
+.xp__btn{align-self:flex-start;background:#2d241e;color:#fff!important;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;font-size:.95rem}
+.xp__btn:hover{background:#8a4f0c}
+@media(max-width:700px){.xp__grid{grid-template-columns:1fr}.xp__bar{height:80px}.xp__bar img{height:58px}}
