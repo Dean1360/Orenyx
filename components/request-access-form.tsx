@@ -203,7 +203,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="volume" className={label}>
-          Estimated Monthly Volume — optional
+          Optional — Estimated Monthly Volume
         </label>
         <SelectWrap>
           <select id="volume" name="volume" className={selectField} defaultValue="">
@@ -219,7 +219,7 @@ export function RequestAccessForm({
 
       <div className="mt-5">
         <label htmlFor="message" className={label}>
-          Questions — optional
+          Optional — Questions
         </label>
         <textarea
           id="message"

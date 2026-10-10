@@ -122,7 +122,7 @@ export async function handleInquiry(request: Request, kind: InquiryKind) {
 
   const rows = cfg.fields
     .filter((f) => d[f.name])
-    .map((f) => [f.label.replace(/ — optional$/, ''), displayValue(cfg.fields, f.name, d[f.name])] as const);
+    .map((f) => [f.label.replace(/ — optional$/, '').replace(/^Optional — /, ''), displayValue(cfg.fields, f.name, d[f.name])] as const);
   const textLines = rows.map(([l, v]) => `${l}: ${v}`).join('\n');
   const htmlRows = rows
     .map(

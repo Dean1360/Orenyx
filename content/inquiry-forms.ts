@@ -18,7 +18,7 @@ const plain = (labels: string[]): Option[] => labels.map((l) => ({ value: l, lab
 const contactFields: InquiryField[] = [
   { name: 'fullName', label: 'Full Name', type: 'text', required: true, placeholder: 'Enter Full Name', autoComplete: 'name' },
   { name: 'workEmail', label: 'Work Email', type: 'email', required: true, placeholder: 'Enter Work Email', autoComplete: 'email' },
-  { name: 'phone', label: 'Phone — optional', type: 'text', placeholder: 'Enter Phone Number', autoComplete: 'tel' },
+  { name: 'phone', label: 'Optional — Phone', type: 'text', placeholder: 'Enter Phone Number', autoComplete: 'tel' },
   { name: 'companyName', label: 'Company Name', type: 'text', required: true, placeholder: 'Enter Company Name', autoComplete: 'organization' },
 ];
 
@@ -38,7 +38,7 @@ const timelineField: InquiryField = {
 
 const referralField: InquiryField = {
   name: 'referralSource',
-  label: 'How did you hear about us? — optional',
+  label: 'Optional — How did you hear about us?',
   type: 'select',
   placeholder: 'Select one',
   options: plain([
@@ -86,7 +86,7 @@ export const privateLicenseFields: InquiryField[] = [
   },
   {
     name: 'customIntegrationList',
-    label: 'Which software? — optional',
+    label: 'Optional — Which software?',
     type: 'text',
     placeholder: 'e.g. QuickBooks, ServiceTitan',
   },
@@ -116,7 +116,7 @@ export const privateLicenseFields: InquiryField[] = [
   },
   timelineField,
   referralField,
-  { name: 'notes', label: 'Anything else we should know? — optional', type: 'textarea', placeholder: 'Anything that helps us scope your deployment' },
+  { name: 'notes', label: 'Optional — Anything else we should know?', type: 'textarea', placeholder: 'Anything that helps us scope your deployment' },
 ];
 
 export const complianceFields: InquiryField[] = [
@@ -148,7 +148,7 @@ export const complianceFields: InquiryField[] = [
   { name: 'supportLevel', label: 'Support level', type: 'select', required: true, placeholder: 'Select one', options: supportOptions },
   timelineField,
   referralField,
-  { name: 'notes', label: 'Anything else we should know? — optional', type: 'textarea', placeholder: 'Anything that helps us scope your setup' },
+  { name: 'notes', label: 'Optional — Anything else we should know?', type: 'textarea', placeholder: 'Anything that helps us scope your setup' },
 ];
 
 /** Turns a stored value back into the words the client picked. */
