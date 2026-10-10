@@ -111,8 +111,8 @@ export default function RestorationPage() {
           {plans.map((p, i) => (
             <Reveal key={p.name} delay={i * 70}>
               <div
-                className={`flex h-full flex-col rounded-[14px] border p-7 text-center ${
-                  p.featured ? 'border-violet-soft bg-white/10' : 'border-white/15 bg-white/5'
+                className={`flex h-full flex-col rounded-[14px] border-2 p-7 text-center ${
+                  p.featured ? 'border-white bg-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.25)]' : 'border-white/70 bg-white/5'
                 }`}
               >
                 <p className="text-lg font-bold text-white">{p.name}</p>
