@@ -1369,3 +1369,11 @@ html.i18n-es-pending body { visibility: hidden; }
 .xp__btn{align-self:flex-start;background:#2d241e;color:#fff!important;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;font-size:.95rem}
 .xp__btn:hover{background:#8a4f0c}
 @media(max-width:700px){.xp__grid{grid-template-columns:1fr}.xp__bar{height:80px}.xp__bar img{height:58px}}
+
+/* Spanish header: longer nav labels — keep everything inside the viewport on desktop */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  html[lang='es'] header nav[class*='xl:flex'] { gap: 0.6rem; }
+  html[lang='es'] header nav[class*='xl:flex'] .nav-link { font-size: 12.5px; }
+  html[lang='es'] header .thebutrrtonas { padding: 8px 14px; }
+  html[lang='es'] header .thebutrrtonas-grd { font-size: 15px; }
+}
