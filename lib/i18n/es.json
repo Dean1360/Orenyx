@@ -290,7 +290,6 @@
 "Title": "Cargo",
 "Company Email": "Correo de la empresa",
 "Company Website": "Sitio web de la empresa",
-"Use Case (select all that apply) — optional": "Uso (selecciona todos los que apliquen) — opcional",
 "Dispatch Operations": "Operaciones de despacho",
 "Bot Orchestration": "Orquestación de bots",
 "Payments & Risk": "Pagos y riesgo",
@@ -951,5 +950,6 @@
 "Restoration Dispatch — Pro": "Despacho para Restauración — Pro",
 "Restoration Dispatch — Multi-Location": "Despacho para Restauración — Multiubicación",
 "$1,250 one-time setup": "$1,250 de configuración (pago único)",
-"$2,500 one-time setup": "$2,500 de configuración (pago único)"
+"$2,500 one-time setup": "$2,500 de configuración (pago único)",
+"Optional — Use Case (select all that apply)": "Opcional — Uso (selecciona todos los que apliquen)"
 }

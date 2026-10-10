@@ -184,7 +184,7 @@ export function RequestAccessForm({
       </div>
 
       <div className="mt-5">
-        <span className={label}>Use Case (select all that apply) — optional</span>
+        <span className={label}>Optional — Use Case (select all that apply)</span>
         <div className={checkboxGroup}>
           {useCases.map((u, i) => (
             <label key={u} htmlFor={`useCase-${i}`} className={checkboxRow}>
