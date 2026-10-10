@@ -3,6 +3,7 @@ import { DemoVideo } from '@/components/demo-video';
 import { PageHero } from '@/components/page-hero';
 import { Reveal } from '@/components/reveal';
 import { VoiceDispatchPlans } from '@/components/voice-dispatch-plans';
+import { VoiceIndustries } from '@/components/voice-industries';
 import { Section, SectionHead } from '@/components/ui/section';
 import { closingCta } from '@/content/home';
 import {
@@ -104,6 +105,9 @@ export default function VoiceDispatchPage() {
           ))}
         </div>
       </Section>
+
+      {/* ── Industries (HVAC, Plumbing, Restoration) ────── */}
+      <VoiceIndustries />
 
       {/* ── Voice Dispatch pricing ───────────────────────── */}
       <Section id="pricing" tone="violet" className="scroll-mt-40">
