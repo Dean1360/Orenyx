@@ -1383,3 +1383,5 @@ header .vd-sub { font-size: 13px !important; line-height: 20px !important; font-
 @media (min-width: 1280px) { header .vd-sub { font-size: 14px !important; } }
 @media (min-width: 1536px) { header .vd-sub { font-size: 16px !important; line-height: 22px !important; } }
 @media (min-width: 1280px) and (max-width: 1535px) { html[lang='es'] header .vd-sub { font-size: 12.5px !important; } }
+/* The Restoration button sits where the active bar would be — no bar on that tab */
+.header-violet.bg-new-fix .vd-main.nav-link-active::after { display: none; }

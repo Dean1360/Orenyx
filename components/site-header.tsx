@@ -91,7 +91,7 @@ export function SiteHeader() {
                     <Link
                       href={item.href}
                       aria-current={pathname === item.href ? 'page' : undefined}
-                      className={`nav-link whitespace-nowrap text-[13px] font-medium transition-colors xl:text-sm ${active ? 'nav-link-active' : ''}`}
+                      className={`vd-main nav-link whitespace-nowrap text-[13px] font-medium transition-colors xl:text-sm ${active ? 'nav-link-active' : ''}`}
                     >
                       {item.label}
                     </Link>
