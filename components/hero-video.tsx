@@ -19,8 +19,8 @@ export function HeroVideo({
   poster?: string;
 }) {
   const { lang } = useLanguage();
-  const videoSrc = lang === 'es' ? '/videos/orenyx-home-ad-es.mp4' : src;
-  const videoPoster = lang === 'es' ? '/videos/orenyx-home-ad-es-poster.jpg' : poster;
+  const videoSrc = lang === 'es' ? src.replace(/\.mp4$/, '-es.mp4') : src;
+  const videoPoster = lang === 'es' ? poster.replace(/-poster\.jpg$/, '-es-poster.jpg') : poster;
   const videoRef = useRef<HTMLVideoElement>(null);
   const userChoseRef = useRef(false);
   const [muted, setMuted] = useState(false);

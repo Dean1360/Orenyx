@@ -1,5 +1,6 @@
 import { ButtonLink } from '@/components/ui/button';
 import { PageHero } from '@/components/page-hero';
+import { HeroVideo } from '@/components/hero-video';
 import { Reveal } from '@/components/reveal';
 import { Section, SectionHead } from '@/components/ui/section';
 import { pageMeta } from '@/lib/seo';
@@ -45,6 +46,16 @@ export default function RestorationPage() {
         title="Restoration Dispatch"
         lead="Water • Fire • Mold. 24/7 emergency intake and dispatch for restoration companies, built on Orenyx Engine."
       />
+
+      {/* ── Ad video ─────────────────────────────────────── */}
+      <Section tone="dark">
+        <Reveal>
+          <SectionHead eyebrow="Watch" title="See it in 15 seconds." align="center" silver />
+          <div className="mx-auto mt-8 max-w-[760px] overflow-hidden rounded-[var(--radius-panel)] border border-line-violet">
+            <HeroVideo src="/videos/restoration-ad.mp4" poster="/videos/restoration-ad-poster.jpg" />
+          </div>
+        </Reveal>
+      </Section>
 
       {/* ── What it does ─────────────────────────────────── */}
       <Section tone="dark">
