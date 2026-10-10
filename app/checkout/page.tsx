@@ -15,9 +15,9 @@ export const metadata = pageMeta({
 });
 
 const restorationPlans: Record<string, { name: string; price: string }> = {
-  'restoration-starter': { name: 'Restoration Dispatch — Starter', price: '$499/mo' },
-  'restoration-pro': { name: 'Restoration Dispatch — Pro', price: '$999/mo' },
-  'restoration-multi': { name: 'Restoration Dispatch — Multi-Location', price: '$1,999+/mo' },
+  'restoration-starter': { name: 'Restoration Dispatch — Starter', price: '$499/mo + $750 one-time setup' },
+  'restoration-pro': { name: 'Restoration Dispatch — Pro', price: '$999/mo + $1,250 one-time setup' },
+  'restoration-multi': { name: 'Restoration Dispatch — Multi-Location', price: '$1,999+/mo + $2,500 one-time setup' },
 };
 
 function findPlan(id?: string) {

@@ -33,9 +33,9 @@ const safetyRules = [
 ];
 
 const plans = [
-  { id: 'restoration-starter', name: 'Starter', price: '$499', note: 'For a single-location restoration company.' },
-  { id: 'restoration-pro', name: 'Pro', price: '$999', note: 'For growing crews with more calls and techs.', featured: true },
-  { id: 'restoration-multi', name: 'Multi-Location', price: '$1,999+', note: 'For franchise and multi-location operators.' },
+  { id: 'restoration-starter', name: 'Starter', price: '$499', setup: '$750 one-time setup', note: 'For a single-location restoration company.' },
+  { id: 'restoration-pro', name: 'Pro', price: '$999', setup: '$1,250 one-time setup', note: 'For growing crews with more calls and techs.', featured: true },
+  { id: 'restoration-multi', name: 'Multi-Location', price: '$1,999+', setup: '$2,500 one-time setup', note: 'For franchise and multi-location operators.' },
 ];
 
 export default function RestorationPage() {
@@ -120,6 +120,7 @@ export default function RestorationPage() {
                   {p.price}
                   <span className="text-base font-semibold text-white/70">/mo</span>
                 </p>
+                <p className="mt-1 text-sm font-semibold text-white/85">{p.setup}</p>
                 <p className="mb-6 mt-3 text-sm leading-relaxed text-white/75">{p.note}</p>
                 <ButtonLink href={`/checkout?plan=${p.id}`} variant="dark" className="mt-auto w-full">
                   Check Out
