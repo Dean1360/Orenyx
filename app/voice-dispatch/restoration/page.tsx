@@ -33,9 +33,9 @@ const safetyRules = [
 ];
 
 const plans = [
-  { name: 'Starter', price: '$499', note: 'For a single-location restoration company.' },
-  { name: 'Pro', price: '$999', note: 'For growing crews with more calls and techs.', featured: true },
-  { name: 'Multi-Location', price: '$1,999+', note: 'For franchise and multi-location operators.' },
+  { id: 'restoration-starter', name: 'Starter', price: '$499', note: 'For a single-location restoration company.' },
+  { id: 'restoration-pro', name: 'Pro', price: '$999', note: 'For growing crews with more calls and techs.', featured: true },
+  { id: 'restoration-multi', name: 'Multi-Location', price: '$1,999+', note: 'For franchise and multi-location operators.' },
 ];
 
 export default function RestorationPage() {
@@ -120,12 +120,14 @@ export default function RestorationPage() {
                   {p.price}
                   <span className="text-base font-semibold text-white/70">/mo</span>
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/75">{p.note}</p>
+                <p className="mb-6 mt-3 text-sm leading-relaxed text-white/75">{p.note}</p>
+                <ButtonLink href={`/checkout?plan=${p.id}`} variant="dark" className="mt-auto w-full">
+                  Check Out
+                </ButtonLink>
               </div>
             </Reveal>
           ))}
         </div>
-        <p className="mt-8 text-center text-base font-bold text-white">Setup waived for the first 10 customers.</p>
       </Section>
 
       {/* ── Free audit CTA ───────────────────────────────── */}

@@ -14,12 +14,20 @@ export const metadata = pageMeta({
   noIndex: true,
 });
 
+const restorationPlans: Record<string, { name: string; price: string }> = {
+  'restoration-starter': { name: 'Restoration Dispatch — Starter', price: '$499/mo' },
+  'restoration-pro': { name: 'Restoration Dispatch — Pro', price: '$999/mo' },
+  'restoration-multi': { name: 'Restoration Dispatch — Multi-Location', price: '$1,999+/mo' },
+};
+
 function findPlan(id?: string) {
   if (!id) return null;
   const aiPlan = plans.find((p) => p.id === id);
   if (aiPlan) return { name: aiPlan.name, price: `${aiPlan.price}${aiPlan.priceSuffix ?? ''}` };
   const voicePlan = voiceDispatchPlans.find((p) => p.id === id);
   if (voicePlan) return { name: `Voice Dispatch — ${voicePlan.name}`, price: voicePlan.price };
+  const restorationPlan = restorationPlans[id];
+  if (restorationPlan) return restorationPlan;
   return null;
 }
 
