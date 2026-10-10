@@ -100,8 +100,7 @@ export function SiteHeader() {
                         key={s.href}
                         href={s.href}
                         aria-current={pathname === s.href ? 'page' : undefined}
-                        style={{ fontSize: '11px', lineHeight: '16px', fontWeight: 600 }}
-                        className={`absolute top-full mt-2 whitespace-nowrap rounded-full border px-2.5 py-0.5 text-[11px] font-semibold leading-4 transition-colors ${pathname === s.href ? 'border-violet-soft bg-violet-soft/20 text-white' : 'border-white/25 text-white/80 hover:border-violet-soft hover:text-white'}`}
+                        className={`vd-sub absolute top-full mt-1.5 whitespace-nowrap rounded-full border px-3 py-0.5 transition-colors ${pathname === s.href ? 'border-violet-soft bg-violet-soft/20 text-white' : 'border-white/25 text-white/80 hover:border-violet-soft hover:text-white'}`}
                       >
                         {s.label}
                       </Link>
