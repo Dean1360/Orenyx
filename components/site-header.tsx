@@ -87,33 +87,25 @@ export function SiteHeader() {
               const sub = SUBNAV[item.href];
               if (sub) {
                 return (
-                  <div key={item.href} className="group relative">
+                  <div key={item.href} className="relative flex flex-col items-center">
                     <Link
                       href={item.href}
-                      aria-current={active ? 'page' : undefined}
-                      aria-haspopup="true"
-                      className={`nav-link inline-flex items-center gap-1 whitespace-nowrap text-[13px] font-medium transition-colors xl:text-sm ${active ? 'nav-link-active' : ''}`}
+                      aria-current={pathname === item.href ? 'page' : undefined}
+                      className={`nav-link whitespace-nowrap text-[13px] font-medium transition-colors xl:text-sm ${active ? 'nav-link-active' : ''}`}
                     >
                       {item.label}
-                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="opacity-70 transition-transform group-hover:rotate-180 group-focus-within:rotate-180">
-                        <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
                     </Link>
-                    <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                      <ul className="min-w-[190px] rounded-[12px] border border-line-violet bg-[#0f1628] p-2 shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
-                        {sub.map((s) => (
-                          <li key={s.href}>
-                            <Link
-                              href={s.href}
-                              aria-current={pathname === s.href ? 'page' : undefined}
-                              className={`block whitespace-nowrap rounded-[8px] px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10 ${pathname === s.href ? 'text-violet-soft' : 'text-white'}`}
-                            >
-                              {s.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {sub.slice(1).map((s) => (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        aria-current={pathname === s.href ? 'page' : undefined}
+                        style={{ fontSize: '11px', lineHeight: '16px', fontWeight: 600 }}
+                        className={`absolute top-full mt-2 whitespace-nowrap rounded-full border px-2.5 py-0.5 text-[11px] font-semibold leading-4 transition-colors ${pathname === s.href ? 'border-violet-soft bg-violet-soft/20 text-white' : 'border-white/25 text-white/80 hover:border-violet-soft hover:text-white'}`}
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
                   </div>
                 );
               }
