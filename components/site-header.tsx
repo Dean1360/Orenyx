@@ -21,6 +21,14 @@ import { LanguageToggle } from '@/components/language-toggle';
  */
 
 /** Shared padding so both tiers line their content up on the same gutters. */
+/** Dropdown links under a top-level tab (first item = the tab's own page). */
+const SUBNAV: Record<string, { label: string; href: string }[]> = {
+  '/voice-dispatch': [
+    { label: 'Overview', href: '/voice-dispatch' },
+    { label: 'Restoration', href: '/voice-dispatch/restoration' },
+  ],
+};
+
 const BAR = 'mx-auto flex w-full max-w-[1180px] items-center px-4 sm:px-5 md:px-8';
 
 export function SiteHeader() {
@@ -76,6 +84,39 @@ export function SiteHeader() {
           >
             {primaryNav.map((item) => {
               const active = isActive(item.href);
+              const sub = SUBNAV[item.href];
+              if (sub) {
+                return (
+                  <div key={item.href} className="group relative">
+                    <Link
+                      href={item.href}
+                      aria-current={active ? 'page' : undefined}
+                      aria-haspopup="true"
+                      className={`nav-link inline-flex items-center gap-1 whitespace-nowrap text-[13px] font-medium transition-colors xl:text-sm ${active ? 'nav-link-active' : ''}`}
+                    >
+                      {item.label}
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="opacity-70 transition-transform group-hover:rotate-180 group-focus-within:rotate-180">
+                        <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                    <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                      <ul className="min-w-[190px] rounded-[12px] border border-line-violet bg-[#0f1628] p-2 shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
+                        {sub.map((s) => (
+                          <li key={s.href}>
+                            <Link
+                              href={s.href}
+                              aria-current={pathname === s.href ? 'page' : undefined}
+                              className={`block whitespace-nowrap rounded-[8px] px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10 ${pathname === s.href ? 'text-violet-soft' : 'text-white'}`}
+                            >
+                              {s.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              }
               return (
                 <Link
                   key={item.href}
@@ -139,6 +180,16 @@ export function SiteHeader() {
                   >
                     {item.label}
                   </Link>
+                  {SUBNAV[item.href]?.slice(1).map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      aria-current={pathname === s.href ? 'page' : undefined}
+                      className={`nav-link block border-b border-bg/15 py-3 pl-5 text-[14px] font-medium ${pathname === s.href ? 'nav-link-active' : ''}`}
+                    >
+                      <span aria-hidden="true">↳ </span>{s.label}
+                    </Link>
+                  ))}
                 </li>
               ))}
             </ul>
