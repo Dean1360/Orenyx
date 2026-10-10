@@ -136,7 +136,7 @@ export default function RestorationPage() {
               Free After-Hours Emergency Audit
             </h2>
             <p className="mx-auto mt-4 max-w-[560px] text-base text-white/85">
-              We call your line after hours and show you what you’re missing. Your audit is booked automatically.
+              We call your line after hours and show you what you’re missing.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <ButtonLink href="/contact" variant="dark">
