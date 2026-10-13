@@ -15,15 +15,15 @@ export const metadata = pageMeta({
 });
 
 const extraOffers = [
-  { ...privateLicense, subtitle: 'Your own private ORENYX deployment. Tell us about your organization and deployment requirements. The Orenyx team will follow up with scoped pricing.' },
-  { ...operationalCompliance, subtitle: 'Operational protections to keep your data, bots, and customers separated and secure. Available on its own or as an add-on to Orenyx AI Engine.' },
+  { ...privateLicense, subtitle: 'Get your own private ORENYX deployment, scoped to your organization’s needs. Tell us about your business, and our team will follow up with pricing.' },
+  { ...operationalCompliance, subtitle: 'Keep your data, bots, and customers separated and protected with data isolation, API-key security, bot sandboxing, and audit logs. Available on its own or as an AI Engine add-on.' },
 ];
 
 const paths = [
   {
     tag: 'Focused Dispatch',
     name: 'Orenyx Voice Dispatch',
-    body: 'Handle incoming calls, job bookings, technician routing, and payments with a focused dispatch solution for home-service companies. Explore the plans to see what is included.',
+    body: 'Handle calls, book jobs, route technicians, and collect payments—all through one focused dispatch solution for your home-service business.',
     exploreLabel: 'Explore Voice Dispatch',
     exploreHref: '/voice-dispatch',
     pricingHref: '/voice-dispatch#pricing',
@@ -31,7 +31,7 @@ const paths = [
   {
     tag: 'Broader Automation',
     name: 'Orenyx AI Engine',
-    body: 'Bring Voice Dispatch together with broader business automation for payments, invoicing, and customer follow-up. Explore the plans to find the right level of automation for your operation.',
+    body: 'Bring dispatch, payments, invoicing, and customer follow-up together to keep more of your daily operations moving with less manual work.',
     exploreLabel: 'Explore AI Engine',
     exploreHref: '/ai-engine',
     pricingHref: '/ai-engine#pricing',

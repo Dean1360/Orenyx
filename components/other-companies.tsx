@@ -22,7 +22,7 @@ export function OtherCompanies() {
               </svg>
             </div>
             <h3>Orenyx Safety AI</h3>
-            <p>Help your team report hazards, spot risk patterns, and track corrective actions.</p>
+            <p>Help your team report hazards, identify risk patterns, and track corrective actions in one place.</p>
             <a className="xp__btn" href="https://orenyx-safety-ai.vercel.app/index.html" target="_blank" rel="noopener">
               Explore Safety AI →
             </a>
@@ -36,7 +36,7 @@ export function OtherCompanies() {
               </svg>
             </div>
             <h3>Orenyx Fire &amp; Life Safety Engine</h3>
-            <p>Protect your people, property, and operations with fire and life-safety tools built for safer workplaces.</p>
+            <p>Support safer workplaces with tools focused on fire and life safety—helping protect your people, property, and operations.</p>
             <a className="xp__btn" href="https://orenyx-safety-ai.vercel.app/index.html" target="_blank" rel="noopener">
               Explore Fire &amp; Life Safety →
             </a>
@@ -48,7 +48,7 @@ export function OtherCompanies() {
               </svg>
             </div>
             <h3>Orenyx Wellness</h3>
-            <p>Support your crew with simple daily wellness check-ins by text or voice.</p>
+            <p>Make daily wellness check-ins simple for your crew, with convenient text or voice options.</p>
             <a className="xp__btn" href="https://momentum-wellness-brown.vercel.app/index.html" target="_blank" rel="noopener">
               Explore Wellness →
             </a>
