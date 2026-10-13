@@ -18,24 +18,14 @@ const extraOffers = [
   { ...privateLicense, subtitle: 'Get your own private ORENYX deployment, scoped to your organization’s needs. Tell us about your business, and our team will follow up with pricing.' },
   { ...operationalCompliance, subtitle: 'Keep your data, bots, and customers separated and protected with data isolation, API-key security, bot sandboxing, and audit logs. Available on its own or as an AI Engine add-on.' },
 ];
-
 const paths = [
-  {
-    tag: 'Focused Dispatch',
-    name: 'Orenyx Voice Dispatch',
-    body: 'Handle calls, book jobs, route technicians, and collect payments—all through one focused dispatch solution for your home-service business.',
-    exploreLabel: 'Explore Voice Dispatch',
-    exploreHref: '/voice-dispatch',
-    pricingHref: '/voice-dispatch#pricing',
-  },
-  {
-    tag: 'Broader Automation',
-    name: 'Orenyx AI Engine',
-    body: 'Bring dispatch, payments, invoicing, and customer follow-up together to keep more of your daily operations moving with less manual work.',
-    exploreLabel: 'Explore AI Engine',
-    exploreHref: '/ai-engine',
-    pricingHref: '/ai-engine#pricing',
-  },
+  { tag: 'Focused Dispatch', name: 'Orenyx Voice Dispatch', body: 'Handle calls, book jobs, route technicians, and collect payments—all through one focused dispatch solution for your home-service business.', exploreLabel: 'Explore Voice Dispatch', exploreHref: '/voice-dispatch', pricingHref: '/voice-dispatch#pricing' },
+  { tag: 'Broader Automation', name: 'Orenyx AI Engine', body: 'Bring dispatch, payments, invoicing, and customer follow-up together to keep more of your daily operations moving with less manual work.', exploreLabel: 'Explore AI Engine', exploreHref: '/ai-engine', pricingHref: '/ai-engine#pricing' },
+];
+const steps = [
+  { title: 'Tell us about your business', body: 'Share the workflows you want to improve and the problems you need to solve.' },
+  { title: 'Choose the right offering', body: 'Discuss focused dispatch, broader automation, private deployment, or operational protections with our team.' },
+  { title: 'Scope your setup', body: 'Review the requirements, onboarding steps, and agreed scope before moving forward.' },
 ];
 
 export default function HomePage() {
@@ -45,12 +35,9 @@ export default function HomePage() {
         <Shell className="relative z-10 text-center">
           <h1 className="text-2xl font-bold text-white md:text-[2rem]">Orenyx — Call Answering, Booking, Dispatch, and Business Automation</h1>
           <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-white/90">Choose focused Voice Dispatch or the broader Orenyx AI Engine for your home-service business. Private deployment and standalone operational protections are also available.</p>
-          <div className="mt-5">
-            <HeroVideo />
-          </div>
-          <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-8 py-4 text-center text-lg font-extrabold text-white md:text-2xl">
-            Both Main Packages Include Voice Dispatch
-          </div>
+          <div className="mt-6 flex justify-center"><ButtonLink href="/contact" variant="primary">Talk to Orenyx</ButtonLink></div>
+          <div className="mt-5"><HeroVideo /></div>
+          <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border-2 border-violet-soft bg-white/10 px-8 py-4 text-center text-lg font-extrabold text-white md:text-2xl">Both Main Packages Include Voice Dispatch</div>
           <div className="mx-auto mt-14 grid max-w-[1140px] gap-8 text-left md:grid-cols-2">
             {paths.map((path, i) => (
               <Reveal key={path.name} delay={i * 70}>
@@ -78,24 +65,29 @@ export default function HomePage() {
                   <p className="mt-2 text-base font-bold text-violet-soft">{offer.subtitle}</p>
                   <ul className="mt-6 grid flex-1 content-start gap-3 text-base text-white/90 sm:grid-cols-2">
                     {offer.features.map((f) => (
-                      <li key={f} className="flex gap-3">
-                        <span aria-hidden="true" className="mt-[2px] text-violet-bright">{f.startsWith('No ') ? '–' : '✓'}</span>
-                        <span>{f}</span>
-                      </li>
+                      <li key={f} className="flex gap-3"><span aria-hidden="true" className="mt-[2px] text-violet-bright">{f.startsWith('No ') ? '–' : '✓'}</span><span>{f}</span></li>
                     ))}
                   </ul>
-                  <div className="mt-8">
-                    <ButtonLink href={offer.contact.href} variant="primary">{offer.contact.label}</ButtonLink>
-                  </div>
+                  <div className="mt-8"><ButtonLink href={offer.contact.href} variant="primary">{offer.contact.label}</ButtonLink></div>
                 </div>
               </Reveal>
             ))}
           </div>
+          <section aria-labelledby="how-it-works-title" className="mx-auto mt-12 max-w-[1140px]">
+            <h2 id="how-it-works-title" className="text-2xl font-bold text-white md:text-[2rem]">How It Works</h2>
+            <div className="mt-8 grid gap-8 text-left lg:grid-cols-3">
+              {steps.map((step, i) => (
+                <div key={step.title} className="rounded-[20px] border border-line-violet bg-bg-2/70 p-8">
+                  <p className="text-lg font-bold text-violet-soft">Step {i + 1}</p>
+                  <h3 className="mt-3 text-xl font-bold text-white">{step.title}</h3>
+                  <p className="mt-4 text-base leading-relaxed text-white/90">{step.body}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </Shell>
         <div className="carveimage"></div>
-        <div className="mx-auto mt-12 max-w-[420px] md:max-w-[1180px]">
-          <EngineDiagram />
-        </div>
+        <div className="mx-auto mt-12 max-w-[420px] md:max-w-[1180px]"><EngineDiagram /></div>
       </div>
       <OtherCompanies />
     </>
