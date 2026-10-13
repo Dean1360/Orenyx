@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 /**
- * Cross-promotion section: links to the other two Orenyx companies.
+ * Cross-promotion section: links to the other Orenyx companies.
  * Spanish text comes from lib/i18n/es.json (site-wide EN | ESP switch).
  */
 export function OtherCompanies() {
@@ -25,6 +25,20 @@ export function OtherCompanies() {
             <p>Help your team report hazards, spot risk patterns, and track corrective actions.</p>
             <a className="xp__btn" href="https://orenyx-safety-ai.vercel.app/index.html" target="_blank" rel="noopener">
               Explore Safety AI →
+            </a>
+          </div>
+          <div className="xp__card">
+            <div className="xp__ic xp__ic--s">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 2l8 4v6c0 5-3.5 8.5-8-10V6z" />
+                <path d="M12 7v6" />
+                <path d="M12 17h.01" />
+              </svg>
+            </div>
+            <h3>Orenyx Fire &amp; Life Safety Engine</h3>
+            <p>Protect your people, property, and operations with fire and life-safety tools built for safer workplaces.</p>
+            <a className="xp__btn" href="https://orenyx-safety-ai.vercel.app/index.html" target="_blank" rel="noopener">
+              Explore Fire &amp; Life Safety →
             </a>
           </div>
           <div className="xp__card">
