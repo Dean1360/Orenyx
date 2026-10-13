@@ -1,0 +1,25 @@
+/* Other Orenyx companies: stacked on mobile */
+#other-orenyx-companies .xp__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Keep cards equal-height and buttons aligned */
+#other-orenyx-companies .xp__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+#other-orenyx-companies .xp__card .xp__btn {
+  margin-top: auto;
+}
+
+/* Three equal-width cards across on desktop */
+@media (min-width: 1024px) {
+  #other-orenyx-companies .xp__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

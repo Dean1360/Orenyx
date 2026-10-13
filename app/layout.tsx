@@ -6,6 +6,7 @@ import { SiteLoader } from '@/components/site-loader';
 import { site } from '@/content/site';
 import { LanguageProvider, LANG_BOOT_SCRIPT } from '@/lib/i18n/language';
 import './globals.css';
+import './other-companies-layout.css';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
