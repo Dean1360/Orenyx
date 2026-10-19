@@ -190,7 +190,7 @@ export const voiceDispatchPlans: VoicePlan[] = [
     name: 'Starter',
     minutes: '150 AI call minutes / month',
     overage: '$0.75 per additional minute',
-    price: '$99\u2013149/mo',
+    price: '$99/mo',
     onboarding: '$750 one-time setup',
     stripePriceEnvVar: 'STRIPE_PRICE_VOICE_STARTER',
     stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_STARTER_ONBOARDING',
