@@ -25,7 +25,7 @@ export const primaryNav = [
 
 /** Thin bar above the header. */
 export const utilityNav = [
-  { label: 'Log in', href: '/login' },
+  { label: 'Log in', href: 'https://portal.orenyxengine.com' },
   { label: 'Status', href: '/status' },
 ] as const;
 

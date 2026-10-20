@@ -20,7 +20,7 @@ export default function ThankYouPage() {
       />
       <Section>
         <div className="flex flex-wrap gap-3">
-          <ButtonLink href="/dashboard">See Your Dashboard</ButtonLink>
+          <ButtonLink href="https://portal.orenyxengine.com">Go to Your Dashboard</ButtonLink>
           <ButtonLink href="/" variant="outline">
             Back to home
           </ButtonLink>
