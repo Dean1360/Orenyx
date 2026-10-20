@@ -73,7 +73,7 @@ export const plans: Plan[] = [
     stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_AI_PROFESSIONAL_ONBOARDING',
     metered: [],
     features: [
-      'Routing Advanced — rules + AI technician matching (skill + availability + area + license)',
+      'Routing Advanced — smart technician matching (skill + availability + area + license)',
       'Shared staging + production environments',
       'Email + chat support (24-hour response)',
       'Full logs (30-day retention)',

@@ -7,7 +7,7 @@ export const voiceHero = {
 
 export const compatibilityNote = {
   title: 'Works with what you already run',
-  body: 'Keep your existing scheduling, CRM, or field-service software \u2014 Jobber, ServiceTitan, Housecall Pro, or anything else. Orenyx Voice Dispatch answers the call and hands the job off automatically. No rip-and-replace, no retraining your team on new software.',
+  body: 'Orenyx Voice Dispatch answers the call and captures the job details automatically \u2014 no rip-and-replace, no retraining your team on new software.',
 };
 
 export const differentiationNote =
@@ -15,11 +15,11 @@ export const differentiationNote =
 
 export const callFlow = {
   eyebrow: 'How it works',
-  title: 'From ringing phone to dispatched technician, in one call.',
+  title: 'From ringing phone to a booked job, on one call.',
   steps: [
     {
       title: 'Call comes in',
-      body: 'The AI voice agent answers instantly, day or night — no queue, no voicemail.',
+      body: 'The AI voice agent answers instantly, day or night — no queue, no hold music.',
     },
     {
       title: 'Job details captured',
@@ -27,7 +27,7 @@ export const callFlow = {
     },
     {
       title: 'Technician matched',
-      body: 'The job is matched to the right technician by region and availability, with an estimated ETA.',
+      body: 'The job is matched to the right technician by region, availability, and skill.',
     },
     {
       title: 'Ticket dispatched',
@@ -39,7 +39,7 @@ export const callFlow = {
 export const voiceFeatures = [
   {
     name: 'Call answering',
-    body: 'Every inbound call is answered instantly, including nights and weekends — no hold music, no voicemail, no missed jobs after hours.',
+    body: 'Every inbound call is answered instantly, including nights and weekends — no hold music, no missed jobs after hours.',
   },
   {
     name: 'Job booking',
@@ -51,7 +51,7 @@ export const voiceFeatures = [
   },
   {
     name: 'Ticket dispatch',
-    body: 'A dispatch ticket is opened automatically the moment a technician is matched, with the customer notified in the same call.',
+    body: 'A dispatch ticket is opened automatically the moment a technician is matched, and the customer gets a text confirmation right after the call.',
   },
 ];
 

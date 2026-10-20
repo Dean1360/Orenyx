@@ -62,7 +62,7 @@ export const capabilityOverview = {
     },
     {
       name: 'Appointment Booking',
-      body: 'Customers book and confirm appointments online without a phone call.',
+      body: 'Appointments are booked automatically from the call — the requested time becomes the scheduled job, with a confirmation sent to the customer.',
     },
     {
       name: 'Call-to-Job Handoff',

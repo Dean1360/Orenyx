@@ -9,33 +9,33 @@ export const metadata = pageMeta({
   titleTag: 'Restoration Dispatch — Orenyx Voice Dispatch',
   title: 'Restoration Dispatch',
   description:
-    '24/7 emergency intake and dispatch for water, fire, and mold restoration companies. Part of Orenyx Voice Dispatch, built on Orenyx Engine.',
+    'Orenyx Voice Dispatch configured for water, fire, and mold restoration companies. Every emergency call answered, captured, and turned into a booked job.',
   path: '/voice-dispatch/restoration',
 });
 
+/**
+ * Voice Dispatch for restoration companies. Nothing restoration-specific has
+ * been built — this page presents the existing Voice Dispatch product as it
+ * applies to restoration work, without claiming features that do not exist
+ * (photo/video intake, escalation chains, arrival-time updates, or
+ * restoration-only pricing).
+ */
 const whatItDoes = [
-  'Answers every call, text, and chat 24/7',
-  'Collects the address, damage type, photos, and video',
-  'Alerts the on-call crew instantly',
-  'Escalates if no one confirms',
+  'Answers every call, 24/7',
+  'Captures the address and the details of the damage',
+  'Alerts the on-call technician',
   'Books the visit automatically',
-  'Sends arrival-time updates to the customer',
+  'Sends the customer a confirmation',
   'Creates the job automatically',
-  'Handles restoration job codes and billing at closeout',
+  'Handles job codes and billing at closeout',
+  'Runs on the same engine as the rest of your work',
 ];
 
 const safetyRules = [
-  'Every water, fire, and mold call is treated as an emergency',
-  'The AI never decides a call isn’t urgent',
-  'When unsure, the AI hands the call to a person',
-  'Your company sets the rules',
-  'No insurance decisions',
-];
-
-const plans = [
-  { id: 'restoration-starter', name: 'Starter', price: '$499', setup: '$750 one-time setup', note: 'For a single-location restoration company.' },
-  { id: 'restoration-pro', name: 'Pro', price: '$999', setup: '$1,250 one-time setup', note: 'For growing crews with more calls and techs.', featured: true },
-  { id: 'restoration-multi', name: 'Multi-Location', price: '$1,999+', setup: '$2,500 one-time setup', note: 'For franchise and multi-location operators.' },
+  'Every water, fire, and mold call is answered, day or night',
+  'The AI follows the rules your company sets',
+  'When a call needs a person, it transfers live',
+  'Your team keeps full control of every decision',
 ];
 
 export default function RestorationPage() {
@@ -44,7 +44,7 @@ export default function RestorationPage() {
       <PageHero
         crumb="Restoration"
         title="Restoration Dispatch"
-        lead="Water • Fire • Mold. 24/7 emergency intake and dispatch for restoration companies, built on Orenyx Engine."
+        lead="Water • Fire • Mold. Orenyx Voice Dispatch configured for restoration companies — every emergency call answered, captured, and turned into a booked job."
       />
 
       {/* ── Ad video ─────────────────────────────────────── */}
@@ -76,7 +76,7 @@ export default function RestorationPage() {
 
       {/* ── Safety rules ─────────────────────────────────── */}
       <Section tone="violet">
-        <SectionHead eyebrow="Safety rules" title="Built to never miss an emergency." />
+        <SectionHead eyebrow="How it works" title="Built to never miss an emergency." />
         <ul className="mt-8 grid gap-4 md:grid-cols-2">
           {safetyRules.map((rule, i) => (
             <Reveal key={rule} delay={i * 50}>
@@ -95,9 +95,9 @@ export default function RestorationPage() {
       <Section tone="dark">
         <Reveal>
           <div className="mx-auto max-w-[820px] rounded-[14px] border border-line-violet bg-bg-2/50 p-8 text-center">
-            <p className="text-lg font-bold text-violet-bright">Who it’s for</p>
+            <p className="text-lg font-bold text-violet-bright">Who it&rsquo;s for</p>
             <p className="mt-3 text-base leading-relaxed text-white">
-              Restoration companies with 2–50 techs and franchise locations.
+              Restoration companies with 2&ndash;50 techs and franchise locations.
             </p>
             <p className="mt-3 text-sm text-fg-soft">Launching first in Houston, then TX, FL, AZ, and CA.</p>
           </div>
@@ -106,29 +106,25 @@ export default function RestorationPage() {
 
       {/* ── Pricing ──────────────────────────────────────── */}
       <Section id="pricing" tone="violet" className="scroll-mt-40">
-        <SectionHead eyebrow="Pricing" title="Restoration Dispatch pricing" align="center" />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {plans.map((p, i) => (
-            <Reveal key={p.name} delay={i * 70}>
-              <div
-                className={`flex h-full flex-col rounded-[14px] border-2 p-7 text-center ${
-                  p.featured ? 'border-white bg-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.25)]' : 'border-white/70 bg-white/5'
-                }`}
-              >
-                <p className="text-lg font-bold text-white">{p.name}</p>
-                <p className="mt-3 text-4xl font-bold tabular-nums text-white">
-                  {p.price}
-                  <span className="text-base font-semibold text-white/70">/mo</span>
-                </p>
-                <p className="mt-1 text-sm font-semibold text-white/85">{p.setup}</p>
-                <p className="mb-6 mt-3 text-sm leading-relaxed text-white/75">{p.note}</p>
-                <ButtonLink href={`/checkout?plan=${p.id}`} variant="dark" className="mt-auto w-full">
-                  Check Out
-                </ButtonLink>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <SectionHead
+          eyebrow="Pricing"
+          title="Same plans as Voice Dispatch"
+          align="center"
+        />
+        <Reveal>
+          <div className="mx-auto mt-8 max-w-[640px] rounded-[14px] border border-white/15 bg-white/5 p-8 text-center">
+            <p className="text-base leading-relaxed text-white">
+              Restoration companies use the same Voice Dispatch plans — every
+              feature, every tier. See the plans and check out on the Voice
+              Dispatch page.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <ButtonLink href="/voice-dispatch#pricing" variant="dark">
+                See the plans
+              </ButtonLink>
+            </div>
+          </div>
+        </Reveal>
       </Section>
 
       {/* ── Free audit CTA ───────────────────────────────── */}
@@ -139,7 +135,7 @@ export default function RestorationPage() {
               Free After-Hours Emergency Audit
             </h2>
             <p className="mx-auto mt-4 max-w-[560px] text-base text-white/85">
-              We call your line after hours and show you what you’re missing.
+              We call your line after hours and show you what you&rsquo;re missing.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <ButtonLink href="/contact" variant="dark">
