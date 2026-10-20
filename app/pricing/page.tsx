@@ -66,8 +66,8 @@ export default function PricingPage() {
             Dispatch-only pricing.
           </h2>
           <p className="mx-auto mt-4 max-w-[640px] text-center text-lg newFont-Parra leading-relaxed text-white/85">
-            Priced by AI call minutes instead of API/bot usage — pick the tier that matches how
-            much talk time you need each month.
+            Simple flat monthly pricing — pick the tier that matches your call volume. Each plan
+            is billed monthly, with a one-time setup fee to get you live.
           </p>
         </Reveal>
 
