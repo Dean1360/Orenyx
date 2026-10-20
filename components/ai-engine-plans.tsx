@@ -34,6 +34,7 @@ export function AiEnginePlans() {
                   {plan.cta.label}
                 </ButtonLink>
 
+                {plan.metered.length > 0 && (
                 <dl className="mt-7 space-y-3 border-b border-line pb-6 text-sm">
                   {plan.metered.map((row) => (
                     <div key={row.label} className="flex items-baseline justify-between gap-4">
@@ -48,6 +49,7 @@ export function AiEnginePlans() {
                     </div>
                   ))}
                 </dl>
+                )}
 
                 <ul className="mt-6 space-y-3 text-sm font-srs">
                   {plan.features.map((f) => (

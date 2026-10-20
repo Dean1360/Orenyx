@@ -26,8 +26,12 @@ export function VoiceDispatchPlans() {
                   </span>
                 ) : null}
                 <p className="text-xl font-bold text-white">{plan.name}</p>
-                <p className="mt-1 text-sm text-white/70">{plan.minutes}</p>
-                <p className="mt-1 text-xs text-white/60">{plan.overage}</p>
+                {plan.minutes ? (
+                  <p className="mt-1 text-sm text-white/70">{plan.minutes}</p>
+                ) : null}
+                {plan.overage ? (
+                  <p className="mt-1 text-xs text-white/60">{plan.overage}</p>
+                ) : null}
 
                 <p className="mt-3 whitespace-nowrap text-3xl font-bold text-white sm:text-[2rem]">
                   {plan.price}

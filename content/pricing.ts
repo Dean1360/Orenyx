@@ -49,12 +49,7 @@ export const plans: Plan[] = [
     cta: { label: 'Check Out', href: '/checkout?plan=starter' },
     stripePriceEnvVar: 'STRIPE_PRICE_AI_STARTER',
     stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_AI_STARTER_ONBOARDING',
-    metered: [
-      { label: 'AI call minutes', value: '600 / month' },
-      { label: 'Bot executions', value: '5,000 / month' },
-      { label: 'Payment decision calls', value: '5,000 / month' },
-      { label: 'Overage rate', value: '$0.50 per additional minute', accent: true },
-    ],
+    metered: [],
     features: [
       'Routing Basic (rules-based technician matching)',
       'Shared, single-tenant environment',
@@ -76,12 +71,7 @@ export const plans: Plan[] = [
     cta: { label: 'Check Out', href: '/checkout?plan=professional' },
     stripePriceEnvVar: 'STRIPE_PRICE_AI_PROFESSIONAL',
     stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_AI_PROFESSIONAL_ONBOARDING',
-    metered: [
-      { label: 'AI call minutes', value: '1,500 / month' },
-      { label: 'Bot executions', value: '15,000 / month' },
-      { label: 'Payment decision calls', value: '10,000 / month' },
-      { label: 'Overage rate', value: '$0.35 per additional minute', accent: true },
-    ],
+    metered: [],
     features: [
       'Routing Advanced — rules + AI technician matching (skill + availability + area + license)',
       'Shared staging + production environments',
@@ -101,9 +91,7 @@ export const plans: Plan[] = [
     price: 'Custom',
     onboarding: 'Custom — scoped after discovery',
     cta: { label: 'Contact Sales', href: '/contact' },
-    metered: [
-      { label: 'AI call minutes, dispatch & usage', value: 'Custom — scoped per contract', accent: true },
-    ],
+    metered: [],
     features: [
       'Full Technician Routing Engine',
       'Full Appointment Booking Engine',
@@ -188,8 +176,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-starter',
     name: 'Starter',
-    minutes: '150 AI call minutes / month',
-    overage: '$0.75 per additional minute',
+    minutes: '',
+    overage: '',
     price: '$99/mo',
     onboarding: '$750 one-time setup',
     stripePriceEnvVar: 'STRIPE_PRICE_VOICE_STARTER',
@@ -205,8 +193,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-growth',
     name: 'Growth',
-    minutes: '300 AI call minutes / month',
-    overage: '$0.65 per additional minute',
+    minutes: '',
+    overage: '',
     price: '$299/mo',
     onboarding: '$1,000 one-time setup',
     mostPopular: true,
@@ -222,8 +210,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-scale',
     name: 'Scale',
-    minutes: '900 AI call minutes / month',
-    overage: '$0.55 per additional minute',
+    minutes: '',
+    overage: '',
     price: '$799/mo',
     onboarding: '$1,500 one-time setup',
     stripePriceEnvVar: 'STRIPE_PRICE_VOICE_SCALE',
@@ -238,7 +226,7 @@ export const voiceDispatchPlans: VoicePlan[] = [
   {
     id: 'voice-enterprise',
     name: 'Enterprise',
-    minutes: 'Custom AI call minutes',
+    minutes: '',
     overage: 'Custom rate',
     price: '$1,999\u20134,000/mo',
     onboarding: 'Custom',
