@@ -26,6 +26,9 @@ export const primaryNav = [
 /** Thin bar above the header. */
 export const utilityNav = [
   { label: 'Log in', href: 'https://portal.orenyxengine.com' },
+  // A customer who paid but left the signup form before finishing uses this
+  // to get back to the form and complete their account.
+  { label: 'Finish Sign Up', href: 'https://portal.orenyxengine.com/signup' },
   { label: 'Status', href: '/status' },
 ] as const;
 
