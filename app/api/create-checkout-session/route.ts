@@ -76,12 +76,60 @@ export async function POST(request: Request) {
   const company = typeof body.company === 'string' ? body.company : '';
 
   try {
+    // The Orenyx Engine fee: 3% of each payment, added as separate lines so
+    // the client sees them. The fee is nonrefundable — a refund covers the
+    // plan's price only, never the fee.
+    //
+    // The plan's price is a pre-created Stripe Price, so it is retrieved to
+    // compute the fee and to match the subscription's billing interval.
+    const price = await stripe.prices.retrieve(priceId);
+    const planAmount = price.unit_amount ?? 0;
+    const interval = price.recurring?.interval ?? 'month';
+    const feeCents = Math.ceil(planAmount * 0.03);
+
+    // The onboarding fee (if the plan has one): 3% of it too, charged once.
+    let onboardingFeeCents = 0;
+    if (onboardingPriceId) {
+      const onboardingPrice = await stripe.prices.retrieve(onboardingPriceId);
+      onboardingFeeCents = Math.ceil((onboardingPrice.unit_amount ?? 0) * 0.03);
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       customer_email: email,
       line_items: [
         { price: priceId, quantity: 1 },
         ...(onboardingPriceId ? [{ price: onboardingPriceId, quantity: 1 }] : []),
+        // The 3% fee on the plan's price — recurring, so the client pays it
+        // each billing cycle alongside the subscription.
+        ...(feeCents > 0
+          ? [
+              {
+                price_data: {
+                  currency: 'usd',
+                  product_data: { name: 'Orenyx Engine fee (3%)' },
+                  unit_amount: feeCents,
+                  recurring: { interval },
+                },
+                quantity: 1,
+              },
+            ]
+          : []),
+        // The 3% fee on the one-time onboarding price, when present.
+        ...(onboardingFeeCents > 0
+          ? [
+              {
+                price_data: {
+                  currency: 'usd',
+                  product_data: {
+                    name: 'Orenyx Engine fee (3%) — one-time',
+                  },
+                  unit_amount: onboardingFeeCents,
+                },
+                quantity: 1,
+              },
+            ]
+          : []),
       ],
       metadata: { planId, name, company },
       subscription_data: { metadata: { planId, name, company } },
