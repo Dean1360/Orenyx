@@ -59,7 +59,9 @@ export function SiteHeader() {
               href={item.href}
               className={`rounded-[6px] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] sm:px-5 sm:text-[11px] ${i === 0
                   ? ' text-white  topbar-buttoncolor1'
-                  : 'border border-white/30 topbar-buttoncolor2'
+                  : item.label === 'Finish Sign Up'
+                    ? 'border-2 border-white text-white'
+                    : 'border border-white/30 topbar-buttoncolor2'
                 }`}
             >
               {item.label}
