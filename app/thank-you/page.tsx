@@ -22,12 +22,13 @@ export const metadata = pageMeta({
  * by email") reads like their payment did not go through, so the two cases
  * are separated here.
  */
-export default function ThankYouPage({
+export default async function ThankYouPage({
   searchParams,
 }: {
-  searchParams: { paid?: string };
+  searchParams: Promise<{ paid?: string }>;
 }) {
-  const paid = searchParams?.paid === '1';
+  const params = await searchParams;
+  const paid = params?.paid === '1';
 
   if (paid) {
     return (
