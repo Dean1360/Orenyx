@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import { SiteHeader } from '@/components/site-header';
+import { ChatWidget } from '@/components/chat-widget';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteLoader } from '@/components/site-loader';
 import { site } from '@/content/site';
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <SiteHeader />
+        <ChatWidget />
         <main id="main" className="flex-1">
           {children}
         </main>
