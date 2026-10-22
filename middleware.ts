@@ -30,7 +30,7 @@ export async function middleware(req: NextRequest) {
       password = '';
     }
     if (password === GATE_PASSWORD) {
-      const res = NextResponse.redirect(new URL('/', req.url));
+      const res = NextResponse.redirect(new URL('/', req.url), 303);
       res.cookies.set(COOKIE_NAME, 'ok', {
         maxAge: COOKIE_MAX_AGE,
         path: '/',
