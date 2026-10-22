@@ -5,20 +5,51 @@ import { useEffect, useRef, useState } from 'react';
 type Msg = { role: 'user' | 'bot'; text: string };
 type Turn = { role: string; content: string };
 
+type Labels = {
+  greeting: string;
+  placeholder: string;
+  fallbackLink: string;
+  emailPlaceholder: string;
+  fallbackSend: string;
+  fallbackDone: string;
+  sentOk: string;
+  error: string;
+};
+
+const EN: Labels = {
+  greeting:
+    'Hi! I can answer questions about the Orenyx Engine — the platform, pricing, Voice Dispatch, security, or integration. What can I help you with?',
+  placeholder: 'Type your question...',
+  fallbackLink: 'Prefer a human? Email the team instead',
+  emailPlaceholder: 'you@yourcompany.com',
+  fallbackSend: 'Send',
+  fallbackDone: 'Got it — the team will get back to you at your email.',
+  sentOk: 'Got it — the team will get back to you at ',
+  error: 'I am having trouble right now. Please try again in a moment.',
+};
+
+const ES: Labels = {
+  greeting:
+    '¡Hola! Puedo responder preguntas sobre el Orenyx Engine — la plataforma, precios, Voice Dispatch, seguridad o integración. ¿En qué puedo ayudarte?',
+  placeholder: 'Escribe tu pregunta...',
+  fallbackLink: '¿Prefieres una persona? Envíanos un correo',
+  emailPlaceholder: 'tu@tuempresa.com',
+  fallbackSend: 'Enviar',
+  fallbackDone: 'Listo — el equipo te responderá a tu correo.',
+  sentOk: 'Listo — el equipo te responderá a ',
+  error: 'Estoy teniendo problemas en este momento. Intenta de nuevo en un momento.',
+};
+
 /**
- * The Chat with us widget: the bot answers questions about the Orenyx
- * Engine (the platform, pricing, Voice Dispatch, security, integration),
- * with an email fallback to the team. The bot's brain is the Packet
- * Engine API with site=engine (the Orenyx Engine knowledge).
+ * The Chat with us widget (bilingual): the bot answers questions about
+ * the Orenyx Engine in the visitor's language, and the UI follows the
+ * site's language toggle. The bot's brain is the Packet Engine API with
+ * site=engine (the Orenyx Engine knowledge).
  */
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Msg[]>([
-    {
-      role: 'bot',
-      text: 'Hi! I can answer questions about the Orenyx Engine — the platform, pricing, Voice Dispatch, security, or integration. What can I help you with?',
-    },
-  ]);
+  const [lang, setLang] = useState<'en' | 'es'>('en');
+  const [messages, setMessages] = useState<Msg[]>([{ role: 'bot', text: EN.greeting }]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [history, setHistory] = useState<Turn[]>([]);
@@ -26,6 +57,30 @@ export function ChatWidget() {
   const [fallbackEmail, setFallbackEmail] = useState('');
   const [fallbackDone, setFallbackDone] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  /* the language: the site's html lang attribute (the EN/ESP toggle) */
+  useEffect(() => {
+    const read = () => {
+      const l = (document.documentElement.lang || 'en').toLowerCase();
+      setLang(l.startsWith('es') ? 'es' : 'en');
+    };
+    read();
+    const obs = new MutationObserver(read);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    return () => obs.disconnect();
+  }, []);
+
+  const L = lang === 'es' ? ES : EN;
+
+  /* the initial greeting follows the language */
+  useEffect(() => {
+    setMessages((prev) => {
+      if (prev.length === 1 && prev[0].role === 'bot') {
+        return [{ role: 'bot', text: L.greeting }];
+      }
+      return prev;
+    });
+  }, [L.greeting]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -51,11 +106,11 @@ export function ChatWidget() {
         body: JSON.stringify({ message: msg, history: priorHistory, site: 'engine' }),
       });
       const d = await res.json();
-      const reply = (d && d.reply) || 'Sorry, I could not answer that one.';
+      const reply = (d && d.reply) || L.error;
       addMsg({ role: 'bot', text: reply });
       setHistory([...newHistory, { role: 'assistant', content: reply }]);
     } catch {
-      addMsg({ role: 'bot', text: 'I am having trouble right now. Please try again in a moment.' });
+      addMsg({ role: 'bot', text: L.error });
     }
     setBusy(false);
   }
@@ -79,9 +134,9 @@ export function ChatWidget() {
         body: `name=Website chat&email=${encodeURIComponent(email)}&question=${encodeURIComponent(question)}`,
       });
       setFallbackDone(true);
-      addMsg({ role: 'bot', text: `Got it — the team will get back to you at ${email}.` });
+      addMsg({ role: 'bot', text: `${L.sentOk}${email}.` });
     } catch {
-      addMsg({ role: 'bot', text: 'I could not send that. Please try again in a moment.' });
+      addMsg({ role: 'bot', text: L.error });
     }
   }
 
@@ -146,9 +201,9 @@ export function ChatWidget() {
                   void send();
                 }
               }}
-              placeholder="Type your question..."
+              placeholder={L.placeholder}
               maxLength={2000}
-              aria-label="Your question"
+              aria-label={L.placeholder}
               className="min-w-0 flex-1 rounded-xl border border-white/20 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-emerald-400 focus:outline-none"
             />
             <button
@@ -157,7 +212,7 @@ export function ChatWidget() {
               disabled={busy}
               className="rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-black transition-colors hover:bg-emerald-400 disabled:opacity-50"
             >
-              Send
+              {lang === 'es' ? 'Enviar' : 'Send'}
             </button>
           </div>
 
@@ -169,7 +224,7 @@ export function ChatWidget() {
                 onClick={() => setShowFallback(true)}
                 className="bg-transparent text-xs font-semibold text-emerald-400 underline hover:text-emerald-300"
               >
-                Prefer a human? Email the team instead
+                {L.fallbackLink}
               </button>
             )}
             {!fallbackDone && showFallback && (
@@ -178,22 +233,20 @@ export function ChatWidget() {
                   type="email"
                   value={fallbackEmail}
                   onChange={(e) => setFallbackEmail(e.target.value)}
-                  placeholder="you@yourcompany.com"
+                  placeholder={L.emailPlaceholder}
                   required
-                  aria-label="Your email"
+                  aria-label={L.emailPlaceholder}
                   className="min-w-0 flex-1 rounded-xl border border-white/20 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-400 focus:outline-none"
                 />
                 <button
                   type="submit"
                   className="rounded-xl bg-emerald-500 px-3 py-2 text-xs font-bold text-black hover:bg-emerald-400"
                 >
-                  Send
+                  {L.fallbackSend}
                 </button>
               </form>
             )}
-            {fallbackDone && (
-              <p className="text-xs text-white/70">Got it — the team will get back to you at your email.</p>
-            )}
+            {fallbackDone && <p className="text-xs text-white/70">{L.fallbackDone}</p>}
           </div>
         </div>
       )}
