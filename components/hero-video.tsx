@@ -32,7 +32,7 @@ export function HeroVideo({
         playsInline
         controls
         preload="auto"
-        onEnded={() => { videoRef.current?.load(); setEnded(false); }}
+        onEnded={() => { videoRef.current?.pause(); }}
         aria-label="Orenyx 15-second overview: answers calls, books appointments 24/7, dispatches technicians, takes payments, and handles follow-ups in one engine."
       />
     </div>
