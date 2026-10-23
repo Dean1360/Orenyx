@@ -28,7 +28,7 @@ export type Plan = {
   model: { base: number; includedDispatch: number; overagePer1k: number } | null;
   /**
    * Name of the Vercel env var holding this plan's live Stripe recurring
-   * Price ID (e.g. STRIPE_PRICE_AI_STARTER). Checkout only offers real card
+   * Price ID (e.g. STRIPE_PRICE_SMALL). Checkout only offers real card
    * payment when that env var is set on the server — until then the form
    * falls back to the existing manual request flow. Omit for Contact Sales
    * plans, since Stripe needs one fixed number, not a range.
@@ -47,8 +47,8 @@ export const plans: Plan[] = [
     priceSuffix: '/mo',
     onboarding: '$2,500 one-time implementation',
     cta: { label: 'Check Out', href: '/checkout?plan=starter' },
-    stripePriceEnvVar: 'STRIPE_PRICE_AI_STARTER',
-    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_AI_STARTER_ONBOARDING',
+    stripePriceEnvVar: 'STRIPE_PRICE_SMALL',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_SMALL_ONBOARDING',
     metered: [],
     features: [
       'Routing Basic (rules-based technician matching)',
@@ -69,8 +69,8 @@ export const plans: Plan[] = [
     priceSuffix: '/mo',
     onboarding: '$4,000 one-time implementation',
     cta: { label: 'Check Out', href: '/checkout?plan=professional' },
-    stripePriceEnvVar: 'STRIPE_PRICE_AI_PROFESSIONAL',
-    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_AI_PROFESSIONAL_ONBOARDING',
+    stripePriceEnvVar: 'STRIPE_PRICE_MID',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_MID_ONBOARDING',
     metered: [],
     features: [
       'Routing Advanced — smart technician matching (skill + availability + area + license)',
@@ -180,8 +180,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
     overage: '',
     price: '$99/mo',
     onboarding: '$750 one-time setup',
-    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_STARTER',
-    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_STARTER_ONBOARDING',
+    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_SMALL',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_SMALL_ONBOARDING',
     features: [
       'AI call answering, 24/7',
       'Basic call routing',
@@ -198,8 +198,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
     price: '$299/mo',
     onboarding: '$1,000 one-time setup',
     mostPopular: true,
-    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_GROWTH',
-    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_GROWTH_ONBOARDING',
+    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_MID',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_MID_ONBOARDING',
     features: [
       'Everything in Starter',
       'Advanced routing with fallback rules',
@@ -214,8 +214,8 @@ export const voiceDispatchPlans: VoicePlan[] = [
     overage: '',
     price: '$799/mo',
     onboarding: '$1,500 one-time setup',
-    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_SCALE',
-    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_SCALE_ONBOARDING',
+    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_LARGE',
+    stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_LARGE_ONBOARDING',
     features: [
       'Everything in Growth',
       'Multi-line / multi-location routing',
@@ -230,7 +230,6 @@ export const voiceDispatchPlans: VoicePlan[] = [
     overage: 'Custom rate',
     price: '$1,999\u20134,000/mo',
     onboarding: 'Custom',
-    stripePriceEnvVar: 'STRIPE_PRICE_VOICE_ENTERPRISE',
     stripeOnboardingPriceEnvVar: 'STRIPE_PRICE_VOICE_ENTERPRISE_ONBOARDING',
     features: [
       'Everything in Scale',
