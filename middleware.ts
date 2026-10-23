@@ -18,6 +18,13 @@ const COOKIE_NAME = 'engine_gate_ok';
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
 export async function middleware(req: NextRequest) {
+  // The launch switch: set ENGINE_GATE_ENABLED=false in Vercel to make
+  // the site public (the gate bypassed). Default (unset or 'true'): the
+  // gate is on — the site is private.
+  if (process.env.ENGINE_GATE_ENABLED === 'false') {
+    return NextResponse.next();
+  }
+
   const { pathname } = req.nextUrl;
 
   // The password submission (the gate form posts here).
