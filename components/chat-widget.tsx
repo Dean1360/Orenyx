@@ -47,7 +47,8 @@ const ES: Labels = {
  * site=engine (the Orenyx Engine knowledge).
  */
 export function ChatWidget() {
-  const [open, setOpen] = useState(false);
+  /* the chat is open by default — visitors see it immediately */
+  const [open, setOpen] = useState(true);
   const [lang, setLang] = useState<'en' | 'es'>('en');
   const [messages, setMessages] = useState<Msg[]>([{ role: 'bot', text: EN.greeting }]);
   const [input, setInput] = useState('');
