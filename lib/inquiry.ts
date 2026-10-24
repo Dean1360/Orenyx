@@ -169,12 +169,35 @@ export async function handleInquiry(request: Request, kind: InquiryKind) {
 
   // Confirmation to the client — answers only, never prices.
   const first = d.fullName.split(' ')[0] || d.fullName;
+  // The bot auto-reply (the AI answers the inquiry — best-effort).
+  let aiReply = '';
+  try {
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (apiKey) {
+      const system = 'You are the Orenyx Engine team replying to an inquiry form submission (a Private License or Compliance inquiry). Be warm, helpful, and concise (3-5 sentences, plain English). Acknowledge their inquiry, answer what you can from their answers, and tell them the team will follow up by email with pricing within one business day. Never make up facts, prices, or features.';
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5-20251001',
+          max_tokens: 300,
+          system,
+          messages: [{ role: 'user', content: 'Their name: ' + d.fullName + ' | Their company: ' + company + ' | The inquiry type: ' + cfg.title + ' | Their answers:\n' + textLines }],
+        }),
+      });
+      if (res.ok) {
+        const llm: any = await res.json();
+        aiReply = String(llm?.content?.[0]?.text || '').trim();
+      }
+    }
+  } catch { /* best-effort */ }
+
   const confirmation = await sendEmail({
     to: d.workEmail,
     from: cfg.from(),
     subject: `We received your Orenyx ${cfg.title} inquiry`,
-    text: `Thanks for reaching out, ${d.fullName}.\n\nWe received your ${cfg.title} inquiry for ${company}. The Orenyx team will review your details and follow up by email with pricing.\n\nWhat you submitted:\n${textLines}`,
-    html: `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1a1533;"><h2>Thanks for reaching out, ${esc(first)}.</h2><p>We received your ${esc(cfg.title)} inquiry for <strong>${esc(company)}</strong>. The Orenyx team will review your details and follow up by email with pricing.</p><p style="margin-top:16px;"><strong>What you submitted:</strong></p><table style="border-collapse:collapse;width:100%;">${htmlRows}</table><p style="margin-top:20px;color:#4a4468;">If anything above needs correcting, just reply to this email.</p></div>`,
+    text: (aiReply ? aiReply + '\n\n' : '') + `Thanks for reaching out, ${d.fullName}.\n\nWe received your ${cfg.title} inquiry for ${company}. The Orenyx team will review your details and follow up by email with pricing.\n\nWhat you submitted:\n${textLines}`,
+    html: `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1a1533;"><h2>Thanks for reaching out, ${esc(first)}.</h2>${aiReply ? `<p>${esc(aiReply)}</p>` : ''}<p>We received your ${esc(cfg.title)} inquiry for <strong>${esc(company)}</strong>. The Orenyx team will review your details and follow up by email with pricing.</p><p style="margin-top:16px;"><strong>What you submitted:</strong></p><table style="border-collapse:collapse;width:100%;">${htmlRows}</table><p style="margin-top:20px;color:#4a4468;">If anything above needs correcting, just reply to this email.</p></div>`,
   });
   if (!confirmation.skipped && !confirmation.ok) console.error(`[${kind}] confirmation failed:`, confirmation.detail);
 
