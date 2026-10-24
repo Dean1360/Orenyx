@@ -36,6 +36,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} ${mono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: LANG_BOOT_SCRIPT }} />
+        {/* Google Ads tag (gtag.js) — measurement ID AW-18533902384 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18533902384" />
+        <script dangerouslySetInnerHTML={{ __html: "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-18533902384');" }} />
       </head>
       <body className="flex min-h-screen flex-col">
         <LanguageProvider>
