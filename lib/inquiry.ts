@@ -27,15 +27,15 @@ const KINDS: Record<InquiryKind, { title: string; fields: InquiryField[]; path: 
     title: 'Private License',
     fields: privateLicenseFields,
     path: '/private-license',
-    to: () => process.env.PRIVATE_LICENSE_TO_EMAIL ?? 'private@orenyxengine.com',
-    from: () => process.env.PRIVATE_LICENSE_FROM_EMAIL ?? 'Orenyx Private License <noreply@orenyxengine.com>',
+    to: () => process.env.PRIVATE_LICENSE_TO_EMAIL ?? 'operations@orenyxengine.com',
+    from: () => process.env.PRIVATE_LICENSE_FROM_EMAIL ?? `Orenyx Private License <${process.env.EMAIL_FROM ?? 'developer@zyntriq.ai'}>`,
   },
   compliance: {
     title: 'Standalone Operational Compliance',
     fields: complianceFields,
     path: '/compliance',
-    to: () => process.env.COMPLIANCE_TO_EMAIL ?? process.env.PRIVATE_LICENSE_TO_EMAIL ?? 'private@orenyxengine.com',
-    from: () => process.env.COMPLIANCE_FROM_EMAIL ?? process.env.PRIVATE_LICENSE_FROM_EMAIL ?? 'Orenyx <noreply@orenyxengine.com>',
+    to: () => process.env.COMPLIANCE_TO_EMAIL ?? process.env.PRIVATE_LICENSE_TO_EMAIL ?? 'operations@orenyxengine.com',
+    from: () => process.env.COMPLIANCE_FROM_EMAIL ?? process.env.PRIVATE_LICENSE_FROM_EMAIL ?? `Orenyx <${process.env.EMAIL_FROM ?? 'developer@zyntriq.ai'}>`,
   },
 };
 
@@ -48,15 +48,28 @@ function esc(v: string) {
 const usd = (n: number) => (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString('en-US');
 
 async function sendEmail(params: { to: string; from: string; subject: string; text: string; html: string }) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return { skipped: true as const };
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
-  });
-  if (!res.ok) return { skipped: false as const, ok: false as const, detail: await res.text() };
-  return { skipped: false as const, ok: true as const };
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  if (!host || !user || !process.env.SMTP_PASS) return { skipped: true as const };
+  try {
+    const nodemailer = (await import('nodemailer')).default;
+    const transporter = nodemailer.createTransport({
+      host,
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: { user, pass: process.env.SMTP_PASS },
+    });
+    await transporter.sendMail({
+      from: params.from,
+      to: params.to,
+      subject: params.subject,
+      text: params.text,
+      html: params.html,
+    });
+    return { skipped: false as const, ok: true as const };
+  } catch (e: any) {
+    return { skipped: false as const, ok: false as const, detail: String(e?.message || e) };
+  }
 }
 
 /** Internal-only price summary built from the pricing calculator rules. */
